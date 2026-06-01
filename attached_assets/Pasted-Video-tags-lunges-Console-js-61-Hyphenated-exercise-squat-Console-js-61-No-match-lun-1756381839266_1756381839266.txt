@@ -1,0 +1,57 @@
+Video tags: ['lunges']
+Console.js:61 Hyphenated exercise: "squat----"
+Console.js:61 ✗ No match: "lunges" vs "squat -  -" or "squat----"
+Console.js:61 ✗ No match found for "squat - 4x3 - Rest: Rest: Rest: Rest: 1"
+Console.js:61 Checking video "hip extension" for exercise "squat - 4x3 - Rest: Rest: Rest: Rest: 1"
+Console.js:61 Cleaned exercise name: "squat -  -"
+Console.js:61 Video tags: ['hip-extension']
+Console.js:61 Hyphenated exercise: "squat----"
+Console.js:61 ✗ No match: "hip-extension" vs "squat -  -" or "squat----"
+Console.js:61 ✗ No match found for "squat - 4x3 - Rest: Rest: Rest: Rest: 1"
+Console.js:61 Checking video "squat " for exercise "hip extension - 4x4 - Rest: Rest: Rest: Rest: 60s"
+Console.js:61 Cleaned exercise name: "hip extension -  -"
+Console.js:61 Video tags: ['squat']
+Console.js:61 Hyphenated exercise: "hip-extension----"
+Console.js:61 ✗ No match: "squat" vs "hip extension -  -" or "hip-extension----"
+Console.js:61 ✗ No match found for "hip extension - 4x4 - Rest: Rest: Rest: Rest: 60s"
+Console.js:61 Checking video "leg extension" for exercise "hip extension - 4x4 - Rest: Rest: Rest: Rest: 60s"
+Console.js:61 Cleaned exercise name: "hip extension -  -"
+Console.js:61 Video tags: ['leg-extension']
+Console.js:61 Hyphenated exercise: "hip-extension----"
+Console.js:61 ✗ No match: "leg-extension" vs "hip extension -  -" or "hip-extension----"
+Console.js:61 ✗ No match found for "hip extension - 4x4 - Rest: Rest: Rest: Rest: 60s"
+Console.js:61 Checking video "Lunges" for exercise "hip extension - 4x4 - Rest: Rest: Rest: Rest: 60s"
+Console.js:61 Cleaned exercise name: "hip extension -  -"
+Console.js:61 Video tags: ['lunges']
+Console.js:61 Hyphenated exercise: "hip-extension----"
+Console.js:61 ✗ No match: "lunges" vs "hip extension -  -" or "hip-extension----"
+Console.js:61 ✗ No match found for "hip extension - 4x4 - Rest: Rest: Rest: Rest: 60s"
+Console.js:61 Checking video "hip extension" for exercise "hip extension - 4x4 - Rest: Rest: Rest: Rest: 60s"
+Console.js:61 Cleaned exercise name: "hip extension -  -"
+Console.js:61 Video tags: ['hip-extension']
+Console.js:61 Hyphenated exercise: "hip-extension----"
+Console.js:61 ✗ No match: "hip-extension" vs "hip extension -  -" or "hip-extension----"
+Console.js:61 ✗ No match found for "hip extension - 4x4 - Rest: Rest: Rest: Rest: 60s"
+Console.js:61 Checking video "squat " for exercise "leg extension - 3x10 - Rest: 60s"
+Console.js:61 Cleaned exercise name: "leg extension"
+Console.js:61 Video tags: ['squat']
+Console.js:61 Hyphenated exercise: "leg-extension"
+Console.js:61 ✗ No match: "squat" vs "leg extension" or "leg-extension"
+Console.js:61 ✗ No match found for "leg extension - 3x10 - Rest: 60s"
+Console.js:61 Checking video "leg extension" for exercise "leg extension - 3x10 - Rest: 60s"
+Console.js:61 Cleaned exercise name: "leg extension"
+Console.js:61 Video tags: ['leg-extension']
+Console.js:61 Hyphenated exercise: "leg-extension"
+Console.js:61 ✓ Hyphenated match: "leg-extension" === "leg-extension"
+Console.js:61 Checking video "Lunges" for exercise "leg extension - 3x10 - Rest: 60s"
+Console.js:61 Cleaned exercise name: "leg extension"
+Console.js:61 Video tags: ['lunges']
+Console.js:61 Hyphenated exercise: "leg-extension"
+Console.js:61 ✗ No match: "lunges" vs "leg extension" or "leg-extension"
+Console.js:61 ✗ No match found for "leg extension - 3x10 - Rest: 60s"
+Console.js:61 Checking video "hip extension" for exercise "leg extension - 3x10 - Rest: 60s"
+Console.js:61 Cleaned exercise name: "leg extension"
+Console.js:61 Video tags: ['hip-extension']
+Console.js:61 Hyphenated exercise: "leg-extension"
+Console.js:61 ✗ No match: "hip-extension" vs "leg extension" or "leg-extension"
+Console.js:61 ✗ No match found for "leg extension - 3x10 - Rest: 60s"

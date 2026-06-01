@@ -1,0 +1,2326 @@
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at packageResolve (node:internal/modules/esm/resolve:873:9)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24)
+    at Module._compile (node:internal/modules/cjs/loader:1503:5) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error: Cannot find package '/home/vendowor/naioshfit.com/node_modules/vite/index.js' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:215:26)
+    at packageResolve (node:internal/modules/esm/resolve:860:14)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+node:internal/modules/esm/resolve:1204
+    throw error;
+    ^
+
+Error: Cannot find package '/home/vendowor/naioshfit.com/node_modules/vite/index.js' imported from /home/vendowor/naioshfit.com/dist/index.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:215:26)
+    at packageResolve (node:internal/modules/esm/resolve:860:14)
+    at moduleResolve (node:internal/modules/esm/resolve:946:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:413:53)
+    at new ModuleJobSync (node:internal/modules/esm/module_job:375:34)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:386:11)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1363:24) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v20.20.2
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[PAYMENT] Failed to get transactions: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getPlatformTransactions (file:///home/vendowor/naioshfit.com/dist/index.js:18622:35)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:22957:22
+[PAYMENT] Failed to get payment settings: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getPlatformPaymentSettings (file:///home/vendowor/naioshfit.com/dist/index.js:18290:23)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:22659:24
+Error fetching email settings: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ensurePlatformEmailSettingsTable (file:///home/vendowor/naioshfit.com/dist/index.js:4777:3)
+    at async getPlatformEmailSettings (file:///home/vendowor/naioshfit.com/dist/index.js:4869:3)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:34064:24
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+/home/vendowor/nodevenv/naioshfit.com/20/bin/node: line 10: export: `=Asia/Riyadh': not a valid identifier
+[INIT] ✗ Failed to apply 0031_add_system_infrastructure.sql: trigger "update_background_jobs_updated_at" for relation "background_jobs" already exists
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774532816095-videoplayback__3_.mp4'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359840405-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359848015-clubindustry_default.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774359935669-2025-02_online-learning.jpeg'
+Error occurred: Error: ENOENT: no such file or directory, stat '/home/vendowor/naioshfit.com/uploads/1774777380549-videoplayback__3_.mp4'
+[SAAS] Central database initialization failed: Error: The server does not support SSL connections
+    at /home/vendowor/nodevenv/naioshfit.com/20/lib/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:2629:5
+    at async file:///home/vendowor/naioshfit.com/dist/index.js:19269:7

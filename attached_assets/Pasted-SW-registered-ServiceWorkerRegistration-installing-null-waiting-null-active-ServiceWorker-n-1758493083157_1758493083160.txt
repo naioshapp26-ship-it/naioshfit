@@ -1,0 +1,200 @@
+SW registered:  ServiceWorkerRegistration {installing: null, waiting: null, active: ServiceWorker, navigationPreload: NavigationPreloadManager, scope: 'https://c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/', …}
+LanguageContext.tsx:69 useLanguage is being used outside of LanguageProvider, providing fallback
+useLanguage @ LanguageContext.tsx:69
+Layout @ Layout.tsx:13
+renderWithHooks @ chunk-RPCDYKBN.js?v=2cf4f98f:11548
+mountIndeterminateComponent @ chunk-RPCDYKBN.js?v=2cf4f98f:14926
+beginWork @ chunk-RPCDYKBN.js?v=2cf4f98f:15914
+beginWork$1 @ chunk-RPCDYKBN.js?v=2cf4f98f:19753
+performUnitOfWork @ chunk-RPCDYKBN.js?v=2cf4f98f:19198
+workLoopSync @ chunk-RPCDYKBN.js?v=2cf4f98f:19137
+renderRootSync @ chunk-RPCDYKBN.js?v=2cf4f98f:19116
+performConcurrentWorkOnRoot @ chunk-RPCDYKBN.js?v=2cf4f98f:18678
+workLoop @ chunk-RPCDYKBN.js?v=2cf4f98f:197
+flushWork @ chunk-RPCDYKBN.js?v=2cf4f98f:176
+performWorkUntilDeadline @ chunk-RPCDYKBN.js?v=2cf4f98f:384Understand this warning
+LanguageContext.tsx:69 useLanguage is being used outside of LanguageProvider, providing fallback
+useLanguage @ LanguageContext.tsx:69
+MobileNav @ MobileNav.tsx:41
+renderWithHooks @ chunk-RPCDYKBN.js?v=2cf4f98f:11548
+mountIndeterminateComponent @ chunk-RPCDYKBN.js?v=2cf4f98f:14926
+beginWork @ chunk-RPCDYKBN.js?v=2cf4f98f:15914
+beginWork$1 @ chunk-RPCDYKBN.js?v=2cf4f98f:19753
+performUnitOfWork @ chunk-RPCDYKBN.js?v=2cf4f98f:19198
+workLoopSync @ chunk-RPCDYKBN.js?v=2cf4f98f:19137
+renderRootSync @ chunk-RPCDYKBN.js?v=2cf4f98f:19116
+performConcurrentWorkOnRoot @ chunk-RPCDYKBN.js?v=2cf4f98f:18678
+workLoop @ chunk-RPCDYKBN.js?v=2cf4f98f:197
+flushWork @ chunk-RPCDYKBN.js?v=2cf4f98f:176
+performWorkUntilDeadline @ chunk-RPCDYKBN.js?v=2cf4f98f:384Understand this warning
+LanguageContext.tsx:69 useLanguage is being used outside of LanguageProvider, providing fallback
+useLanguage @ LanguageContext.tsx:69
+Sidebar @ Sidebar.tsx:31
+renderWithHooks @ chunk-RPCDYKBN.js?v=2cf4f98f:11548
+mountIndeterminateComponent @ chunk-RPCDYKBN.js?v=2cf4f98f:14926
+beginWork @ chunk-RPCDYKBN.js?v=2cf4f98f:15914
+beginWork$1 @ chunk-RPCDYKBN.js?v=2cf4f98f:19753
+performUnitOfWork @ chunk-RPCDYKBN.js?v=2cf4f98f:19198
+workLoopSync @ chunk-RPCDYKBN.js?v=2cf4f98f:19137
+renderRootSync @ chunk-RPCDYKBN.js?v=2cf4f98f:19116
+performConcurrentWorkOnRoot @ chunk-RPCDYKBN.js?v=2cf4f98f:18678
+workLoop @ chunk-RPCDYKBN.js?v=2cf4f98f:197
+flushWork @ chunk-RPCDYKBN.js?v=2cf4f98f:176
+performWorkUntilDeadline @ chunk-RPCDYKBN.js?v=2cf4f98f:384Understand this warning
+LanguageContext.tsx:69 useLanguage is being used outside of LanguageProvider, providing fallback
+useLanguage @ LanguageContext.tsx:69
+Footer @ Footer.tsx:10
+renderWithHooks @ chunk-RPCDYKBN.js?v=2cf4f98f:11548
+mountIndeterminateComponent @ chunk-RPCDYKBN.js?v=2cf4f98f:14926
+beginWork @ chunk-RPCDYKBN.js?v=2cf4f98f:15914
+beginWork$1 @ chunk-RPCDYKBN.js?v=2cf4f98f:19753
+performUnitOfWork @ chunk-RPCDYKBN.js?v=2cf4f98f:19198
+workLoopSync @ chunk-RPCDYKBN.js?v=2cf4f98f:19137
+renderRootSync @ chunk-RPCDYKBN.js?v=2cf4f98f:19116
+performConcurrentWorkOnRoot @ chunk-RPCDYKBN.js?v=2cf4f98f:18678
+workLoop @ chunk-RPCDYKBN.js?v=2cf4f98f:197
+flushWork @ chunk-RPCDYKBN.js?v=2cf4f98f:176
+performWorkUntilDeadline @ chunk-RPCDYKBN.js?v=2cf4f98f:384Understand this warning
+main.tsx:98 Retrieved user from localStorage, staying on current page
+client:536 WebSocket connection to 'wss://c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/?token=-ecaeKpxmleV' failed: 
+setupWebSocket @ client:536
+(anonymous) @ client:531Understand this error
+client:536 Uncaught (in promise) SyntaxError: Failed to construct 'WebSocket': The URL 'wss://localhost:undefined/?token=-ecaeKpxmleV' is invalid.
+    at setupWebSocket (client:536:19)
+    at fallback (client:509:16)
+    at WebSocket.<anonymous> (client:555:7)
+setupWebSocket @ client:536
+fallback @ client:509
+(anonymous) @ client:555Understand this error
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:03 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:03 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:03 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:03 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:03 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:03 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:05 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:05 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:09 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:09 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:09 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:09 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:15 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:15 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:15 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:15 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:16 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:16 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:16 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:16 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:16 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:16 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:20 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:20 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:21 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:21 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:54 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:54 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:54 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:54 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:56 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:56 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:59 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:15:59 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:03 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:03 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:15 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:15 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:19 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:19 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:19 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:19 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:28 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active
+subscriptionUtils.ts:83 getSubscriptionStatus called with: {subscriptionType: '3_months', startDate: '2025-07-24T00:00:00.000Z', endDate: '2025-10-24T00:00:00.000Z'}
+subscriptionUtils.ts:99 Parsed dates: {start: Thu Jul 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), end: Fri Oct 24 2025 03:00:00 GMT+0300 (Eastern European Summer Time), now: Mon Sep 22 2025 01:17:28 GMT+0300 (Eastern European Summer Time)}
+subscriptionUtils.ts:117 End date is in future, returning active

@@ -1,0 +1,170 @@
+No. of meals
+3
+4
+5
+6
+Preferred types of carbohydrates?
+You can select more than one item.
+Rice 
+Potatoes
+Sweet potato
+Pasta
+oats
+Quinoa
+Brown Toast
+Preferred types of protein?
+You can select more than one item.
+
+Meat
+
+chicken
+
+fish
+
+Tuna
+
+salmon
+
+Beef liver
+Beef liver
+
+Chicken liver
+
+egg
+
+لا افضل اي منهم
+
+other
+Preferred types of legumes:
+You can select more than one item.
+
+Foul
+
+Corn
+
+Chickpeas
+
+White beans
+
+Red beans 
+
+peas
+
+لا افضل اي منهم
+
+other
+Preferred types of vegetables:
+You can select more than one item.
+
+Green beans
+
+Okra
+
+Broccoli
+
+Zucchini
+
+Lettuce
+
+Spinach
+
+لا افضل اي منهم
+
+other
+Preferred dairy products:
+You can select more than one item.
+
+Cottage cheese
+
+Milk
+
+Mozzarella cheese 
+
+Yogurt
+
+cheddar cheese
+
+لا افضل اي منهم
+
+other
+Preferred types of fats:
+You can select more than one item.
+
+Olive oil
+
+Coconut oil
+
+Butter
+
+Nuts
+
+Avocado
+
+Peanut butter
+
+لا افضل اي منهم
+
+other
+Preferred types of Fruits:
+You can select more than one item.
+
+Banana
+
+Apple
+
+Strawberry
+
+Watermelon
+
+Orange 
+
+لا افضل اي منهم
+
+other
+Do you have any food allergies?
+
+Yes
+
+No
+Do you want to use dietary supplements?
+
+Yes
+
+No
+Have you trained with another coach before?
+
+Yes
+
+No
+Please share details about your daily routine and lifestyle.
+We’d like to know how you spend your day in general. Start from when you wake up until you go to bed, including your daily and routine activities.
+How long have you been exercising?
+How long have you been working out?
+What time do you usually wake up each day?
+What type of breakfast do you usually have, and at what time do you typically eat it?
+Please specify the type of breakfast you have, even if it varies daily. Provide all possible alternatives and specify exactly what time breakfast usually takes place.
+What type of lunch do you usually have, and at what time do you typically eat it?
+Please specify the type of lunch you have, even if it varies daily. Provide all possible alternatives and specify exactly what time lunch usually takes place.
+What type of dinner do you usually have, and at what time do you typically eat it?
+Please specify the type of dinner you have, even if it varies daily. Provide all possible alternatives and specify exactly what time dinner usually takes place.
+Does your daily lunch usually contain animal protein (fish or chicken) every day, or are there times when there’s no protein?
+Is there protein in your lunch every day? If yes, please clarify which types of protein.
+What is your current occupation? What field do you work in?
+Please specify your line of work—does it involve desk work or constant movement—and how many hours you work per day.
+Do you have a kitchen scale to measure grams?
+A scale to measure the portion sizes specified for you in the program?
+Please describe your daily work routine. Do you work at a desk? Are you physically active throughout the day? How many hours do you spend sitting in a chair? Do you walk to work or use transportation? Provide as many details as possible.
+Please attach a photo of the payment transfer or subscription.
+No file chosen
+Choose files or drag here
+How did you hear about us?
+
+Facebook
+
+Instagram
+
+youtube
+
+tik tok
+
+whatsapp

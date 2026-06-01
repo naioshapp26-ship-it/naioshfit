@@ -1,0 +1,41 @@
+/**
+ * Credit Deduction Scheduler
+ * 
+ * This module sets up a cron job that runs daily at midnight (Riyadh Time, GMT+3)
+ * to deduct 3.3 credits from all users with balance >= 0.1
+ * 
+ * This implements a subscription model where 100 credits deplete in ~30 days.
+ */
+
+import cron from 'node-cron';
+import { deductDailyCredits } from '../scripts/deduct_credits';
+
+export function startCreditDeductionScheduler() {
+  // TESTING MODE: Run every 5 minutes
+  // Production: Use '0 0 * * *' for daily at midnight
+  const cronPattern = '*/5 * * * *'; // Every 5 minutes (TESTING)
+  
+  console.log('🔧 Setting up credit deduction scheduler...');
+  console.log(`⏰ Schedule: Every 5 minutes (TESTING MODE)`);
+  console.log(`📅 Cron pattern: ${cronPattern}`);
+  
+  const task = cron.schedule(cronPattern, async () => {
+    console.log('\n🕐 Credit deduction cron job triggered at', new Date().toISOString());
+    
+    try {
+      await deductDailyCredits();
+      console.log('✅ Scheduled credit deduction completed successfully\n');
+    } catch (error) {
+      console.error('❌ Scheduled credit deduction failed:', error);
+    }
+  }, {
+    timezone: 'Asia/Riyadh' // Riyadh Time (GMT+3)
+  });
+
+  console.log('✅ Credit deduction scheduler started successfully');
+  
+  // Note: The first deduction will run at the next scheduled interval (every 5 minutes in testing mode)
+  // Remove the immediate execution to prevent blocking server startup
+  
+  return task;
+}

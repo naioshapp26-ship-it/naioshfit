@@ -1,0 +1,72 @@
+Please do the following on the deployed build:
+
+Show full error (not minified):
+
+Enable browser source maps for production. In next.config.js add:
+
+js
+Copy
+Edit
+module.exports = {
+  reactStrictMode: true,
+  productionBrowserSourceMaps: true,
+}
+Rebuild & redeploy, then open the site and check the console again to get the full readable error & exact file/line.
+
+Ensure a single React copy and matching versions:
+
+Run:
+
+bash
+Copy
+Edit
+npm ls react react-dom
+There must be exactly one version of each, and they must match (e.g., react@18.x with react-dom@18.x).
+
+If duplicates/mismatches exist:
+
+bash
+Copy
+Edit
+npm i -E react@18.3.1 react-dom@18.3.1
+npm dedupe
+Rebuild & redeploy.
+
+Fix hydration / SSR mismatch (very common cause of #310 in deploy):
+
+If we use Next.js App/Pages Router, make sure no browser‑only APIs run during server render: window, document, localStorage, matchMedia, Date.now(), Math.random() in the render phase, etc.
+
+Move any browser‑only code into useEffect.
+
+For components that must be client‑side only, use:
+
+js
+Copy
+Edit
+import dynamic from 'next/dynamic'
+const ClientOnly = dynamic(() => import('../path/Component'), { ssr: false })
+Ensure initial render output is stable between server and client (don’t render time‑based/random values during render; derive them inside useEffect instead).
+
+Validate Hooks usage (can also trigger #310):
+
+Make sure Hooks aren’t called conditionally or inside loops.
+
+Hooks must be at the top level of React function components or custom hooks only.
+
+Harden the app to avoid blank screen:
+
+Add an Error Boundary around the root to show a friendly message instead of a black screen:
+
+jsx
+Copy
+Edit
+class RootBoundary extends React.Component {
+  state = { hasError: false }
+  static getDerivedStateFromError() { return { hasError: true } }
+  componentDidCatch(err, info) { console.error(err, info) }
+  render() { return this.state.hasError ? <div>Something went wrong.</div> : this.props.children }
+}
+Wrap the app root with it.
+
+After these fixes, rebuild & redeploy, then share the exact readable error and stack line (if it still occurs). If the error disappears, confirm the page renders (login or homepage) without a black screen.
+

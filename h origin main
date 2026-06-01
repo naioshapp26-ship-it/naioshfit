@@ -1,0 +1,7 @@
+                    List of relations
+ Schema |             Name             | Type  |  Owner   
+--------+------------------------------+-------+----------
+ public | course_certificate_issuances | table | postgres
+ public | course_certificates          | table | postgres
+(2 rows)
+
