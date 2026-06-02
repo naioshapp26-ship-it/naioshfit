@@ -2,30 +2,19 @@ import { createRoot } from "react-dom/client";
 import React from "react";
 import "./index.css";
 
-// Register Service Worker for PWA
+// Disable service worker on GitHub Pages to avoid stale cached app shell.
+// Unregister any existing SW instances that may be controlling /naioshfit/.
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-        // If there's a waiting worker, prompt it to activate
-        if (registration.waiting) {
-          registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-        }
-        // Listen for updates and activate them immediately
-        registration.addEventListener('updatefound', () => {
-          const newWorker = registration.installing;
-          if (!newWorker) return;
-          newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              newWorker.postMessage({ type: 'SKIP_WAITING' });
-            }
-          });
-        });
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
+  window.addEventListener('load', async () => {
+    try {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      for (const registration of registrations) {
+        await registration.unregister();
+        console.log('SW unregistered:', registration.scope);
+      }
+    } catch (unregisterError) {
+      console.warn('SW unregister failed:', unregisterError);
+    }
   });
 }
 import { QueryClientProvider } from "@tanstack/react-query";
