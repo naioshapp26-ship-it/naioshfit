@@ -1,0 +1,64 @@
+{
+  "name": "Naiosh Fit",
+  "short_name": "Naiosh Fit",
+  "description": "تطبيق شامل لتتبع اللياقة البدنية والتمارين والتغذية ومراقبة التقدم",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e02424",
+  "orientation": "portrait",
+  "scope": "/",
+  "categories": ["health", "fitness", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "تسجيل التمرين",
+      "short_name": "تمرين",
+      "description": "تسجيل تمرين جديد بسرعة",
+      "url": "/workouts",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "تتبع التغذية",
+      "short_name": "تغذية",
+      "description": "تسجيل وجباتك والتغذية",
+      "url": "/nutrition",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "عرض التقدم",
+      "short_name": "تقدم",
+      "description": "تحقق من تقدمك في اللياقة البدنية",
+      "url": "/progress",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

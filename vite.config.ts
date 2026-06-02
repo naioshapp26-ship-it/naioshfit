@@ -5,6 +5,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
 
 export default defineConfig({
+  base: '/naioshfit/',
   plugins: [
     react(),
     viteCompression({
@@ -31,7 +32,7 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, "docs"),
     emptyOutDir: true,
     chunkSizeWarningLimit: 500,
     minify: "terser",
