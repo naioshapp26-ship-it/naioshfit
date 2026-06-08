@@ -53,6 +53,24 @@ The **internal** URL (`postgres.railway.internal`) only works from services runn
 
 On the Railway **naioshfit app** service, set `DATABASE_URL` to `${{Postgres.DATABASE_URL}}` (recommended) or the internal URL you copied from Postgres → Connect → Private Network.
 
+### Wrong app on Railway URL (e.g. shows NAIS instead of Naiosh Fit)
+
+If `*.up.railway.app` shows **NAIS** (educational platform, Next.js) instead of **Naiosh Fit** (fitness, Express+Vite):
+
+1. The Railway **service is connected to the wrong GitHub repo** (or an old NAIS/Prisma project).
+2. Confirm: Naiosh Fit responds with Express `/health` JSON; wrong deploys redirect to `/login` and send `x-powered-by: Next.js`.
+
+**Fix in Railway dashboard:**
+
+1. Open project **naioshfit** → select the **app service** (not Postgres).
+2. **Settings → Source** → verify repo is `naioshapp26-ship-it/naioshfit` and branch `main`.
+3. If wrong repo: **Disconnect** → **Connect Repo** → choose `naioshfit` → redeploy.
+4. **Settings → Deploy:** Build `npm ci && npm run build`, Start `npm run start:prod` (see `railway.toml`).
+5. **Variables:** `DATABASE_URL=${{Postgres.DATABASE_URL}}`, `SESSION_SECRET`, `NODE_ENV=production`, `MAIN_DOMAIN=naioshfit.com`.
+6. Optional: **Settings → Networking** → regenerate domain or attach custom domain after correct deploy.
+
+Do **not** reuse a service that was created for NAIS — create a **new service** from the correct repo if Source cannot be switched cleanly.
+
 ### Fresh local database
 
 On an empty DB: `npx drizzle-kit push --force`, then `npx tsx scripts/seed_demo_data.ts`.
