@@ -11,6 +11,10 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 function getGitSha() {
+  const railwaySha = process.env.RAILWAY_GIT_COMMIT_SHA;
+  if (railwaySha) {
+    return { full: railwaySha, short: railwaySha.slice(0, 7) };
+  }
   try {
     const full = execSync('git rev-parse HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
     const short = execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();

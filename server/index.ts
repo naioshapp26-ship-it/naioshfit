@@ -7,6 +7,7 @@ import { db, pool } from './db';
 import { setupVite, serveStatic, log } from "./vite";
 import { resolveClientDistRoot } from "./clientDist";
 import { runStartupCleanup } from "./lib/tokenCleanup";
+import { bootstrapDatabaseIfNeeded } from "./bootstrapDb";
 
 // Force Node process timezone to GMT+3 (Asia/Riyadh is fixed-offset with no DST)
 process.env.TZ = process.env.TZ || 'Asia/Riyadh';
@@ -37,8 +38,13 @@ console.error = (...args: unknown[]) => {
 app.set('trust proxy', 1);
 
 // Health check endpoint for Railway
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok' });
+app.get('/health', async (_req, res) => {
+  try {
+    await pool.query('select 1');
+    res.status(200).json({ status: 'ok', db: 'connected' });
+  } catch {
+    res.status(503).json({ status: 'degraded', db: 'disconnected' });
+  }
 });
 
 // Version endpoint for cache-busting and client update checks
@@ -166,7 +172,15 @@ app.use((req, res, next) => {
       console.error('[INIT] DB probe failed prior to route registration:', e);
     }
 
-    // Run database migrations (dev / opt-in only — production uses tracked migrations or manual db:migrate)
+    if (process.env.NODE_ENV === 'production') {
+      try {
+        await bootstrapDatabaseIfNeeded(pool);
+      } catch (bootstrapErr) {
+        console.error('[INIT] Continuing without bootstrap — set SKIP_DB_BOOTSTRAP=1 to silence', bootstrapErr);
+      }
+    }
+
+    // Run database migrations (dev / opt-in only — production uses drizzle bootstrap + manual db:migrate)
     const runStartupMigrations =
       process.env.RUN_STARTUP_MIGRATIONS === '1' ||
       (process.env.NODE_ENV !== 'production' && process.env.SKIP_STARTUP_MIGRATIONS !== '1');
