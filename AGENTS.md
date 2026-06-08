@@ -1,0 +1,62 @@
+# AGENTS.md
+
+## Cursor Cloud specific instructions
+
+### Architecture
+
+NaioshFit is a **single-process** full-stack app: `npm run dev` runs Express (API) and Vite (React HMR) together on port **5000**.
+
+### Required services
+
+| Service | How to start |
+|---------|--------------|
+| PostgreSQL | Local: `sudo service postgresql start`. Railway: Postgres service in Railway dashboard |
+| App | `npm run dev` (local) or `npm run start:prod` (after build, Railway) |
+
+### Local `.env`
+
+Copy `.env.example` → `.env`. Minimum:
+
+```
+DATABASE_URL=postgresql://...
+SESSION_SECRET=...
+NODE_ENV=development
+PORT=5000
+```
+
+Test DB: `export $(grep -v '^#' .env | xargs) && npm run db:test-connection`
+
+### Railway (production)
+
+Deploy config is in `railway.toml`:
+
+- **Build:** `npm ci && npm run build`
+- **Start:** `npm run start:prod` (does not rebuild — avoids double-build on Railway)
+- **Health:** `/health`
+
+**Required Railway variables on the `naioshfit` app service:**
+
+| Variable | Value |
+|----------|--------|
+| `DATABASE_URL` | From Postgres service → Connect (use Railway reference `${{Postgres.DATABASE_URL}}` or copy Public URL) |
+| `SESSION_SECRET` | Long random string |
+| `NODE_ENV` | `production` |
+| `MAIN_DOMAIN` | `naioshfit.com` |
+
+**SaaS (optional):** see `.env.example` for `CENTRAL_DATABASE_URL`, `TENANT_DB_ENCRYPTION_KEY`, etc.
+
+**If deploy fails with Prisma / MODULE_NOT_FOUND:** the deployed commit may be outdated. This repo uses **Drizzle**, not Prisma. Redeploy from current `main` (no Prisma in `package.json`).
+
+**Connect local dev to Railway Postgres:** paste the Public `DATABASE_URL` from Railway into local `.env`, then `npm run db:test-connection` and `npm run dev`.
+
+### Fresh local database
+
+On an empty DB: `npx drizzle-kit push --force`, then `npx tsx scripts/seed_demo_data.ts`.
+
+### Demo login
+
+Use **`email`** field (not `username`): `demo_client` / `password123`.
+
+### Tests
+
+`npm test` — Vitest, no DB required. `npm run check` — tsc (many pre-existing errors).
