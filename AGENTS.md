@@ -71,6 +71,15 @@ If `*.up.railway.app` shows **NAIS** (educational platform, Next.js) instead of 
 
 Do **not** reuse a service that was created for NAIS — create a **new service** from the correct repo if Source cannot be switched cleanly.
 
+### 502 Bad Gateway after connecting correct repo
+
+Common causes and fixes (now in `main`):
+
+1. **Start command** must be `npm run start:prod` — not `npm start` (which rebuilds and can OOM).
+2. **Build** must set `VITE_BASE_PATH=/` for Railway root URL (GitHub Pages uses `/naioshfit/`).
+3. **Client assets** are copied `docs/` → `dist/public/` during build (`scripts/copy-client-build.js`).
+4. **Variables:** `DATABASE_URL=${{Postgres.DATABASE_URL}}`, `SESSION_SECRET`, `NODE_ENV=production`.
+
 ### Fresh local database
 
 On an empty DB: `npx drizzle-kit push --force`, then `npx tsx scripts/seed_demo_data.ts`.

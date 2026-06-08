@@ -1,6 +1,6 @@
 [build]
 builder = "NIXPACKS"
-buildCommand = "npm ci && npm run build"
+buildCommand = "VITE_BASE_PATH=/ npm ci && npm run build"
 
 [deploy]
 startCommand = "npm run start:prod"

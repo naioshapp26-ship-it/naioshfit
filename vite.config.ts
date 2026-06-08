@@ -5,7 +5,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
 
 export default defineConfig({
-  base: '/naioshfit/',
+  base: process.env.VITE_BASE_PATH || '/naioshfit/',
   plugins: [
     react(),
     viteCompression({
