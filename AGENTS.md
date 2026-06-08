@@ -47,7 +47,11 @@ Deploy config is in `railway.toml`:
 
 **If deploy fails with Prisma / MODULE_NOT_FOUND:** the deployed commit may be outdated. This repo uses **Drizzle**, not Prisma. Redeploy from current `main` (no Prisma in `package.json`).
 
-**Connect local dev to Railway Postgres:** paste the Public `DATABASE_URL` from Railway into local `.env`, then `npm run db:test-connection` and `npm run dev`.
+**Connect local dev to Railway Postgres:** paste the **Public** `DATABASE_URL` from Railway into local `.env`, then `npm run db:test-connection` and `npm run dev`.
+
+The **internal** URL (`postgres.railway.internal`) only works from services running inside the same Railway project — it will fail from your laptop or Cursor Cloud with `ENOTFOUND`.
+
+On the Railway **naioshfit app** service, set `DATABASE_URL` to `${{Postgres.DATABASE_URL}}` (recommended) or the internal URL you copied from Postgres → Connect → Private Network.
 
 ### Fresh local database
 
