@@ -84,7 +84,7 @@ Common causes and fixes (now in `main`):
 
 On an empty DB: `npx drizzle-kit push --force`, then `npm run db:seed-demo` (or `node scripts/bootstrap-production.mjs`).
 
-Production Railway: `prestart:prod` runs `scripts/bootstrap-production.mjs` before `start:prod` (schema push + demo seed). Verify with `/api/setup/status` (`ok: true`, `demoUsers: 4`).
+Production Railway: schema + demo seed run **in the background after** the server listens (first deploy can take a few minutes). Check `/api/setup/status` — wait until `"bootstrap": "done"` and `"demoUsers": 4` before testing login. Manual one-off: `node scripts/bootstrap-production.mjs`.
 
 ### Demo login
 

@@ -1,6 +1,8 @@
 import { execSync } from 'node:child_process';
 import pg from 'pg';
 
+/** Manual CLI bootstrap (local / Railway one-off). Production uses background bootstrap in server/index.ts. */
+
 const { Pool } = pg;
 
 function run(command) {

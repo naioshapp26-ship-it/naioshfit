@@ -7,7 +7,7 @@ import { db, pool } from './db';
 import { setupVite, serveStatic, log } from "./vite";
 import { resolveClientDistRoot } from "./clientDist";
 import { runStartupCleanup } from "./lib/tokenCleanup";
-import { bootstrapDatabaseIfNeeded } from "./bootstrapDb";
+import { bootstrapDatabaseIfNeeded, dbBootstrapState } from "./bootstrapDb";
 
 // Force Node process timezone to GMT+3 (Asia/Riyadh is fixed-offset with no DST)
 process.env.TZ = process.env.TZ || 'Asia/Riyadh';
@@ -46,6 +46,7 @@ app.get('/api/setup/status', async (_req, res) => {
     res.json({
       ok: true,
       demoUsers: demo.rows[0]?.c ?? 0,
+      bootstrap: dbBootstrapState,
       git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
       nodeEnv: process.env.NODE_ENV ?? null,
     });
@@ -53,6 +54,7 @@ app.get('/api/setup/status', async (_req, res) => {
     res.json({
       ok: false,
       error: error?.message ?? String(error),
+      bootstrap: dbBootstrapState,
       git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
     });
   }
@@ -194,14 +196,7 @@ app.use((req, res, next) => {
       console.error('[INIT] DB probe failed prior to route registration:', e);
     }
 
-    if (process.env.NODE_ENV === 'production') {
-      try {
-        await bootstrapDatabaseIfNeeded(pool);
-      } catch (bootstrapErr) {
-        console.error('[INIT] Production DB bootstrap failed:', bootstrapErr);
-      }
-    }
-
+    // DB schema + demo seed run in background after listen (drizzle push can take several minutes).
     // Run database migrations (dev / opt-in only — production uses drizzle bootstrap + manual db:migrate)
     const runStartupMigrations =
       process.env.RUN_STARTUP_MIGRATIONS === '1' ||
@@ -312,6 +307,14 @@ app.use((req, res, next) => {
       host: "0.0.0.0",
     }, () => {
       log(`serving on runtime port ${port} (process.env.PORT='${rawEnvPort || ""}')`);
+
+      if (process.env.NODE_ENV === 'production' && process.env.SKIP_DB_BOOTSTRAP !== '1') {
+        void bootstrapDatabaseIfNeeded(pool)
+          .then(() => console.log('[INIT] Background DB bootstrap completed'))
+          .catch((bootstrapErr) => {
+            console.error('[INIT] Background DB bootstrap failed:', bootstrapErr);
+          });
+      }
     });
   } catch (error) {
     console.error("Failed to start server:", error);

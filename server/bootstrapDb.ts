@@ -2,6 +2,9 @@ import { execSync } from 'node:child_process';
 import type pg from 'pg';
 import { seedDemoAccountsIfNeeded } from './demoSeed';
 
+/** Tracks production schema bootstrap for /api/setup/status. */
+export let dbBootstrapState: 'idle' | 'running' | 'done' | 'failed' = 'idle';
+
 async function schemaReady(pool: pg.Pool): Promise<boolean> {
   const { rows } = await pool.query<{ users: string | null; has_email: boolean }>(`
     SELECT
@@ -42,6 +45,8 @@ export async function bootstrapDatabaseIfNeeded(pool: pg.Pool): Promise<void> {
     return;
   }
 
+  dbBootstrapState = 'running';
+
   try {
     if (!(await schemaReady(pool))) {
       runDrizzlePush();
@@ -56,6 +61,7 @@ export async function bootstrapDatabaseIfNeeded(pool: pg.Pool): Promise<void> {
 
       if ((await demoUserCount(pool)) >= 4) {
         console.log('[INIT] Demo accounts verified in database');
+        dbBootstrapState = 'done';
         return;
       }
 
@@ -65,8 +71,10 @@ export async function bootstrapDatabaseIfNeeded(pool: pg.Pool): Promise<void> {
     }
 
     console.error('[INIT] Warning: demo accounts missing after bootstrap (expected 4)');
+    dbBootstrapState = 'done';
   } catch (error) {
     console.error('[INIT] Database bootstrap failed:', error);
+    dbBootstrapState = 'failed';
     throw error;
   }
 }
