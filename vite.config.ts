@@ -32,7 +32,9 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "docs"),
+    outDir: process.env.CLIENT_OUT_DIR
+      ? path.resolve(import.meta.dirname, process.env.CLIENT_OUT_DIR)
+      : path.resolve(import.meta.dirname, "docs"),
     emptyOutDir: true,
     chunkSizeWarningLimit: 500,
     minify: "terser",

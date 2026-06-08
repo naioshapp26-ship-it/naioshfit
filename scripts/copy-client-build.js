@@ -1,10 +1,17 @@
-// Copy Vite output (docs/) into dist/public for Express static serving in production.
+// Copy Vite output (docs/) into dist/public when Vite outDir is still docs/ (GitHub Pages).
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
+const destIndex = path.join(rootDir, 'dist', 'public', 'index.html');
+
+if (fs.existsSync(destIndex)) {
+  console.log('[BUILD] dist/public/index.html already present — skipping docs copy');
+  process.exit(0);
+}
+
 const sourceDir = path.join(rootDir, 'docs');
 const destDir = path.join(rootDir, 'dist', 'public');
 

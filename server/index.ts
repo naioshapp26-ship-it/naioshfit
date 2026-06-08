@@ -158,8 +158,15 @@ app.use((req, res, next) => {
       console.error('[INIT] DB probe failed prior to route registration:', e);
     }
 
-    // Run database migrations
+    // Run database migrations (dev / opt-in only — production uses tracked migrations or manual db:migrate)
+    const runStartupMigrations =
+      process.env.RUN_STARTUP_MIGRATIONS === '1' ||
+      (process.env.NODE_ENV !== 'production' && process.env.SKIP_STARTUP_MIGRATIONS !== '1');
+
     try {
+      if (!runStartupMigrations) {
+        deployLog('[INIT] Skipping raw SQL startup migrations in production');
+      } else {
       deployLog('[INIT] Running database migrations...');
       // In production (bundled), migrations are copied to dist/migrations
       // In development, migrations are in project root
@@ -185,9 +192,13 @@ app.use((req, res, next) => {
               }
             } catch (migrationError: any) {
               errorCount++;
-              console.error(`[INIT] ✗ Failed to apply ${file}:`, migrationError.message);
-              if (migrationError.code !== '42P07' && !migrationError.message?.includes('already exists')) {
-                console.error(`[INIT]   → Error details:`, migrationError);
+              const msg = migrationError?.message || String(migrationError);
+              const benign =
+                migrationError?.code === '42P07' ||
+                msg.includes('already exists') ||
+                msg.includes('duplicate');
+              if (!benign) {
+                console.error(`[INIT] Migration failed: ${file} — ${msg}`);
               }
             }
           }
@@ -197,13 +208,11 @@ app.use((req, res, next) => {
         }
       } else {
         console.error('[INIT] ⚠️  CRITICAL: No migrations directory found at either location!');
-        console.error('[INIT]   This means migrations will NOT run automatically.');
-        console.error('[INIT]   Please run: npm run db:migrate-file migrations/0008_add_affiliate_products.sql');
-        console.error('[INIT]   Or use the init script: tsx scripts/init-affiliate-products.ts');
+        console.error('[INIT]   Please run: npm run db:migrate');
+      }
       }
     } catch (e) {
       console.error('[INIT] Database migration failed:', e);
-      // Don't throw - migrations might have already been applied
       deployLog('[INIT] Continuing despite migration error (migrations may already be applied)');
     }
 
