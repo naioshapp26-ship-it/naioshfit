@@ -8,6 +8,7 @@
     "build": "NODE_OPTIONS='--max-old-space-size=4096' npx vite build && npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist && node scripts/copy-migrations.js && node scripts/copy-client-build.js && node scripts/write-version.js && node scripts/verify-client-build.js",
     "build:railway": "VITE_BASE_PATH=/ CLIENT_OUT_DIR=dist/public npm run build",
     "start": "npm run build && npm run start:prod",
+    "prestart:prod": "node scripts/bootstrap-production.mjs",
     "start:prod": "TZ=Asia/Riyadh NODE_ENV=production NODE_OPTIONS='--max-old-space-size=2048' node dist/index.js",
     "db:test-connection": "node scripts/test-db-connection.mjs",
     "db:seed-demo": "tsx scripts/seed_demo_data.ts",

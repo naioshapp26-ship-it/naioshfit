@@ -30,6 +30,7 @@ function runDrizzlePush(): void {
   execSync('npx drizzle-kit push --force', {
     stdio: 'inherit',
     env: process.env,
+    cwd: process.cwd(),
   });
 }
 

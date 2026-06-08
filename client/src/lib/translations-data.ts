@@ -2882,8 +2882,8 @@ export const translations = {
     enterYourPassword: "Enter your password",
     signingIn: "Signing in...",
     welcomeBackToXTraining: "Welcome back to Naiosh Fit!",
-    loginFailed: "فشل تسجيل الدخول",
-    loginFailedDesc: "يرجى التحقق من رقم الواتساب وكلمة المرور والمحاولة مرة أخرى",
+    loginFailed: "Login failed",
+    loginFailedDesc: "Please check your email and password and try again",
     step: "Step",
     healthAndTraining: "Health & Training",
 
@@ -5893,7 +5893,7 @@ export const translations = {
     signingIn: "جاري تسجيل الدخول...",
     welcomeBackToXTraining: "مرحباً بعودتك إلى Naiosh Fit!",
     loginFailed: "فشل تسجيل الدخول",
-    loginFailedDesc: "يرجى التحقق من رقم الواتساب وكلمة المرور والمحاولة مرة أخرى",
+    loginFailedDesc: "يرجى التحقق من البريد الإلكتروني وكلمة المرور والمحاولة مرة أخرى",
     // createNewAccount defined earlier
     step: "الخطوة",
     healthAndTraining: "الصحة والتدريب",

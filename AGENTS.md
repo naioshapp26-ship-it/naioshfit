@@ -82,11 +82,20 @@ Common causes and fixes (now in `main`):
 
 ### Fresh local database
 
-On an empty DB: `npx drizzle-kit push --force`, then `npx tsx scripts/seed_demo_data.ts`.
+On an empty DB: `npx drizzle-kit push --force`, then `npm run db:seed-demo` (or `node scripts/bootstrap-production.mjs`).
+
+Production Railway: `prestart:prod` runs `scripts/bootstrap-production.mjs` before `start:prod` (schema push + demo seed). Verify with `/api/setup/status` (`ok: true`, `demoUsers: 4`).
 
 ### Demo login
 
-Use **`email`** field (not `username`): `demo_client` / `password123`.
+Use **`email`** + password **`Demo123!`**:
+
+| Role | Email |
+|------|-------|
+| Client | `demo_client@demo.naioshfit.com` |
+| Coach | `demo_coach@demo.naioshfit.com` |
+| Gym | `demo_gym@demo.naioshfit.com` |
+| Admin | `demo_admin@demo.naioshfit.com` |
 
 ### Tests
 
