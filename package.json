@@ -10,6 +10,7 @@
     "start": "npm run build && npm run start:prod",
     "start:prod": "TZ=Asia/Riyadh NODE_ENV=production NODE_OPTIONS='--max-old-space-size=2048' node dist/index.js",
     "db:test-connection": "node scripts/test-db-connection.mjs",
+    "db:seed-demo": "tsx scripts/seed_demo_data.ts",
     "check": "tsc",
     "test": "vitest run --config vitest.config.ts",
     "db:push": "drizzle-kit push",

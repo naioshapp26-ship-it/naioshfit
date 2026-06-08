@@ -2539,6 +2539,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const demoUsers = await db
         .select({
+          username: users.username,
+          email: users.email,
           role: users.role,
           whatsappWithCode: users.whatsappWithCode,
           firstName: users.firstName,
@@ -2585,6 +2587,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return {
           label,
           note,
+          email: user.email || `${user.username}@demo.naioshfit.com`,
           whatsappWithCode: user.whatsappWithCode,
           name: `${user.firstName} ${user.lastName}`,
         };

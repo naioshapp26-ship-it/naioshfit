@@ -8,6 +8,7 @@ import { setupVite, serveStatic, log } from "./vite";
 import { resolveClientDistRoot } from "./clientDist";
 import { runStartupCleanup } from "./lib/tokenCleanup";
 import { bootstrapDatabaseIfNeeded } from "./bootstrapDb";
+import { seedDemoAccountsIfNeeded } from "./demoSeed";
 
 // Force Node process timezone to GMT+3 (Asia/Riyadh is fixed-offset with no DST)
 process.env.TZ = process.env.TZ || 'Asia/Riyadh';
@@ -175,8 +176,9 @@ app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'production') {
       try {
         await bootstrapDatabaseIfNeeded(pool);
+        await seedDemoAccountsIfNeeded();
       } catch (bootstrapErr) {
-        console.error('[INIT] Continuing without bootstrap — set SKIP_DB_BOOTSTRAP=1 to silence', bootstrapErr);
+        console.error('[INIT] Production DB bootstrap/seed failed:', bootstrapErr);
       }
     }
 
