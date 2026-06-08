@@ -3,7 +3,7 @@ builder = "NIXPACKS"
 buildCommand = "VITE_BASE_PATH=/ npm ci && npm run build"
 
 [deploy]
-startCommand = "npm run start:prod"
+startCommand = "NODE_ENV=production npm run start:prod"
 healthcheckPath = "/health"
 healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"

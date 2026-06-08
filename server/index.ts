@@ -225,12 +225,17 @@ app.use((req, res, next) => {
       res.status(status).json({ message });
     });
 
-    // Determine environment more robustly. Express' app.get('env') defaults to 'development'
-    // if NODE_ENV is unset, which could mistakenly enable dev middleware in production.
-    const nodeEnv = process.env.NODE_ENV || 'development';
-    const isDev = nodeEnv !== 'production';
+    // Prefer production static assets when a client build exists (e.g. Railway without NODE_ENV set).
+    const clientIndexPath = path.resolve(import.meta.dirname, 'public', 'index.html');
+    const hasClientBuild = fs.existsSync(clientIndexPath);
+    const nodeEnv = process.env.NODE_ENV;
+    const isDev =
+      nodeEnv === 'development' ||
+      (nodeEnv !== 'production' && !hasClientBuild);
     if (ENABLE_DEPLOY_LOGS) {
-      log(`environment detection: process.env.NODE_ENV='${process.env.NODE_ENV}' -> isDev=${isDev}`);
+      log(
+        `environment detection: NODE_ENV='${nodeEnv ?? ''}' hasClientBuild=${hasClientBuild} -> isDev=${isDev}`,
+      );
     }
 
     if (isDev) {
