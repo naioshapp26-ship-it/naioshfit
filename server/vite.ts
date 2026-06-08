@@ -6,6 +6,7 @@ import { type Server } from "http";
 import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
 import compression from "compression";
+import { resolveClientDistRoot } from "./clientDist";
 
 const viteLogger = createLogger();
 
@@ -126,20 +127,15 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(import.meta.dirname, "public");
+  const distPath = resolveClientDistRoot();
+  if (!distPath) {
+    throw new Error(
+      'Client build not found. Expected index.html in dist/public or docs/. Run: VITE_BASE_PATH=/ CLIENT_OUT_DIR=dist/public npm run build',
+    );
+  }
+
   const indexPath = path.resolve(distPath, "index.html");
-
-  if (!fs.existsSync(distPath)) {
-    throw new Error(
-      `Could not find the build directory: ${distPath}, make sure to build the client first`,
-    );
-  }
-
-  if (!fs.existsSync(indexPath)) {
-    throw new Error(
-      `Could not find ${indexPath}. Run "CLIENT_OUT_DIR=dist/public npm run build" before starting the server.`,
-    );
-  }
+  console.log(`[static] Serving client from ${distPath}`);
 
   // Enable compression for all responses
   app.use(compression({

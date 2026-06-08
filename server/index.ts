@@ -5,6 +5,7 @@ import path from 'path';
 import { registerRoutes } from "./routes";
 import { db, pool } from './db';
 import { setupVite, serveStatic, log } from "./vite";
+import { resolveClientDistRoot } from "./clientDist";
 import { runStartupCleanup } from "./lib/tokenCleanup";
 
 // Force Node process timezone to GMT+3 (Asia/Riyadh is fixed-offset with no DST)
@@ -45,11 +46,18 @@ app.get('/version.json', async (_req, res) => {
   try {
     // Attempt to read built version file (production)
     const versionPath = path.resolve(import.meta.dirname, 'public', 'version.json');
-    if (fs.existsSync(versionPath)) {
-      const raw = await fs.promises.readFile(versionPath, 'utf-8');
-      res.setHeader('Content-Type', 'application/json');
-      res.setHeader('Cache-Control', 'no-store');
-      return res.status(200).send(raw);
+    const clientRoot = resolveClientDistRoot();
+    const versionCandidates = [
+      versionPath,
+      clientRoot ? path.join(clientRoot, 'version.json') : '',
+    ].filter(Boolean);
+    for (const candidate of versionCandidates) {
+      if (fs.existsSync(candidate)) {
+        const raw = await fs.promises.readFile(candidate, 'utf-8');
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Cache-Control', 'no-store');
+        return res.status(200).send(raw);
+      }
     }
   } catch {}
 
@@ -235,8 +243,8 @@ app.use((req, res, next) => {
     });
 
     // Prefer production static assets when a client build exists (e.g. Railway without NODE_ENV set).
-    const clientIndexPath = path.resolve(import.meta.dirname, 'public', 'index.html');
-    const hasClientBuild = fs.existsSync(clientIndexPath);
+    const clientRoot = resolveClientDistRoot();
+    const hasClientBuild = clientRoot !== null;
     const nodeEnv = process.env.NODE_ENV;
     const isDev =
       nodeEnv === 'development' ||
