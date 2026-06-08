@@ -8,7 +8,6 @@ import { setupVite, serveStatic, log } from "./vite";
 import { resolveClientDistRoot } from "./clientDist";
 import { runStartupCleanup } from "./lib/tokenCleanup";
 import { bootstrapDatabaseIfNeeded } from "./bootstrapDb";
-import { seedDemoAccountsIfNeeded } from "./demoSeed";
 
 // Force Node process timezone to GMT+3 (Asia/Riyadh is fixed-offset with no DST)
 process.env.TZ = process.env.TZ || 'Asia/Riyadh';
@@ -38,7 +37,27 @@ console.error = (...args: unknown[]) => {
 // Trust first proxy (Railway/other hosting) so secure cookies & protocol detection work
 app.set('trust proxy', 1);
 
-// Health check endpoint for Railway
+// Public setup status (verify deploy + demo seed on Railway)
+app.get('/api/setup/status', async (_req, res) => {
+  try {
+    const demo = await pool.query<{ c: number }>(
+      `SELECT COUNT(*)::int AS c FROM users WHERE username LIKE 'demo_%'`,
+    );
+    res.json({
+      ok: true,
+      demoUsers: demo.rows[0]?.c ?? 0,
+      git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
+      nodeEnv: process.env.NODE_ENV ?? null,
+    });
+  } catch (error: any) {
+    res.json({
+      ok: false,
+      error: error?.message ?? String(error),
+      git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
+    });
+  }
+});
+
 app.get('/health', async (_req, res) => {
   try {
     await pool.query('select 1');
@@ -68,13 +87,15 @@ app.get('/version.json', async (_req, res) => {
     }
   } catch {}
 
-  // Fallback for dev: compute from git/time
+  // Fallback for dev: compute from git/time or Railway env
   let version = String(Math.floor(Date.now() / 1000));
-  let commit: string | null = null;
+  let commit: string | null = process.env.RAILWAY_GIT_COMMIT_SHA ?? null;
   try {
     const { execSync } = await import('node:child_process');
-    commit = execSync('git rev-parse HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
-    const short = execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    if (!commit) {
+      commit = execSync('git rev-parse HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    }
+    const short = commit?.slice(0, 7) || execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
     version = short || version;
   } catch {}
   res.setHeader('Content-Type', 'application/json');
@@ -176,9 +197,8 @@ app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'production') {
       try {
         await bootstrapDatabaseIfNeeded(pool);
-        await seedDemoAccountsIfNeeded();
       } catch (bootstrapErr) {
-        console.error('[INIT] Production DB bootstrap/seed failed:', bootstrapErr);
+        console.error('[INIT] Production DB bootstrap failed:', bootstrapErr);
       }
     }
 

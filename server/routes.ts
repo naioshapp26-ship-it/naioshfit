@@ -2,6 +2,7 @@ import express, { type Express, type Request, type Response, type NextFunction }
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { db } from './db';
+import { FALLBACK_DEMO_USERS } from "./bootstrapDb";
 import { sql, like, eq, and, or, inArray, desc, gte, lte, lt } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import * as schema from '@shared/schema';
@@ -2596,7 +2597,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(formattedUsers);
     } catch (error) {
       console.error('Error fetching demo users:', error);
-      res.status(500).json({ message: 'Error fetching demo users' });
+      res.json(FALLBACK_DEMO_USERS);
     }
   });
 

@@ -8,6 +8,10 @@ RUN npm ci
 
 COPY . .
 
+# Railway injects git SHA at build time when available
+ARG RAILWAY_GIT_COMMIT_SHA
+ENV RAILWAY_GIT_COMMIT_SHA=$RAILWAY_GIT_COMMIT_SHA
+
 # Production client + server bundle
 ENV VITE_BASE_PATH=/
 ENV CLIENT_OUT_DIR=dist/public
