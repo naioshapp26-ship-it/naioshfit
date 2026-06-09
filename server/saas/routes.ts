@@ -499,7 +499,10 @@ export function registerSaasRoutes(app: Express) {
         return res.status(400).json({ message: 'Invalid or expired payment session.' });
       }
 
-      const provider = paymentProvider || pending.paymentProvider || 'stripe';
+      const provider =
+        pending.paymentProvider === 'direct'
+          ? 'direct'
+          : (paymentProvider || pending.paymentProvider || 'stripe');
       let stripeCheckoutSessionId: string | null = pending.stripeSessionId || null;
       let stripePaymentIntentId: string | null = null;
       let resolvedPayPalSubscriptionId: string | null = paypalSubscriptionId || pending.paypalSubscriptionId || null;

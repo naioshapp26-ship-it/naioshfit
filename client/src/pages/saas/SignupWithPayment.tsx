@@ -360,6 +360,7 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
 
     const data = await response.json();
     setPaymentSession(data.session);
+    setSessionReference(data.session.sessionReference);
     setIsDirectSignup(true);
     persistFormToSession(data.session.sessionReference);
     return data.session as PaymentSession;
@@ -459,7 +460,7 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
       if (skipPayment) {
         const session = await createDirectSignupSession();
         setCurrentStep(3);
-        await provisionTenant(session.sessionReference, form);
+        await provisionTenant(session.sessionReference, form, 'direct');
         return;
       }
 
@@ -536,7 +537,7 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
     }
 
     setCurrentStep(3);
-    await provisionTenant(paymentSession.sessionReference, form);
+    await provisionTenant(paymentSession.sessionReference, form, 'direct');
   };
 
   const handlePayment = async () => {
@@ -581,8 +582,17 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
     setShowEmbeddedCheckout(true);
   };
 
-  const provisionTenant = async (reference: string, formData?: SignupFormData) => {
+  const provisionTenant = async (
+    reference: string,
+    formData?: SignupFormData,
+    providerOverride?: PaymentSession['paymentProvider'],
+  ) => {
     const data = formData || form;
+    const resolvedProvider =
+      providerOverride ||
+      paymentSession?.paymentProvider ||
+      (isDirectSignup || skipPayment ? 'direct' : paymentProvider);
+
     setIsProcessing(true);
     setPaymentError(null);
     try {
@@ -598,7 +608,7 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
           adminPhone: data.adminPhone.trim(),
           adminPassword: data.adminPassword,
           subscriptionPlan: data.subscriptionPlan,
-          paymentProvider: paymentSession?.paymentProvider || paymentProvider,
+          paymentProvider: resolvedProvider,
           paypalSubscriptionId: paymentSession?.paypalSubscriptionId || undefined,
         }),
       });
@@ -654,7 +664,7 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
     try {
       const session = await createDirectSignupSession();
       setCurrentStep(3);
-      await provisionTenant(session.sessionReference, form);
+      await provisionTenant(session.sessionReference, form, 'direct');
     } catch (error: any) {
       toast({
         title: t("saasErrorTitle"),
@@ -1092,7 +1102,7 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
           )}
           {steps.map((step) => {
             const log = latestLogsByStep[step.key];
-            const status = log?.status || "pending";
+            const status = log?.status || (isProcessing ? 'pending' : 'idle');
             
             return (
               <div key={step.key} className="flex items-start gap-3">
@@ -1109,7 +1119,11 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
                 </div>
                 <div className="flex-1">
                   <p className="font-medium">{step.label}</p>
-                  <p className="text-sm text-gray-600">{step.description}</p>
+                  <p className="text-sm text-gray-600">
+                    {status === 'pending' && isProcessing && !log
+                      ? (language === 'ar' ? 'جاري التنفيذ...' : 'In progress...')
+                      : step.description}
+                  </p>
                   {log?.error_message && (
                     <p className="text-sm text-red-500 mt-1">{log.error_message}</p>
                   )}
@@ -1118,6 +1132,20 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
             );
           })}
 
+          {paymentError && (paymentSession?.sessionReference || sessionReference) && (
+            <Button
+              className="w-full"
+              disabled={isProcessing}
+              onClick={() => {
+                const ref = paymentSession?.sessionReference || sessionReference;
+                if (ref) {
+                  void provisionTenant(ref, form, 'direct');
+                }
+              }}
+            >
+              {language === 'ar' ? 'إعادة محاولة الإعداد' : 'Retry setup'}
+            </Button>
+          )}
 
         </CardContent>
       </Card>
