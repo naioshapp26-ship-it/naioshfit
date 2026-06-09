@@ -8,6 +8,7 @@ import { DEFAULT_LOGO_ASSET, resolveBrandAsset, useBranding } from "@/context/Br
 import LanguageToggle from "@/components/i18n/LanguageToggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import RentSystemCTA from "@/components/saas/RentSystemCTA";
 
 interface PublicTopNavProps {
   includeSpacer?: boolean;
@@ -26,7 +27,7 @@ export default function PublicTopNav({ includeSpacer = true, hasAnnouncementBar 
   const BackIcon = isRTL ? ArrowRight : ArrowLeft;
   const ActionIcon = isLoggedIn ? LayoutDashboard : UserRound;
   const navLinkClass =
-    "rounded-full border border-white/25 bg-black/35 px-3 py-1.5 text-white transition-colors hover:bg-black/50 hover:text-white";
+    "rounded-full border border-[#E5E5E5] bg-white/90 px-3 py-1.5 text-[#8B0000] backdrop-blur-md transition-all hover:bg-[#F5F5F5] hover:scale-[1.02] shadow-sm";
 
   const handleBack = () => {
     if (typeof window !== "undefined" && window.history.length > 1) {
@@ -66,8 +67,12 @@ export default function PublicTopNav({ includeSpacer = true, hasAnnouncementBar 
             <Link href="/blog" className={navLinkClass}>{t("blog")}</Link>
             <Link href="/store" className={navLinkClass}>{t("store")}</Link>
             <Link href="/ads" className={navLinkClass}>{t("ads") || "Ads"}</Link>
+            <RentSystemCTA size="sm" variant="header" />
           </div>
           <div className={cn("flex items-center gap-2", isRTL && "flex-row-reverse")}>
+            <div className="md:hidden">
+              <RentSystemCTA size="sm" variant="header" />
+            </div>
             <Button
               type="button"
               size="sm"
@@ -105,10 +110,10 @@ export default function PublicTopNav({ includeSpacer = true, hasAnnouncementBar 
               size="sm"
               onClick={() => navigate(isLoggedIn ? "/dashboard" : "/auth")}
               className={cn(
-                "rounded-full h-9 px-4 transition-all",
+                "rounded-full h-9 px-4 transition-all border border-[#E5E5E5]",
                 isLoggedIn
-                  ? "border-white/40 bg-white/15 text-white hover:bg-white/25 hover:text-white"
-                  : "bg-gradient-to-r from-red-600 to-orange-500 text-white hover:brightness-110 shadow-lg ring-1 ring-red-300/50"
+                  ? "bg-white/90 text-[#8B0000] hover:bg-[#F5F5F5]"
+                  : "bg-white text-[#8B0000] hover:bg-[#F5F5F5] shadow-sm"
               )}
               title={isLoggedIn ? t("dashboard") : t("login")}
               aria-label={isLoggedIn ? t("dashboard") : t("login")}

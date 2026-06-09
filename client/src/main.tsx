@@ -105,7 +105,9 @@ const AdsPage = createLazyRoute(() => import("@/pages/ads"));
 const AdDetailPage = createLazyRoute(() => import("@/pages/AdDetail"));
 const TenantOpsFeaturePage = createLazyRoute(() => import("@/pages/features/TenantOps"));
 const SecurityOpsFeaturePage = createLazyRoute(() => import("@/pages/features/SecurityOps"));
-const SaasSignupPage = createLazyRoute(() => import("@/pages/saas/SignupWithPayment"));
+const SaasSignupPage = createLazyRoute(() => import("@/pages/saas/TenantOnboardingWizard"));
+const TenantDashboardPage = createLazyRoute(() => import("@/pages/tenant-dashboard"));
+const SuperAdminDashboardPage = createLazyRoute(() => import("@/pages/super-admin/Dashboard"));
 
 const normalizePathname = (pathname: string) =>
   pathname !== "/" ? pathname.replace(/\/+$/, "") : pathname;
@@ -481,6 +483,8 @@ const AppRoutes = () => {
         <Switch>
           <Route path="/" component={Dashboard} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/tenant-dashboard" component={TenantDashboardPage} />
+          <Route path="/super-admin" component={SuperAdminDashboardPage} />
           <Route path="/nutrition" component={Nutrition} />
           <Route path="/workouts" component={Workouts} />
           <Route path="/progress" component={Progress} />

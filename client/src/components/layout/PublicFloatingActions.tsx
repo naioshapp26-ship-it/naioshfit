@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "wouter";
 import { useLanguage } from "@/context/LanguageContext";
-import { ArrowLeft, ArrowRight, ArrowUp, Heart, MessageCircle, Plus } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUp, Heart, MessageCircle, Plus, Rocket } from "lucide-react";
 
 const PublicFloatingActions: React.FC = () => {
   const { language } = useLanguage();
@@ -33,6 +33,7 @@ const PublicFloatingActions: React.FC = () => {
   const BackIcon = language === "ar" ? ArrowRight : ArrowLeft;
 
   const fabActions = [
+    { icon: Rocket, label: "Rent SaaS", onClick: () => navigate("/saas") },
     { icon: Plus, label: "Sign up", onClick: () => navigate("/signup") },
     { icon: Heart, label: "Blog", onClick: () => navigate("/blog") },
     { icon: MessageCircle, label: "Footer", onClick: handleScrollToFooter },

@@ -23,6 +23,25 @@ interface SignupFormData {
   subscriptionPlan: string;
 }
 
+export interface SaasOnboardingPrefill {
+  platformType?: string;
+  companyName?: string;
+  ownerName?: string;
+  email?: string;
+  phone?: string;
+  country?: string;
+  city?: string;
+  plan?: string;
+  subdomain?: string;
+  domainMode?: string;
+  paymentMethod?: string;
+  adminPassword?: string;
+}
+
+interface SaasSignupPageProps {
+  prefilledOnboarding?: SaasOnboardingPrefill;
+}
+
 interface PaymentSession {
   sessionId: string;
   checkoutUrl: string | null;
@@ -72,20 +91,20 @@ const DEFAULT_PLANS: PlanConfigResponse['plans'] = [
   { key: 'enterprise', name: 'Enterprise Plan', price_id: 'price_test_enterprise', paypal_plan_id: '', amount: 99900, currency: 'usd', interval: 'month' },
 ];
 
-const SaasSignupWithPaymentPage = () => {
+const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps = {}) => {
   const { toast } = useToast();
   const { t, language } = useLanguage();
   const isRTL = language === "ar";
-  const [currentStep, setCurrentStep] = useState<Step>(1);
+  const [currentStep, setCurrentStep] = useState<Step>(prefilledOnboarding ? 2 : 1);
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState<SignupFormData>({
-    companyName: "",
-    subdomain: "",
-    adminName: "",
-    adminEmail: "",
-    adminPhone: "",
-    adminPassword: "",
-    subscriptionPlan: "starter",
+    companyName: prefilledOnboarding?.companyName ?? "",
+    subdomain: prefilledOnboarding?.subdomain ?? "",
+    adminName: prefilledOnboarding?.ownerName ?? "",
+    adminEmail: prefilledOnboarding?.email ?? "",
+    adminPhone: prefilledOnboarding?.phone ?? "",
+    adminPassword: prefilledOnboarding?.adminPassword ?? "",
+    subscriptionPlan: prefilledOnboarding?.plan ?? "starter",
   });
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isProcessing, setIsProcessing] = useState(false);

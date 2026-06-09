@@ -9,6 +9,7 @@ import { useEffect, useMemo, useState } from "react";
 import { GuestRoleSelectionModal } from "@/components/guest/GuestRoleSelectionModal";
 import { MediaCarousel, type CarouselMediaItem } from "@/components/media/MediaCarousel";
 import { DEFAULT_LOGO_ASSET, resolveBrandAsset, useBranding } from "@/context/BrandingContext";
+import RentSystemCTA from "@/components/saas/RentSystemCTA";
 
 interface PublicBundlePrice {
   id: string;
@@ -563,15 +564,18 @@ export default function Home() {
                     </Link>
                   )}
                   {!isTenantSubdomain && (
-                    <a href="https://www.naioshfit.com/saas">
+                    <RentSystemCTA size="lg" className="shadow-[0_0_40px_rgba(255,255,255,0.25)]" />
+                  )}
+                  {!isTenantSubdomain && (
+                    <Link href="/saas">
                       <Button
                         variant="secondary"
                         size="lg"
-                        className="text-lg px-8 py-6 rounded-full"
+                        className="text-lg px-8 py-6 rounded-full bg-white/90 text-[#8B0000] border border-[#E5E5E5] hover:bg-[#F5F5F5]"
                       >
                         {t('becomeTenant')}
                       </Button>
-                    </a>
+                    </Link>
                   )}
                   {isAuthenticated ? (
                     <Link href="/dashboard">

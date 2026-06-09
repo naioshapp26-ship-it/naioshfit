@@ -86,7 +86,14 @@ On an empty DB: `npx drizzle-kit push --force`, then `npm run db:seed-demo` (or 
 
 Production Railway: schema + demo seed run **in the background after** the server listens (first deploy can take a few minutes). Check `/api/setup/status` — wait until `"bootstrap": "done"` and `"demoUsers": 4` before testing login. Manual one-off: `node scripts/bootstrap-production.mjs`.
 
-### Demo login
+### SaaS tenant signup (enterprise)
+
+- **Wizard:** `/saas` — 6-step onboarding (platform type → company → plan → subdomain → payment → review)
+- **API:** `/saas/check-subdomain`, `/saas/enterprise-plans`, `/saas/onboarding-session`
+- **Tenant dashboard:** `/tenant-dashboard`
+- **Super admin:** `/super-admin` (requires `super_admin` role)
+- Central migration `023_enterprise_saas_tables.sql` adds plans, billing, domains, RBAC, audit logs
+
 
 Use **`email`** + password **`Demo123!`**:
 

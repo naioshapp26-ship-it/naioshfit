@@ -18,6 +18,7 @@ import {
   isPlatformPayPalConfigured,
 } from '../payment/platformPayPal';
 import { buildRequestMetadata, mergeStripeMetadata } from '../payment/metadata';
+import { registerSaasEnterpriseRoutes, saasRateLimit } from './enterpriseRoutes';
 import { getPaymentNotCompletedMessage, getRequestLanguage } from '../utils/i18n';
 
 // Store pending signups temporarily (in production, use Redis or database)
@@ -36,6 +37,8 @@ function pruneExpiredPendingSignups() {
 }
 
 export function registerSaasRoutes(app: Express) {
+  app.use('/saas', saasRateLimit);
+
   app.use('/saas', async (_req: Request, res: Response, next) => {
     try {
       await ensureCentralSchema();
@@ -48,7 +51,10 @@ export function registerSaasRoutes(app: Express) {
 
   // Create Stripe checkout session for SaaS subscription
   app.post('/saas/create-payment-session', async (req: Request, res: Response) => {
-    const { subdomain, companyName, subscriptionPlan, adminEmail, adminName, adminPhone, adminPassword, paymentProvider } = req.body || {};
+    const {
+      subdomain, companyName, subscriptionPlan, adminEmail, adminName, adminPhone, adminPassword, paymentProvider,
+      platformType, ownerName, ownerEmail, ownerPhone, country, city, domainMode, paymentMethod,
+    } = req.body || {};
     
     if (!subdomain || !companyName || !subscriptionPlan || !adminEmail || !adminName || !adminPassword) {
       return res.status(400).json({ message: 'Missing required fields.' });
@@ -269,7 +275,16 @@ export function registerSaasRoutes(app: Express) {
         amount: planAmount,
         adminEmail,
         adminName,
+        adminPhone,
         adminPassword,
+        platformType,
+        ownerName: ownerName || adminName,
+        ownerEmail: ownerEmail || adminEmail,
+        ownerPhone: ownerPhone || adminPhone,
+        country,
+        city,
+        domainMode,
+        paymentMethod,
         createdAt: Date.now(),
         stripeSessionId: session.sessionId,
         paypalSubscriptionId,
@@ -547,6 +562,24 @@ export function registerSaasRoutes(app: Express) {
         subscriptionPlan: subscriptionPlan || pending.subscriptionPlan,
       });
 
+      try {
+        const { recordTenantEnterpriseMetadata } = await import('./enterpriseRoutes');
+        await recordTenantEnterpriseMetadata(tenant.id, {
+          platformType: pending.platformType,
+          ownerName: pending.ownerName || adminName,
+          ownerEmail: pending.ownerEmail || adminEmail,
+          ownerPhone: pending.ownerPhone || resolvedAdminPhone,
+          country: pending.country,
+          city: pending.city,
+          plan: subscriptionPlan || pending.subscriptionPlan,
+          domainMode: pending.domainMode,
+          paymentMethod: pending.paymentMethod || provider,
+          amountCents: pending.amount ?? 0,
+        });
+      } catch (metaErr) {
+        console.error('[SAAS] Enterprise metadata recording failed:', metaErr);
+      }
+
       // Log the transaction (skip for direct signup without payment)
       if (provider !== 'direct') {
         try {
@@ -743,4 +776,6 @@ export function registerSaasRoutes(app: Express) {
       res.status(500).json({ message: 'Tenant health check failed.' });
     }
   });
+
+  registerSaasEnterpriseRoutes(app);
 }
