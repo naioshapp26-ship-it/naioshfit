@@ -347,8 +347,8 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
       }
       if (error.code === 'TENANT_DB_ENCRYPTION_KEY_INVALID') {
         throw new Error(language === 'ar'
-          ? 'مفتاح تشفير قاعدة بيانات المستأجرين غير مُعد. تواصل مع المسؤول.'
-          : 'Tenant database encryption key is not configured. Contact administrator.');
+          ? 'مفتاح التشفير غير مُعد. على Railway تأكد أن SESSION_SECRET نص عشوائي طويل (16+ حرف) ثم أعد النشر.'
+          : 'Encryption key not configured. On Railway set SESSION_SECRET to a long random string (16+ chars) and redeploy.');
       }
       if (error.code === 'TENANT_DATABASE_TEMPLATE_MISSING') {
         throw new Error(language === 'ar'

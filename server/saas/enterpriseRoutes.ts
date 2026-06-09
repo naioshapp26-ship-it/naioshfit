@@ -10,6 +10,7 @@ import {
 import { listAuditLogs } from './auditLog';
 import { PLATFORM_TYPES, SAAS_PLAN_KEYS } from '@shared/enterpriseSaas';
 import { isSaasPaymentSkipped } from './paymentConfig';
+import { getTenantProvisioningStatus } from './tenantEnv';
 
 const saasRateLimit = createRateLimiter({ windowMs: 60_000, max: 60, keyPrefix: 'saas' });
 
@@ -21,9 +22,11 @@ export function registerSaasEnterpriseRoutes(app: Express) {
   });
 
   app.get('/saas/public-config', (_req: Request, res: Response) => {
+    const tenantProvisioning = getTenantProvisioningStatus();
     res.json({
       mainDomain: process.env.MAIN_DOMAIN || 'naioshfit.com',
       skipPayment: isSaasPaymentSkipped(),
+      tenantProvisioningReady: tenantProvisioning.ready,
     });
   });
 

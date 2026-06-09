@@ -15,24 +15,9 @@ import { sanitizeMigrationSql } from './migrationSanitizer';
 
 const { Pool } = pg;
 
-const TENANT_DB_ENCRYPTION_KEY = process.env.TENANT_DB_ENCRYPTION_KEY;
-const TENANT_DATABASE_URL_TEMPLATE = process.env.TENANT_DATABASE_URL_TEMPLATE;
 const PROVISIONING_ADMIN_DATABASE_URL = process.env.PROVISIONING_ADMIN_DATABASE_URL;
-const NODE_ENV = process.env.NODE_ENV || 'development';
-const DEV_ENCRYPTION_KEY_FALLBACK = 'dev-tenant-encryption-key';
 const TENANT_DB_SSL_ALLOW_SELF_SIGNED = process.env.TENANT_DB_SSL_ALLOW_SELF_SIGNED === '1';
 const CENTRAL_DB_SSL_ALLOW_SELF_SIGNED = process.env.CENTRAL_DB_SSL_ALLOW_SELF_SIGNED === '1' || process.env.DB_SSL_ALLOW_SELF_SIGNED === '1';
-
-function deriveTemplateFromUrl(raw?: string): string | null {
-  if (!raw) return null;
-  try {
-    const url = new URL(raw);
-    url.pathname = '/{db}';
-    return url.toString().replace('%7Bdb%7D', '{db}');
-  } catch {
-    return null;
-  }
-}
 
 function resolveProvisioningAdminUrl(): string | undefined {
   return PROVISIONING_ADMIN_DATABASE_URL || process.env.CENTRAL_DATABASE_URL || process.env.DATABASE_URL;
@@ -89,35 +74,6 @@ export async function dropTenantDatabase(databaseName: string) {
   } finally {
     await adminPool.end();
   }
-}
-
-function requireTenantEncryptionKey() {
-  if (TENANT_DB_ENCRYPTION_KEY) {
-    return TENANT_DB_ENCRYPTION_KEY;
-  }
-
-  if (NODE_ENV !== 'production') {
-    console.warn('[SAAS] TENANT_DB_ENCRYPTION_KEY not set. Using development fallback key.');
-    return DEV_ENCRYPTION_KEY_FALLBACK;
-  }
-
-  throw new Error('TENANT_DB_ENCRYPTION_KEY must be set for multi-tenant provisioning.');
-}
-
-function requireTenantDatabaseTemplate() {
-  if (TENANT_DATABASE_URL_TEMPLATE) {
-    return TENANT_DATABASE_URL_TEMPLATE;
-  }
-
-  if (NODE_ENV !== 'production') {
-    const fallback = deriveTemplateFromUrl(process.env.CENTRAL_DATABASE_URL || process.env.DATABASE_URL);
-    if (fallback) {
-      console.warn('[SAAS] TENANT_DATABASE_URL_TEMPLATE not set. Using derived template for development.');
-      return fallback;
-    }
-  }
-
-  throw new Error('TENANT_DATABASE_URL_TEMPLATE must be set for multi-tenant provisioning.');
 }
 
 function getTenantMigrationsPath(): string {

@@ -1,6 +1,8 @@
 import { decryptKey, encryptKey, isEncrypted } from '../payment/encryption';
+import { applyTenantEnvDefaults } from './tenantEnv';
 
 function requireTenantEncryptionKey(): string {
+  applyTenantEnvDefaults();
   const key = process.env.TENANT_DB_ENCRYPTION_KEY;
   if (!key) {
     throw new Error('TENANT_DB_ENCRYPTION_KEY must be set for multi-tenant mode.');

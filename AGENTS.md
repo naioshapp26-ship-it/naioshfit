@@ -43,7 +43,7 @@ Deploy config is in `railway.toml`:
 | `NODE_ENV` | `production` |
 | `MAIN_DOMAIN` | `naioshfit.com` |
 
-**SaaS (optional):** see `.env.example` for `CENTRAL_DATABASE_URL`, `TENANT_DB_ENCRYPTION_KEY`, etc.
+**SaaS tenant env (Railway):** `TENANT_DB_ENCRYPTION_KEY` and `TENANT_DATABASE_URL_TEMPLATE` are **auto-derived** from `SESSION_SECRET` (16+ chars) and `DATABASE_URL` at startup. Set `SAAS_AUTO_TENANT_ENV=0` to disable. Verify `/api/setup/status` → `tenantProvisioning.ready: true`.
 
 **If deploy fails with Prisma / MODULE_NOT_FOUND:** the deployed commit may be outdated. This repo uses **Drizzle**, not Prisma. Redeploy from current `main` (no Prisma in `package.json`).
 

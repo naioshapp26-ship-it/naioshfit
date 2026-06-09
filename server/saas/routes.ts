@@ -21,6 +21,7 @@ import { buildRequestMetadata, mergeStripeMetadata } from '../payment/metadata';
 import { registerSaasEnterpriseRoutes, saasRateLimit } from './enterpriseRoutes';
 import { getPaymentNotCompletedMessage, getRequestLanguage } from '../utils/i18n';
 import { isDirectSignupAllowed } from './paymentConfig';
+import { applyTenantEnvDefaults, getTenantProvisioningStatus } from './tenantEnv';
 
 export { isSaasPaymentSkipped } from './paymentConfig';
 
@@ -36,6 +37,7 @@ function pruneExpiredPendingSignups() {
 }
 
 export function registerSaasRoutes(app: Express) {
+  applyTenantEnvDefaults();
   app.use('/saas', saasRateLimit);
 
   // Public read-only routes — must not block on full central schema bootstrap
@@ -120,7 +122,7 @@ export function registerSaasRoutes(app: Express) {
         paymentSettings = null;
       }
 
-      const encryptionKeyConfigured = Boolean(process.env.TENANT_DB_ENCRYPTION_KEY);
+      const encryptionKeyConfigured = getTenantProvisioningStatus().ready;
       const paymentReady = Boolean(
         paymentSettings &&
         encryptionKeyConfigured &&
@@ -392,17 +394,25 @@ export function registerSaasRoutes(app: Express) {
       return res.status(400).json({ message: 'Invalid tenant subdomain.' });
     }
 
-    if (!process.env.TENANT_DB_ENCRYPTION_KEY) {
+    const tenantEnv = getTenantProvisioningStatus();
+    if (!tenantEnv.ready) {
+      const lang = getRequestLanguage(req);
+      const missingList = tenantEnv.missing.join(', ');
+      if (tenantEnv.missing.includes('TENANT_DB_ENCRYPTION_KEY')) {
+        return res.status(503).json({
+          message: lang === 'ar'
+            ? 'مفتاح تشفير المستأجرين غير مُعد. تأكد من SESSION_SECRET على Railway (16+ حرف).'
+            : 'Tenant encryption key not configured. Set SESSION_SECRET (16+ chars) on Railway.',
+          code: 'TENANT_DB_ENCRYPTION_KEY_INVALID',
+          missing: tenantEnv.missing,
+        });
+      }
       return res.status(503).json({
-        message: 'Tenant database encryption key is missing or invalid. Please contact administrator.',
-        code: 'TENANT_DB_ENCRYPTION_KEY_INVALID',
-      });
-    }
-
-    if (!process.env.TENANT_DATABASE_URL_TEMPLATE) {
-      return res.status(503).json({
-        message: 'Tenant database template is not configured. Please contact administrator.',
+        message: lang === 'ar'
+          ? `إعداد SaaS غير مكتمل: ${missingList}`
+          : `SaaS provisioning not configured: ${missingList}`,
         code: 'TENANT_DATABASE_TEMPLATE_MISSING',
+        missing: tenantEnv.missing,
       });
     }
 

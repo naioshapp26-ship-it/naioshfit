@@ -9,6 +9,7 @@ import { resolveClientDistRoot } from "./clientDist";
 import { runStartupCleanup } from "./lib/tokenCleanup";
 import { bootstrapDatabaseIfNeeded, dbBootstrapState } from "./bootstrapDb";
 import { bootstrapCentralSchemaIfNeeded, centralBootstrapState, centralBootstrapError } from "./saas/centralDb";
+import { applyTenantEnvDefaults, getTenantProvisioningStatus } from "./saas/tenantEnv";
 
 // Force Node process timezone to GMT+3 (Asia/Riyadh is fixed-offset with no DST)
 process.env.TZ = process.env.TZ || 'Asia/Riyadh';
@@ -22,6 +23,8 @@ declare global {
 }
 
 const app = express();
+
+applyTenantEnvDefaults();
 
 // Prevent rare Node inspect crashes when logging complex Error objects
 const originalConsoleError = console.error;
@@ -50,8 +53,8 @@ app.get('/api/setup/status', async (_req, res) => {
       bootstrap: dbBootstrapState,
       centralBootstrap: centralBootstrapState,
       centralBootstrapError,
+      tenantProvisioning: getTenantProvisioningStatus(),
       git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
-      nodeEnv: process.env.NODE_ENV ?? null,
     });
   } catch (error: any) {
     res.json({
@@ -60,6 +63,7 @@ app.get('/api/setup/status', async (_req, res) => {
       bootstrap: dbBootstrapState,
       centralBootstrap: centralBootstrapState,
       centralBootstrapError,
+      tenantProvisioning: getTenantProvisioningStatus(),
       git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
     });
   }
