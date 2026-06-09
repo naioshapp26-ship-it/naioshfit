@@ -18,6 +18,27 @@ export function getPostgresSslConfig(connectionString: string): { rejectUnauthor
   return needsSSL ? { rejectUnauthorized: false } : undefined;
 }
 
+/** Strip ssl query params and align ssl config for node-postgres Pool. */
+export function normalizePostgresConnection(connectionString: string): {
+  connectionString: string;
+  ssl: { rejectUnauthorized: boolean } | undefined;
+} {
+  const ssl = getPostgresSslConfig(connectionString);
+  try {
+    const url = new URL(connectionString);
+    if (/\.railway\.internal/i.test(url.hostname) || ssl === undefined) {
+      url.searchParams.delete('sslmode');
+      url.searchParams.delete('ssl');
+      url.searchParams.delete('sslrootcert');
+      url.searchParams.delete('sslcert');
+      url.searchParams.delete('sslkey');
+    }
+    return { connectionString: url.toString(), ssl };
+  } catch {
+    return { connectionString, ssl };
+  }
+}
+
 /** Parse DATABASE_URL for drivers that ignore ssl when using a connection string (e.g. drizzle-kit). */
 export function parseDatabaseUrl(connectionString: string): ParsedDatabaseUrl {
   const url = new URL(connectionString);

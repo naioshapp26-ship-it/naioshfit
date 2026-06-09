@@ -8,6 +8,13 @@ export function deriveTemplateFromDatabaseUrl(raw?: string): string | null {
   try {
     const url = new URL(raw);
     url.pathname = '/{db}';
+    if (/\.railway\.internal/i.test(url.hostname)) {
+      url.searchParams.delete('sslmode');
+      url.searchParams.delete('ssl');
+      url.searchParams.delete('sslrootcert');
+      url.searchParams.delete('sslcert');
+      url.searchParams.delete('sslkey');
+    }
     return url.toString().replace('%7Bdb%7D', '{db}');
   } catch {
     return null;

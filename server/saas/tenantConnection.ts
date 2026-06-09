@@ -1,5 +1,6 @@
 import pg from 'pg';
 import { parse as parseConnectionString } from 'pg-connection-string';
+import { normalizePostgresConnection } from '@shared/dbUrl';
 
 const { Pool } = pg;
 
@@ -7,7 +8,13 @@ export type TenantIsolationMode = 'database' | 'schema';
 
 export function getTenantIsolationMode(): TenantIsolationMode {
   const raw = (process.env.SAAS_TENANT_ISOLATION || '').trim().toLowerCase();
-  return raw === 'schema' ? 'schema' : 'database';
+  if (raw === 'schema') return 'schema';
+  if (raw === 'database') return 'database';
+  const base = process.env.DATABASE_URL || process.env.CENTRAL_DATABASE_URL || '';
+  if (/\.railway\.internal/i.test(base)) {
+    return 'schema';
+  }
+  return 'database';
 }
 
 export function parseTenantConnection(databaseUrl: string): {
@@ -46,34 +53,11 @@ export function renderTenantDatabaseUrl(databaseName: string): string {
   return template.replace('{db}', databaseName);
 }
 
-function getSslConfig(connectionString: string): pg.PoolConfig['ssl'] {
-  const needsSsl =
-    /sslmode=require/.test(connectionString) ||
-    /railway\.app|\.proxy\.rlwy\.net|\.rlwy\.net/i.test(connectionString);
-  if (!needsSsl) {
-    return undefined;
-  }
-
-  const allowSelfSigned =
-    /railway\.app|\.proxy\.rlwy\.net|\.rlwy\.net/i.test(connectionString) ||
-    process.env.TENANT_DB_SSL_ALLOW_SELF_SIGNED === '1' ||
-    process.env.CENTRAL_DB_SSL_ALLOW_SELF_SIGNED === '1' ||
-    process.env.DB_SSL_ALLOW_SELF_SIGNED === '1';
-
-  if (allowSelfSigned) {
-    return {
-      rejectUnauthorized: false,
-      checkServerIdentity: () => undefined,
-    };
-  }
-
-  return { rejectUnauthorized: true };
-}
-
 export function createTenantPool(databaseUrl: string): pg.Pool {
-  const { connectionString, schema } = parseTenantConnection(databaseUrl);
+  const { connectionString: rawConnection, schema } = parseTenantConnection(databaseUrl);
+  const { connectionString, ssl } = normalizePostgresConnection(rawConnection);
   const config = parseConnectionString(connectionString);
-  config.ssl = getSslConfig(connectionString);
+  config.ssl = ssl;
 
   const pool = new Pool({
     ...config,
