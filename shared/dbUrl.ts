@@ -26,13 +26,11 @@ export function normalizePostgresConnection(connectionString: string): {
   const ssl = getPostgresSslConfig(connectionString);
   try {
     const url = new URL(connectionString);
-    if (/\.railway\.internal/i.test(url.hostname) || ssl === undefined) {
-      url.searchParams.delete('sslmode');
-      url.searchParams.delete('ssl');
-      url.searchParams.delete('sslrootcert');
-      url.searchParams.delete('sslcert');
-      url.searchParams.delete('sslkey');
-    }
+    url.searchParams.delete('sslmode');
+    url.searchParams.delete('ssl');
+    url.searchParams.delete('sslrootcert');
+    url.searchParams.delete('sslcert');
+    url.searchParams.delete('sslkey');
     return { connectionString: url.toString(), ssl };
   } catch {
     return { connectionString, ssl };

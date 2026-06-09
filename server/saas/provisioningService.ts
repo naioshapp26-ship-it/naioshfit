@@ -24,10 +24,17 @@ function resolveProvisioningAdminUrl(): string | undefined {
 
 function createPoolWithSSL(connectionString: string): pg.Pool {
   const { connectionString: normalized, ssl } = normalizePostgresConnection(connectionString);
-  const config = parseConnectionString(normalized);
-  config.ssl = ssl;
+  const parsed = parseConnectionString(normalized) as pg.PoolConfig & { sslmode?: string };
+  delete parsed.sslmode;
 
-  return new Pool(config as pg.PoolConfig);
+  return new Pool({
+    host: parsed.host,
+    port: parsed.port,
+    user: parsed.user,
+    password: parsed.password,
+    database: parsed.database,
+    ssl: ssl ?? false,
+  } as pg.PoolConfig);
 }
 
 export async function dropTenantDatabase(databaseName: string) {
@@ -294,9 +301,11 @@ export async function provisionTenant(input: ProvisionTenantInput) {
   try {
     await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'pending');
     const storageMode = await ensureTenantStorage(databaseName);
-    if (storageMode === 'schema') {
-      databaseUrl = resolveSchemaTenantDatabaseUrl(databaseName);
-    }
+    const isolation = getTenantIsolationMode();
+    databaseUrl =
+      isolation === 'schema' || storageMode === 'schema'
+        ? resolveSchemaTenantDatabaseUrl(databaseName)
+        : renderTenantDatabaseUrl(databaseName);
     await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'success');
 
     currentStep = 'STORE_DATABASE_SECRET';

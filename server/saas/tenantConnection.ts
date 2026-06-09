@@ -6,14 +6,33 @@ const { Pool } = pg;
 
 export type TenantIsolationMode = 'database' | 'schema';
 
+function isRailwayHosted(): boolean {
+  return Boolean(
+    process.env.RAILWAY_ENVIRONMENT ||
+    process.env.RAILWAY_SERVICE_ID ||
+    process.env.RAILWAY_PROJECT_ID,
+  );
+}
+
+function isRailwayDatabaseUrl(url: string): boolean {
+  return /\.railway\.internal|\.proxy\.rlwy\.net|\.rlwy\.net|railway\.app/i.test(url);
+}
+
 export function getTenantIsolationMode(): TenantIsolationMode {
   const raw = (process.env.SAAS_TENANT_ISOLATION || '').trim().toLowerCase();
   if (raw === 'schema') return 'schema';
   if (raw === 'database') return 'database';
-  const base = process.env.DATABASE_URL || process.env.CENTRAL_DATABASE_URL || '';
-  if (/\.railway\.internal/i.test(base)) {
+
+  // Railway Postgres: schema-per-tenant on the shared DB (avoids SSL issues with tenant_* databases)
+  if (isRailwayHosted()) {
     return 'schema';
   }
+
+  const base = process.env.DATABASE_URL || process.env.CENTRAL_DATABASE_URL || '';
+  if (isRailwayDatabaseUrl(base)) {
+    return 'schema';
+  }
+
   return 'database';
 }
 
@@ -56,21 +75,25 @@ export function renderTenantDatabaseUrl(databaseName: string): string {
 export function createTenantPool(databaseUrl: string): pg.Pool {
   const { connectionString: rawConnection, schema } = parseTenantConnection(databaseUrl);
   const { connectionString, ssl } = normalizePostgresConnection(rawConnection);
-  const config = parseConnectionString(connectionString);
-  config.ssl = ssl;
+  const config = parseConnectionString(connectionString) as pg.PoolConfig & { sslmode?: string };
+  delete config.sslmode;
 
   const pool = new Pool({
-    ...config,
+    host: config.host,
+    port: config.port,
+    user: config.user,
+    password: config.password,
+    database: config.database,
+    ssl: ssl ?? false,
     max: 10,
     idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 5000,
-  } as pg.PoolConfig);
+    connectionTimeoutMillis: 10000,
+    ...(schema ? { options: `-c search_path=${schema},public` } : {}),
+  });
 
   if (schema) {
     pool.on('connect', (client) => {
-      client.query(`SET search_path TO "${schema}", public`).catch((error) => {
-        console.error('[SAAS] Failed to set tenant search_path:', schema, error);
-      });
+      void client.query(`SET search_path TO "${schema}", public`);
     });
   }
 

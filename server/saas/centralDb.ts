@@ -1,7 +1,8 @@
 import pg from 'pg';
 import fs from 'node:fs';
 import path from 'node:path';
-import { getPostgresSslConfig } from '@shared/dbUrl';
+import { normalizePostgresConnection } from '@shared/dbUrl';
+import { parse as parseConnectionString } from 'pg-connection-string';
 import { sanitizeMigrationSql } from './migrationSanitizer';
 
 const { Pool } = pg;
@@ -146,9 +147,17 @@ export function getCentralPool(): pg.Pool {
     throw new Error('CENTRAL_DATABASE_URL or DATABASE_URL must be set for the central database.');
   }
 
+  const { connectionString: normalized, ssl } = normalizePostgresConnection(url);
+  const parsed = parseConnectionString(normalized) as pg.PoolConfig & { sslmode?: string };
+  delete parsed.sslmode;
+
   centralPool = new Pool({
-    connectionString: url,
-    ssl: getPostgresSslConfig(url),
+    host: parsed.host,
+    port: parsed.port,
+    user: parsed.user,
+    password: parsed.password,
+    database: parsed.database,
+    ssl: ssl ?? false,
     max: 10,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 5000,
