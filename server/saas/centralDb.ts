@@ -1,7 +1,7 @@
 import pg from 'pg';
-import { parse as parseConnectionString } from 'pg-connection-string';
 import fs from 'node:fs';
 import path from 'node:path';
+import { getPostgresSslConfig } from '@shared/dbUrl';
 import { sanitizeMigrationSql } from './migrationSanitizer';
 
 const { Pool } = pg;
@@ -44,7 +44,12 @@ function resolveCentralMigrationsDir(): string | null {
 
 export async function ensureCentralSchema(): Promise<void> {
   if (centralSchemaPromise) {
-    return centralSchemaPromise;
+    try {
+      await centralSchemaPromise;
+      return;
+    } catch {
+      centralSchemaPromise = null;
+    }
   }
 
   centralSchemaPromise = (async () => {
@@ -82,14 +87,14 @@ export async function ensureCentralSchema(): Promise<void> {
       try {
         await pool.query(sql);
       } catch (error: any) {
-        if (error?.code === '42P07' || error?.message?.includes('already exists')) {
-          await pool.query(
-            'INSERT INTO central_migrations (filename) VALUES ($1) ON CONFLICT DO NOTHING',
-            [file]
-          );
-          continue;
+        const benign =
+          error?.code === '42P07' ||
+          error?.code === '42710' ||
+          error?.message?.includes('already exists');
+        if (!benign) {
+          console.error(`[CENTRAL DB] Migration failed: ${file}`, error?.message || error);
+          throw error;
         }
-        throw error;
       }
 
       await pool.query(
@@ -99,7 +104,12 @@ export async function ensureCentralSchema(): Promise<void> {
     }
   })();
 
-  return centralSchemaPromise;
+  try {
+    await centralSchemaPromise;
+  } catch (error) {
+    centralSchemaPromise = null;
+    throw error;
+  }
 }
 
 export function getCentralPool(): pg.Pool {
@@ -112,27 +122,13 @@ export function getCentralPool(): pg.Pool {
     throw new Error('CENTRAL_DATABASE_URL or DATABASE_URL must be set for the central database.');
   }
 
-  // Parse the connection string
-  const config = parseConnectionString(url);
-
-  // Match db.ts: SSL only when explicitly required (cloud hosts), not for local PostgreSQL
-  const needsSSL = /sslmode=require/.test(url) || /railway\.app|\.proxy\.rlwy\.net/i.test(url);
-  const allowSelfSigned = /railway\.app|\.proxy\.rlwy\.net/i.test(url) || process.env.CENTRAL_DB_SSL_ALLOW_SELF_SIGNED === '1' || process.env.DB_SSL_ALLOW_SELF_SIGNED === '1';
-
-  // Set SSL configuration
-  if (needsSSL) {
-    config.ssl = allowSelfSigned ? {
-      rejectUnauthorized: false,
-      checkServerIdentity: () => undefined,
-    } : { rejectUnauthorized: true };
-  }
-
   centralPool = new Pool({
-    ...config,
+    connectionString: url,
+    ssl: getPostgresSslConfig(url),
     max: 10,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 5000,
-  } as pg.PoolConfig);
+  });
 
   centralPool.on('error', (err) => {
     console.error('[CENTRAL DB] Pool error:', err);

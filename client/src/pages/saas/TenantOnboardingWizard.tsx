@@ -99,14 +99,18 @@ export default function TenantOnboardingWizard() {
   const [step, setStep] = useState<WizardStep>(1);
   const [form, setForm] = useState<OnboardingForm>(defaultForm);
   const [plans, setPlans] = useState<any[]>([]);
-  const [subdomainStatus, setSubdomainStatus] = useState<"idle" | "checking" | "available" | "taken">("idle");
+  const [subdomainStatus, setSubdomainStatus] = useState<"idle" | "checking" | "available" | "taken" | "invalid" | "error">("idle");
   const [launchPayment, setLaunchPayment] = useState(false);
 
-  const mainDomain = useMemo(() => {
-    if (typeof window === "undefined") return "naiosh.com";
-    const host = window.location.hostname;
-    const parts = host.split(".");
-    return parts.length >= 2 ? parts.slice(-2).join(".") : host;
+  const [mainDomain, setMainDomain] = useState("naioshfit.com");
+
+  useEffect(() => {
+    fetch("/saas/public-config")
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.mainDomain) setMainDomain(String(d.mainDomain).replace(/^www\./, ""));
+      })
+      .catch(() => undefined);
   }, []);
 
   useEffect(() => {
@@ -126,9 +130,17 @@ export default function TenantOnboardingWizard() {
       try {
         const res = await fetch(`/saas/check-subdomain?subdomain=${encodeURIComponent(form.subdomain)}`);
         const data = await res.json();
+        if (!res.ok || data.reason === "error") {
+          setSubdomainStatus("error");
+          return;
+        }
+        if (data.reason === "invalid") {
+          setSubdomainStatus("invalid");
+          return;
+        }
         setSubdomainStatus(data.available ? "available" : "taken");
       } catch {
-        setSubdomainStatus("idle");
+        setSubdomainStatus("error");
       }
     }, 400);
     return () => clearTimeout(timer);
@@ -327,6 +339,8 @@ export default function TenantOnboardingWizard() {
                       )}
                       {subdomainStatus === "available" && <p className="text-sm mt-1 text-emerald-600">✓ متاح</p>}
                       {subdomainStatus === "taken" && <p className="text-sm mt-1 text-red-600">✗ مستخدم بالفعل</p>}
+                      {subdomainStatus === "invalid" && <p className="text-sm mt-1 text-amber-600">✗ النطاق غير صالح (حروف إنجليزية وأرقام فقط)</p>}
+                      {subdomainStatus === "error" && <p className="text-sm mt-1 text-red-600">✗ تعذّر التحقق — حاول مرة أخرى</p>}
                     </div>
                   </div>
                 )}

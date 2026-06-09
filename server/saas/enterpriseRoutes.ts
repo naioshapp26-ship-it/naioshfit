@@ -19,6 +19,12 @@ export function registerSaasEnterpriseRoutes(app: Express) {
     res.json({ types: PLATFORM_TYPES });
   });
 
+  app.get('/saas/public-config', (_req: Request, res: Response) => {
+    res.json({
+      mainDomain: process.env.MAIN_DOMAIN || 'naioshfit.com',
+    });
+  });
+
   app.get('/saas/enterprise-plans', async (_req: Request, res: Response) => {
     try {
       const pool = getCentralPool();
@@ -64,7 +70,7 @@ export function registerSaasEnterpriseRoutes(app: Express) {
       });
     } catch (error) {
       console.error('[SAAS] check-subdomain error:', error);
-      return res.status(500).json({ available: false, reason: 'error' });
+      return res.status(503).json({ available: false, reason: 'error', message: 'Unable to verify subdomain.' });
     }
   });
 

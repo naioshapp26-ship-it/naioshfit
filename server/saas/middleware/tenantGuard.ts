@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import { getCentralPool } from '../centralDb';
+import { pool as appPool } from '../../db';
 import { writeAuditLog } from '../auditLog';
 
 type RateBucket = { count: number; resetAt: number };
@@ -109,10 +110,26 @@ export function auditMiddleware(action: string, resourceType?: string) {
 }
 
 export async function checkSubdomainAvailable(subdomain: string): Promise<{ available: boolean; reason?: string }> {
-  const pool = getCentralPool();
-  const existing = await pool.query('SELECT id FROM tenants WHERE subdomain = $1', [subdomain]);
-  if (existing.rows.length > 0) {
-    return { available: false, reason: 'taken' };
+  const query = 'SELECT id FROM tenants WHERE subdomain = $1 LIMIT 1';
+
+  try {
+    const pool = getCentralPool();
+    const existing = await pool.query(query, [subdomain]);
+    if (existing.rows.length > 0) {
+      return { available: false, reason: 'taken' };
+    }
+    return { available: true };
+  } catch (centralError) {
+    console.warn('[SAAS] Central pool subdomain check failed, trying app pool:', centralError);
+    try {
+      const existing = await appPool.query(query, [subdomain]);
+      if (existing.rows.length > 0) {
+        return { available: false, reason: 'taken' };
+      }
+      return { available: true };
+    } catch (fallbackError) {
+      console.error('[SAAS] Subdomain check failed on both pools:', fallbackError);
+      return { available: false, reason: 'error' };
+    }
   }
-  return { available: true };
 }

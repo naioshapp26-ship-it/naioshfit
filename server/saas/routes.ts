@@ -39,7 +39,15 @@ function pruneExpiredPendingSignups() {
 export function registerSaasRoutes(app: Express) {
   app.use('/saas', saasRateLimit);
 
-  app.use('/saas', async (_req: Request, res: Response, next) => {
+  // Public read-only routes — must not block on full central schema bootstrap
+  registerSaasEnterpriseRoutes(app);
+
+  app.use('/saas', async (req: Request, res: Response, next) => {
+    const publicPaths = ['/check-subdomain', '/enterprise-plans', '/platform-types', '/public-config'];
+    const pathOnly = req.path || req.url.split('?')[0];
+    if (req.method === 'GET' && publicPaths.includes(pathOnly)) {
+      return next();
+    }
     try {
       await ensureCentralSchema();
       return next();
@@ -776,6 +784,4 @@ export function registerSaasRoutes(app: Express) {
       res.status(500).json({ message: 'Tenant health check failed.' });
     }
   });
-
-  registerSaasEnterpriseRoutes(app);
 }
