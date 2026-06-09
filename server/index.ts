@@ -7,7 +7,7 @@ import { db, pool } from './db';
 import { setupVite, serveStatic, log } from "./vite";
 import { resolveClientDistRoot } from "./clientDist";
 import { runStartupCleanup } from "./lib/tokenCleanup";
-import { bootstrapDatabaseIfNeeded, dbBootstrapState } from "./bootstrapDb";
+import { bootstrapDatabaseIfNeeded, dbBootstrapState, dbBootstrapError, isAppSchemaReady } from "./bootstrapDb";
 import { bootstrapCentralSchemaIfNeeded, centralBootstrapState, centralBootstrapError } from "./saas/centralDb";
 import { applyTenantEnvDefaults, getTenantProvisioningStatus } from "./saas/tenantEnv";
 
@@ -43,30 +43,39 @@ app.set('trust proxy', 1);
 
 // Public setup status (verify deploy + demo seed on Railway)
 app.get('/api/setup/status', async (_req, res) => {
-  try {
-    const demo = await pool.query<{ c: number }>(
-      `SELECT COUNT(*)::int AS c FROM users WHERE username LIKE 'demo_%'`,
-    );
-    res.json({
-      ok: true,
-      demoUsers: demo.rows[0]?.c ?? 0,
-      bootstrap: dbBootstrapState,
-      centralBootstrap: centralBootstrapState,
-      centralBootstrapError,
-      tenantProvisioning: getTenantProvisioningStatus(),
-      git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
-    });
-  } catch (error: any) {
-    res.json({
-      ok: false,
-      error: error?.message ?? String(error),
-      bootstrap: dbBootstrapState,
-      centralBootstrap: centralBootstrapState,
-      centralBootstrapError,
-      tenantProvisioning: getTenantProvisioningStatus(),
-      git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
-    });
+  const tenantProvisioning = getTenantProvisioningStatus();
+  const appSchemaReady = await isAppSchemaReady(pool).catch(() => false);
+  let demoUsers = 0;
+
+  if (appSchemaReady) {
+    try {
+      const demo = await pool.query<{ c: number }>(
+        `SELECT COUNT(*)::int AS c FROM users WHERE username LIKE 'demo_%'`,
+      );
+      demoUsers = demo.rows[0]?.c ?? 0;
+    } catch {
+      demoUsers = 0;
+    }
+  } else if (dbBootstrapState !== 'running' && process.env.SKIP_DB_BOOTSTRAP !== '1') {
+    void bootstrapDatabaseIfNeeded(pool);
   }
+
+  const saasReady =
+    centralBootstrapState === 'done' && tenantProvisioning.ready;
+
+  res.json({
+    ok: appSchemaReady && saasReady,
+    appSchemaReady,
+    saasReady,
+    demoUsers,
+    bootstrap: dbBootstrapState,
+    bootstrapError: dbBootstrapError,
+    centralBootstrap: centralBootstrapState,
+    centralBootstrapError,
+    tenantProvisioning,
+    git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
+    nodeEnv: process.env.NODE_ENV ?? null,
+  });
 });
 
 app.get('/health', async (_req, res) => {

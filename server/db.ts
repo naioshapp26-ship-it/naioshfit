@@ -1,5 +1,6 @@
 import * as schema from "@shared/schema";
 import { sql } from 'drizzle-orm';
+import { getPostgresSslConfig } from '@shared/dbUrl';
 
 const DATABASE_URL = process.env.DATABASE_URL;
 if (!DATABASE_URL) {
@@ -11,11 +12,9 @@ import pg from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 const { Pool } = pg;
 
-const needsSSL = /sslmode=require/.test(DATABASE_URL);
-
 export const pool = new Pool({
   connectionString: DATABASE_URL,
-  ssl: needsSSL ? { rejectUnauthorized: false } : undefined,
+  ssl: getPostgresSslConfig(DATABASE_URL),
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,

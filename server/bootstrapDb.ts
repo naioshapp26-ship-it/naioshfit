@@ -4,8 +4,11 @@ import { seedDemoAccountsIfNeeded } from './demoSeed';
 
 /** Tracks production schema bootstrap for /api/setup/status. */
 export let dbBootstrapState: 'idle' | 'running' | 'done' | 'failed' = 'idle';
+export let dbBootstrapError: string | null = null;
 
-async function schemaReady(pool: pg.Pool): Promise<boolean> {
+let bootstrapInFlight: Promise<void> | null = null;
+
+export async function isAppSchemaReady(pool: pg.Pool): Promise<boolean> {
   const { rows } = await pool.query<{ users: string | null; has_email: boolean }>(`
     SELECT
       to_regclass('public.users')::text AS users,
@@ -18,6 +21,9 @@ async function schemaReady(pool: pg.Pool): Promise<boolean> {
 }
 
 async function demoUserCount(pool: pg.Pool): Promise<number> {
+  if (!(await isAppSchemaReady(pool))) {
+    return 0;
+  }
   try {
     const { rows } = await pool.query<{ c: number }>(
       `SELECT COUNT(*)::int AS c FROM users WHERE username LIKE 'demo_%'`,
@@ -37,6 +43,32 @@ function runDrizzlePush(): void {
   });
 }
 
+async function ensureAppSchema(pool: pg.Pool): Promise<boolean> {
+  if (await isAppSchemaReady(pool)) {
+    return true;
+  }
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    console.log(`[INIT] App schema missing — drizzle push attempt ${attempt}/3`);
+    try {
+      runDrizzlePush();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error('[INIT] drizzle-kit push failed:', message);
+      dbBootstrapError = message;
+    }
+
+    if (await isAppSchemaReady(pool)) {
+      dbBootstrapError = null;
+      return true;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+  }
+
+  return false;
+}
+
 /**
  * Bootstrap Postgres schema + demo accounts on Railway production.
  */
@@ -45,38 +77,54 @@ export async function bootstrapDatabaseIfNeeded(pool: pg.Pool): Promise<void> {
     return;
   }
 
-  dbBootstrapState = 'running';
+  if (bootstrapInFlight) {
+    return bootstrapInFlight;
+  }
 
-  try {
-    if (!(await schemaReady(pool))) {
-      runDrizzlePush();
-    }
+  bootstrapInFlight = (async () => {
+    dbBootstrapState = 'running';
+    dbBootstrapError = null;
 
-    for (let attempt = 0; attempt < 2; attempt++) {
-      try {
-        await seedDemoAccountsIfNeeded();
-      } catch (seedErr) {
-        console.error('[INIT] Demo seed attempt failed:', seedErr);
-      }
-
-      if ((await demoUserCount(pool)) >= 4) {
-        console.log('[INIT] Demo accounts verified in database');
-        dbBootstrapState = 'done';
+    try {
+      const schemaOk = await ensureAppSchema(pool);
+      if (!schemaOk) {
+        dbBootstrapState = 'failed';
+        dbBootstrapError = 'users table missing after drizzle-kit push';
+        console.error('[INIT] Application schema bootstrap failed:', dbBootstrapError);
         return;
       }
 
-      if (attempt === 0) {
-        runDrizzlePush();
-      }
-    }
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          await seedDemoAccountsIfNeeded();
+        } catch (seedErr) {
+          console.error('[INIT] Demo seed attempt failed:', seedErr);
+        }
 
-    console.error('[INIT] Warning: demo accounts missing after bootstrap (expected 4)');
-    dbBootstrapState = 'done';
-  } catch (error) {
-    console.error('[INIT] Database bootstrap failed:', error);
-    dbBootstrapState = 'failed';
-    throw error;
-  }
+        if ((await demoUserCount(pool)) >= 4) {
+          console.log('[INIT] Demo accounts verified in database');
+          dbBootstrapState = 'done';
+          return;
+        }
+
+        if (attempt === 0) {
+          runDrizzlePush();
+        }
+      }
+
+      console.warn('[INIT] Demo accounts missing after bootstrap (expected 4) — schema is ready');
+      dbBootstrapState = 'done';
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error('[INIT] Database bootstrap failed:', message);
+      dbBootstrapState = 'failed';
+      dbBootstrapError = message;
+    } finally {
+      bootstrapInFlight = null;
+    }
+  })();
+
+  return bootstrapInFlight;
 }
 
 /** Static list for login UI when DB read fails (matches demoSeed.ts). */
