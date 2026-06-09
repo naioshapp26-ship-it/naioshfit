@@ -96,6 +96,8 @@ Production Railway: schema + demo seed run **in the background after** the serve
 
 **Payment skip (default):** SaaS signup skips the payment step unless `SAAS_REQUIRE_PAYMENT=1` is set on Railway. The wizard goes straight to tenant provisioning. Set `SAAS_SKIP_PAYMENT=0` to force payment UI while keeping `SAAS_REQUIRE_PAYMENT` unset. Re-enable billing later with `SAAS_REQUIRE_PAYMENT=1`.
 
+Central SaaS schema runs on startup (`bootstrapCentralSchemaIfNeeded`). Check `/api/setup/status` for `centralBootstrap: "done"`. If stuck on `"failed"`, see Railway logs for `[CENTRAL DB] Migration failed`.
+
 Use **`email`** + password **`Demo123!`**:
 
 | Role | Email |

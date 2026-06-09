@@ -340,6 +340,11 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
 
     if (!response.ok) {
       const error = await response.json();
+      if (error.code === 'CENTRAL_DB_NOT_INITIALIZED') {
+        throw new Error(language === 'ar'
+          ? 'قاعدة بيانات المنصة قيد التهيئة. انتظر دقيقة ثم أعد المحاولة.'
+          : (error.message || 'Platform database is still initializing. Wait a moment and retry.'));
+      }
       if (error.code === 'TENANT_DB_ENCRYPTION_KEY_INVALID') {
         throw new Error(language === 'ar'
           ? 'مفتاح تشفير قاعدة بيانات المستأجرين غير مُعد. تواصل مع المسؤول.'
@@ -436,7 +441,16 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
   };
 
   const handleStep1Next = async () => {
-    if (!validateStep1()) return;
+    if (!validateStep1()) {
+      toast({
+        title: t("saasErrorTitle"),
+        description: language === 'ar'
+          ? 'يرجى إكمال جميع الحقول المطلوبة (اسم المسؤول، البريد، كلمة المرور 8+ أحرف).'
+          : 'Please complete all required fields (admin name, email, password 8+ chars).',
+        variant: "destructive",
+      });
+      return;
+    }
 
     setIsProcessing(true);
     setPaymentError(null);

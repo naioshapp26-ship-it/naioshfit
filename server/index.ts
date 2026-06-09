@@ -8,6 +8,7 @@ import { setupVite, serveStatic, log } from "./vite";
 import { resolveClientDistRoot } from "./clientDist";
 import { runStartupCleanup } from "./lib/tokenCleanup";
 import { bootstrapDatabaseIfNeeded, dbBootstrapState } from "./bootstrapDb";
+import { bootstrapCentralSchemaIfNeeded, centralBootstrapState, centralBootstrapError } from "./saas/centralDb";
 
 // Force Node process timezone to GMT+3 (Asia/Riyadh is fixed-offset with no DST)
 process.env.TZ = process.env.TZ || 'Asia/Riyadh';
@@ -47,6 +48,8 @@ app.get('/api/setup/status', async (_req, res) => {
       ok: true,
       demoUsers: demo.rows[0]?.c ?? 0,
       bootstrap: dbBootstrapState,
+      centralBootstrap: centralBootstrapState,
+      centralBootstrapError,
       git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
       nodeEnv: process.env.NODE_ENV ?? null,
     });
@@ -55,6 +58,8 @@ app.get('/api/setup/status', async (_req, res) => {
       ok: false,
       error: error?.message ?? String(error),
       bootstrap: dbBootstrapState,
+      centralBootstrap: centralBootstrapState,
+      centralBootstrapError,
       git: process.env.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? null,
     });
   }
@@ -313,6 +318,12 @@ app.use((req, res, next) => {
           .then(() => console.log('[INIT] Background DB bootstrap completed'))
           .catch((bootstrapErr) => {
             console.error('[INIT] Background DB bootstrap failed:', bootstrapErr);
+          });
+
+        void bootstrapCentralSchemaIfNeeded()
+          .then(() => console.log('[INIT] Central SaaS schema bootstrap completed'))
+          .catch((centralErr) => {
+            console.error('[INIT] Central SaaS schema bootstrap failed:', centralErr);
           });
       }
     });

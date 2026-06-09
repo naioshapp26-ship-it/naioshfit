@@ -9,6 +9,10 @@ const { Pool } = pg;
 let centralPool: pg.Pool | null = null;
 let centralSchemaPromise: Promise<void> | null = null;
 
+/** Tracks central SaaS schema bootstrap for /api/setup/status. */
+export let centralBootstrapState: 'idle' | 'running' | 'done' | 'failed' = 'idle';
+export let centralBootstrapError: string | null = null;
+
 function sanitizeDatabaseUrl(raw?: string): string | undefined {
   if (!raw) return undefined;
   try {
@@ -53,6 +57,9 @@ export async function ensureCentralSchema(): Promise<void> {
   }
 
   centralSchemaPromise = (async () => {
+    centralBootstrapState = 'running';
+    centralBootstrapError = null;
+
     const pool = getCentralPool();
     const migrationsDir = resolveCentralMigrationsDir();
     if (!migrationsDir) {
@@ -92,8 +99,11 @@ export async function ensureCentralSchema(): Promise<void> {
           error?.code === '42710' ||
           error?.message?.includes('already exists');
         if (!benign) {
-          console.error(`[CENTRAL DB] Migration failed: ${file}`, error?.message || error);
-          throw error;
+          const detail = error?.message || String(error);
+          console.error(`[CENTRAL DB] Migration failed: ${file}`, detail);
+          centralBootstrapState = 'failed';
+          centralBootstrapError = `${file}: ${detail}`;
+          throw new Error(`Central migration failed (${file}): ${detail}`);
         }
       }
 
@@ -102,14 +112,28 @@ export async function ensureCentralSchema(): Promise<void> {
         [file]
       );
     }
+
+    centralBootstrapState = 'done';
+    centralBootstrapError = null;
   })();
 
   try {
     await centralSchemaPromise;
   } catch (error) {
     centralSchemaPromise = null;
+    if (centralBootstrapState !== 'failed') {
+      centralBootstrapState = 'failed';
+      centralBootstrapError = error instanceof Error ? error.message : String(error);
+    }
     throw error;
   }
+}
+
+export async function bootstrapCentralSchemaIfNeeded(): Promise<void> {
+  if (centralBootstrapState === 'done') {
+    return;
+  }
+  await ensureCentralSchema();
 }
 
 export function getCentralPool(): pg.Pool {

@@ -23,14 +23,14 @@ CREATE TABLE IF NOT EXISTS platform_payment_transactions (
   id SERIAL PRIMARY KEY,
   stripe_payment_id TEXT NOT NULL,
   stripe_checkout_session_id TEXT,
-  tenant_id INTEGER REFERENCES tenants(id), -- For SaaS subscription payments
+  tenant_id UUID REFERENCES tenants(id) ON DELETE SET NULL,
   amount DECIMAL(10, 2) NOT NULL,
   currency VARCHAR(3) DEFAULT 'USD',
-  status VARCHAR(50) NOT NULL, -- pending, completed, failed, refunded
-  payment_type VARCHAR(50), -- saas_subscription, platform_product, etc.
-  metadata JSONB, -- Additional payment details
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  status VARCHAR(50) NOT NULL,
+  payment_type VARCHAR(50),
+  metadata JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS idx_platform_payment_transactions_stripe_payment_id 

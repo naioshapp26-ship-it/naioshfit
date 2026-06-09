@@ -51,8 +51,17 @@ export function registerSaasRoutes(app: Express) {
       await ensureCentralSchema();
       return next();
     } catch (error) {
-      console.error('[SAAS] Central database initialization failed:', error);
-      return res.status(500).json({ message: 'Central database not initialized.' });
+      const detail = error instanceof Error ? error.message : String(error);
+      console.error('[SAAS] Central database initialization failed:', detail);
+      const lang = getRequestLanguage(req);
+      const message = lang === 'ar'
+        ? 'قاعدة بيانات المنصة لم تُهيّأ بعد. جرّب بعد دقيقة أو تواصل مع الدعم.'
+        : 'Central database not initialized yet. Retry in a moment or contact support.';
+      return res.status(503).json({
+        message,
+        code: 'CENTRAL_DB_NOT_INITIALIZED',
+        detail: process.env.NODE_ENV === 'production' ? undefined : detail,
+      });
     }
   });
 

@@ -151,7 +151,14 @@ export default function TenantOnboardingWizard() {
   const validateStep = useCallback((): boolean => {
     if (step === 1 && !form.platformType) return false;
     if (step === 2) {
-      return Boolean(form.companyName && form.ownerName && form.email && form.phone);
+      return Boolean(
+        form.companyName &&
+        form.ownerName &&
+        form.email &&
+        form.phone &&
+        form.adminPassword &&
+        form.adminPassword.length >= 8,
+      );
     }
     if (step === 3 && !form.plan) return false;
     if (step === 4) {
