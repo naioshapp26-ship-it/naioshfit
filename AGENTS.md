@@ -94,6 +94,7 @@ Production Railway: schema + demo seed run **in the background after** the serve
 - **Super admin:** `/super-admin` (requires `super_admin` role)
 - Central migration `023_enterprise_saas_tables.sql` adds plans, billing, domains, RBAC, audit logs
 
+**Payment skip (default):** SaaS signup skips the payment step unless `SAAS_REQUIRE_PAYMENT=1` is set on Railway. The wizard goes straight to tenant provisioning. Set `SAAS_SKIP_PAYMENT=0` to force payment UI while keeping `SAAS_REQUIRE_PAYMENT` unset. Re-enable billing later with `SAAS_REQUIRE_PAYMENT=1`.
 
 Use **`email`** + password **`Demo123!`**:
 

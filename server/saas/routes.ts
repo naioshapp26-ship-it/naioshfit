@@ -20,13 +20,12 @@ import {
 import { buildRequestMetadata, mergeStripeMetadata } from '../payment/metadata';
 import { registerSaasEnterpriseRoutes, saasRateLimit } from './enterpriseRoutes';
 import { getPaymentNotCompletedMessage, getRequestLanguage } from '../utils/i18n';
+import { isDirectSignupAllowed } from './paymentConfig';
+
+export { isSaasPaymentSkipped } from './paymentConfig';
 
 // Store pending signups temporarily (in production, use Redis or database)
 const pendingSignups = new Map<string, any>();
-
-function isDirectSignupAllowed(): boolean {
-  return process.env.SAAS_ALLOW_DIRECT_SIGNUP === '1';
-}
 
 function pruneExpiredPendingSignups() {
   for (const [key, value] of pendingSignups.entries()) {

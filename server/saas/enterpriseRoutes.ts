@@ -9,6 +9,7 @@ import {
 } from './middleware/tenantGuard';
 import { listAuditLogs } from './auditLog';
 import { PLATFORM_TYPES, SAAS_PLAN_KEYS } from '@shared/enterpriseSaas';
+import { isSaasPaymentSkipped } from './paymentConfig';
 
 const saasRateLimit = createRateLimiter({ windowMs: 60_000, max: 60, keyPrefix: 'saas' });
 
@@ -22,6 +23,7 @@ export function registerSaasEnterpriseRoutes(app: Express) {
   app.get('/saas/public-config', (_req: Request, res: Response) => {
     res.json({
       mainDomain: process.env.MAIN_DOMAIN || 'naioshfit.com',
+      skipPayment: isSaasPaymentSkipped(),
     });
   });
 

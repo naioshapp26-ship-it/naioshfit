@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -126,21 +126,29 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
   const [paymobConfigured, setPaymobConfigured] = useState(false);
   const [isDirectSignup, setIsDirectSignup] = useState(false);
   const [paymentConfigured, setPaymentConfigured] = useState<boolean | null>(null);
+  const [skipPayment, setSkipPayment] = useState<boolean | null>(null);
+  const [mainDomain, setMainDomain] = useState<string>("naioshfit.com");
+  const autoSkipAttempted = useRef(false);
 
-  const baseDomain = useMemo(() => {
-    if (typeof window === "undefined") return null;
-    const host = window.location.hostname;
-    const parts = host.split(".");
-    if (parts.length < 2) return host;
-    return parts.slice(-2).join(".");
-  }, []);
+  const baseDomain = useMemo(() => mainDomain.replace(/^www\./, ""), [mainDomain]);
 
   const plans = planConfig?.plans?.length ? planConfig.plans : DEFAULT_PLANS;
   const selectedPlan = plans.find((plan) => plan.key === form.subscriptionPlan) || plans[0];
   const selectedPrice = selectedPlan?.amount ? selectedPlan.amount / 100 : 0;
 
   useEffect(() => {
-    // Check for payment callback from Stripe
+    fetch('/saas/public-config')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.mainDomain) {
+          setMainDomain(String(data.mainDomain).replace(/^www\./, ""));
+        }
+        setSkipPayment(Boolean(data?.skipPayment));
+      })
+      .catch(() => setSkipPayment(true));
+  }, []);
+
+  useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const step = params.get("step");
     const session = params.get("session");
@@ -434,6 +442,13 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
     setPaymentError(null);
     setIsDirectSignup(false);
     try {
+      if (skipPayment) {
+        const session = await createDirectSignupSession();
+        setCurrentStep(3);
+        await provisionTenant(session.sessionReference, form);
+        return;
+      }
+
       if (paymentConfigured === false) {
         await createDirectSignupSession();
       } else {
@@ -605,6 +620,47 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
       setIsProcessing(false);
     }
   };
+
+  const runAutoSkipPayment = useCallback(async () => {
+    if (!validateStep1()) {
+      setCurrentStep(1);
+      toast({
+        title: t("saasErrorTitle"),
+        description: language === 'ar'
+          ? 'يرجى إكمال جميع الحقول المطلوبة (بما فيها كلمة مرور المدير).'
+          : 'Please complete all required fields (including admin password).',
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsProcessing(true);
+    setPaymentError(null);
+    setIsDirectSignup(true);
+    try {
+      const session = await createDirectSignupSession();
+      setCurrentStep(3);
+      await provisionTenant(session.sessionReference, form);
+    } catch (error: any) {
+      toast({
+        title: t("saasErrorTitle"),
+        description: error.message || t("saasProceedToPaymentFailed"),
+        variant: "destructive",
+      });
+      setPaymentError(error.message);
+      setCurrentStep(2);
+    } finally {
+      setIsProcessing(false);
+    }
+  }, [form, language, t, toast]);
+
+  useEffect(() => {
+    if (!skipPayment || autoSkipAttempted.current) return;
+    if (!prefilledOnboarding || currentStep !== 2) return;
+
+    autoSkipAttempted.current = true;
+    void runAutoSkipPayment();
+  }, [skipPayment, prefilledOnboarding, currentStep, runAutoSkipPayment]);
 
   const getStepStatus = (step: Step) => {
     if (currentStep > step) return "complete";
@@ -801,7 +857,33 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
     </Card>
   );
 
-  const renderStep2 = () => (
+  const renderStep2 = () => {
+    if (skipPayment) {
+      return (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Loader2 className="w-5 h-5 animate-spin" />
+              {language === 'ar' ? 'جاري إعداد منصتك' : 'Setting up your platform'}
+            </CardTitle>
+            <CardDescription>
+              {language === 'ar'
+                ? 'يتم تخطي الدفع مؤقتاً وإنشاء حسابك مباشرة...'
+                : 'Payment is skipped for now — creating your account directly...'}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {paymentError && (
+              <Alert variant="destructive" className="mb-4">
+                <AlertDescription>{paymentError}</AlertDescription>
+              </Alert>
+            )}
+          </CardContent>
+        </Card>
+      );
+    }
+
+    return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
@@ -963,7 +1045,8 @@ const SaasSignupWithPaymentPage = ({ prefilledOnboarding }: SaasSignupPageProps 
         )}
       </CardContent>
     </Card>
-  );
+    );
+  };
 
   const renderStep3 = () => {
     const steps = [
