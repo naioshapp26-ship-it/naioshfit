@@ -1,8 +1,8 @@
 import express, { type Express, type Request, type Response, type NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { db } from './db';
-import { FALLBACK_DEMO_USERS } from "./bootstrapDb";
+import { db, pool } from './db';
+import { ensureAppReadyForAuth } from "./bootstrapDb";
 import { sql, like, eq, and, or, inArray, desc, gte, lte, lt } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import * as schema from '@shared/schema';
@@ -2538,6 +2538,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get demo users for quick login
   app.get("/api/auth/demo-users", async (req: Request, res: Response) => {
     try {
+      const readiness = await ensureAppReadyForAuth(pool);
+      if (!readiness.ready) {
+        return res.status(503).json({
+          message: readiness.message || 'Demo accounts are not ready yet.',
+          code: 'APP_NOT_READY',
+          accounts: [],
+        });
+      }
+
       const demoUsers = await db
         .select({
           username: users.username,
@@ -2597,11 +2606,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(formattedUsers);
     } catch (error) {
       console.error('Error fetching demo users:', error);
-      res.json(FALLBACK_DEMO_USERS);
+      res.status(503).json({
+        message: 'Demo accounts are temporarily unavailable.',
+        code: 'DEMO_USERS_UNAVAILABLE',
+        accounts: [],
+      });
     }
   });
 
-  app.post("/api/auth/login", (req, res, next) => {
+  app.post("/api/auth/login", async (req, res, next) => {
+    try {
+      const readiness = await ensureAppReadyForAuth(pool);
+      if (!readiness.ready) {
+        return res.status(503).json({
+          message: readiness.message || 'Login is not available yet. Please try again shortly.',
+          code: 'APP_NOT_READY',
+        });
+      }
+    } catch (readyErr) {
+      console.error('App readiness check failed before login:', readyErr);
+      return res.status(503).json({
+        message: 'Login is not available yet. Please try again shortly.',
+        code: 'APP_NOT_READY',
+      });
+    }
+
     try {
       passport.authenticate("local", (err: any, user: any, info: any) => {
         if (err) {

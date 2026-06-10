@@ -1,6 +1,9 @@
-import { execSync } from 'node:child_process';
 import type pg from 'pg';
 import { seedDemoAccountsIfNeeded } from './demoSeed';
+import {
+  runDrizzlePushWithTimeout,
+  runPendingAppMigrations,
+} from './appMigrations';
 
 /** Tracks production schema bootstrap for /api/setup/status. */
 export let dbBootstrapState: 'idle' | 'running' | 'done' | 'failed' = 'idle';
@@ -34,13 +37,8 @@ async function demoUserCount(pool: pg.Pool): Promise<number> {
   }
 }
 
-function runDrizzlePush(): void {
-  console.log('[INIT] Running drizzle-kit push to sync schema...');
-  execSync('npx drizzle-kit push --force', {
-    stdio: 'inherit',
-    env: process.env,
-    cwd: process.cwd(),
-  });
+function runDrizzlePush(): boolean {
+  return runDrizzlePushWithTimeout(120_000);
 }
 
 async function ensureAppSchema(pool: pg.Pool): Promise<boolean> {
@@ -49,13 +47,17 @@ async function ensureAppSchema(pool: pg.Pool): Promise<boolean> {
   }
 
   for (let attempt = 1; attempt <= 3; attempt++) {
-    console.log(`[INIT] App schema missing — drizzle push attempt ${attempt}/3`);
+    console.log(`[INIT] App schema missing — bootstrap attempt ${attempt}/3`);
+    const pushOk = runDrizzlePush();
+    if (!pushOk) {
+      dbBootstrapError = 'drizzle-kit push failed or timed out';
+    }
+
     try {
-      runDrizzlePush();
+      await runPendingAppMigrations(pool);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      console.error('[INIT] drizzle-kit push failed:', message);
-      dbBootstrapError = message;
+      console.warn('[INIT] Pending SQL migrations pass failed:', message);
     }
 
     if (await isAppSchemaReady(pool)) {
@@ -125,6 +127,33 @@ export async function bootstrapDatabaseIfNeeded(pool: pg.Pool): Promise<void> {
   })();
 
   return bootstrapInFlight;
+}
+
+/** Block auth routes until app schema + demo seed have had a chance to run. */
+export async function ensureAppReadyForAuth(pool: pg.Pool): Promise<{
+  ready: boolean;
+  message?: string;
+}> {
+  if (process.env.SKIP_DB_BOOTSTRAP === '1') {
+    return { ready: await isAppSchemaReady(pool) };
+  }
+
+  if (await isAppSchemaReady(pool)) {
+    return { ready: true };
+  }
+
+  await bootstrapDatabaseIfNeeded(pool);
+
+  if (await isAppSchemaReady(pool)) {
+    return { ready: true };
+  }
+
+  const message =
+    dbBootstrapState === 'running'
+      ? 'Database setup is still running. Please wait a moment and try again.'
+      : dbBootstrapError || 'Application database is not ready yet.';
+
+  return { ready: false, message };
 }
 
 /** Static list for login UI when DB read fails (matches demoSeed.ts). */

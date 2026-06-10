@@ -65,27 +65,47 @@ const SignIn: React.FC<SignInProps> = ({ onToggleForm, onSuccess }) => {
 
   // Fetch demo users from the database
   useEffect(() => {
-    const fetchDemoUsers = async () => {
+    let cancelled = false;
+
+    const fetchDemoUsers = async (attempt = 0) => {
       try {
         const response = await fetch('/api/auth/demo-users');
+        if (response.status === 503 && attempt < 30) {
+          await new Promise((resolve) => setTimeout(resolve, 4000));
+          if (!cancelled) {
+            await fetchDemoUsers(attempt + 1);
+          }
+          return;
+        }
+
         if (response.ok) {
           const users = await response.json();
-          setDemoAccounts(users);
+          if (!cancelled) {
+            setDemoAccounts(Array.isArray(users) ? users : users.accounts ?? []);
+          }
         } else {
           console.error('Failed to fetch demo users');
-          // Fallback to empty array if API fails
-          setDemoAccounts([]);
+          if (!cancelled) {
+            setDemoAccounts([]);
+          }
         }
       } catch (error) {
         console.error('Error fetching demo users:', error);
-        // Fallback to empty array if API fails
-        setDemoAccounts([]);
+        if (!cancelled) {
+          setDemoAccounts([]);
+        }
       } finally {
-        setLoadingDemoAccounts(false);
+        if (!cancelled) {
+          setLoadingDemoAccounts(false);
+        }
       }
     };
 
-    fetchDemoUsers();
+    void fetchDemoUsers();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const onSubmit = async (values: SignInFormValues) => {
@@ -110,6 +130,9 @@ const SignIn: React.FC<SignInProps> = ({ onToggleForm, onSuccess }) => {
       // Check if the request was successful
       if (!response.ok) {
         const errorData = await response.json();
+        if (response.status === 503) {
+          throw new Error(errorData.message || 'Database setup in progress. Please try again in a moment.');
+        }
         const errorMessage = errorData.message || 'Login failed';
         throw new Error(errorMessage);
       }

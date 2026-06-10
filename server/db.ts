@@ -1,6 +1,7 @@
 import * as schema from "@shared/schema";
 import { sql } from 'drizzle-orm';
-import { getPostgresSslConfig } from '@shared/dbUrl';
+import { normalizePostgresConnection } from '@shared/dbUrl';
+import { parse as parseConnectionString } from 'pg-connection-string';
 
 const DATABASE_URL = process.env.DATABASE_URL;
 if (!DATABASE_URL) {
@@ -12,9 +13,17 @@ import pg from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 const { Pool } = pg;
 
+const { connectionString: normalizedUrl, ssl } = normalizePostgresConnection(DATABASE_URL);
+const parsed = parseConnectionString(normalizedUrl) as pg.PoolConfig & { sslmode?: string };
+delete parsed.sslmode;
+
 export const pool = new Pool({
-  connectionString: DATABASE_URL,
-  ssl: getPostgresSslConfig(DATABASE_URL),
+  host: parsed.host,
+  port: parsed.port,
+  user: parsed.user,
+  password: parsed.password,
+  database: parsed.database,
+  ssl: ssl ?? false,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
