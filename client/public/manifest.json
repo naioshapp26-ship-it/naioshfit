@@ -1,8 +1,9 @@
 {
+  "id": "/",
   "name": "Naiosh Fit",
   "short_name": "Naiosh Fit",
   "description": "تطبيق شامل لتتبع اللياقة البدنية والتمارين والتغذية ومراقبة التقدم",
-  "start_url": "/",
+  "start_url": "/dashboard",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#e02424",

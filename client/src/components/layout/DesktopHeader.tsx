@@ -1,5 +1,5 @@
 import { useAuth } from "@/hooks/use-auth";
-import { Bell, Shield, Download, Smartphone } from "lucide-react";
+import { Bell, Shield, Download } from "lucide-react";
 import LanguageToggle from '@/components/i18n/LanguageToggle';
 import GuideButton from '@/components/ui/guide-button';
 import { Link } from "wouter";
@@ -12,7 +12,7 @@ import { isPlatformAdminRole } from "@shared/roleAccess";
 
 export const DesktopHeader = () => {
   const { user } = useAuth();
-  const { install, isInstallable, isInstalled } = usePWAInstall();
+  const { triggerInstall } = usePWAInstall();
   const { language } = useLanguage();
   const isRTL = language === "ar";
   const firstName = typeof (user as any)?.firstName === "string" ? (user as any).firstName : "";
@@ -51,19 +51,7 @@ export const DesktopHeader = () => {
         <Button 
           variant="outline" 
           size="sm" 
-          onClick={() => {
-            if (isInstallable && !isInstalled) {
-              install();
-            } else {
-              // Show platform-specific installation instructions with direct links
-              const currentUrl = window.location.href;
-              const message = `تثبيت تطبيق Naiosh Fit:\n\n🖥️ على الكمبيوتر:\nالرابط: ${currentUrl}\n• Chrome: اضغط على أيقونة التثبيت في شريط العناوين\n• Edge: قائمة ← "تطبيقات" ← "تثبيت هذا الموقع كتطبيق"\n\n📱 على Android:\nالرابط: ${currentUrl}\n• افتح الرابط في Chrome\n• اضغط "إضافة إلى الشاشة الرئيسية"\n\n🍎 على iPhone/iPad:\nالرابط: ${currentUrl}\n• افتح الرابط في Safari\n• اضغط زر "مشاركة" ← "إضافة إلى الشاشة الرئيسية"`;
-              
-              // Copy link to clipboard and show instructions
-              navigator.clipboard?.writeText(currentUrl);
-              alert(message + '\n\n✅ تم نسخ الرابط إلى الحافظة');
-            }
-          }}
+          onClick={() => void triggerInstall()}
           className={cn(
             "bg-primary text-primary-foreground hover:bg-primary/90 border-primary",
             isRTL ? "ml-4" : "mr-4"

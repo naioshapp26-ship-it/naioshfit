@@ -2,21 +2,35 @@ import { createRoot } from "react-dom/client";
 import React from "react";
 import "./index.css";
 
-// Disable service worker on GitHub Pages to avoid stale cached app shell.
-// Unregister any existing SW instances that may be controlling /naioshfit/.
-if ('serviceWorker' in navigator) {
+import { PWAInstallProvider } from "@/components/PWAInstallPrompt";
+
+function registerServiceWorker(): void {
+  if (!('serviceWorker' in navigator)) return;
+
+  const base = import.meta.env.BASE_URL || '/';
+  const isRootDeploy = base === '/' || base === '';
+  const swUrl = `${base.endsWith('/') ? base : `${base}/`}sw.js`.replace(/\/{2,}/g, '/');
+
   window.addEventListener('load', async () => {
     try {
-      const registrations = await navigator.serviceWorker.getRegistrations();
-      for (const registration of registrations) {
-        await registration.unregister();
-        console.log('SW unregistered:', registration.scope);
+      if (!isRootDeploy) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        for (const registration of registrations) {
+          await registration.unregister();
+          console.log('SW unregistered for non-root deploy:', registration.scope);
+        }
+        return;
       }
-    } catch (unregisterError) {
-      console.warn('SW unregister failed:', unregisterError);
+
+      const registration = await navigator.serviceWorker.register(swUrl, { scope: base || '/' });
+      console.log('SW registered:', registration.scope);
+    } catch (error) {
+      console.warn('SW registration failed:', error);
     }
   });
 }
+
+registerServiceWorker();
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { BrandingProvider } from "./context/BrandingContext";
@@ -30,7 +44,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/layout/Layout";
 import Footer from "@/components/layout/Footer";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import { SeoManager } from "@/components/seo/SeoManager";
 import { checkForAppUpdate } from "@/lib/version";
 import { GuestUpgradeModal } from "@/components/guest/GuestUpgradeModal";
@@ -132,13 +145,14 @@ const App = () => {
           <ThemeProvider>
             <LanguageProvider>
               <AuthProvider>
-                <TooltipProvider>
-                  <Toaster />
-                  <GuestUpgradeModal />
-                  <PWAInstallPrompt />
-                  <SeoManager />
-                  <AppRoutes />
-                </TooltipProvider>
+                <PWAInstallProvider>
+                  <TooltipProvider>
+                    <Toaster />
+                    <GuestUpgradeModal />
+                    <SeoManager />
+                    <AppRoutes />
+                  </TooltipProvider>
+                </PWAInstallProvider>
               </AuthProvider>
             </LanguageProvider>
           </ThemeProvider>

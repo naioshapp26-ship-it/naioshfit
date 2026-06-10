@@ -60,7 +60,7 @@ export const MobileNav = () => {
   const { user, logout } = useAuth();
   const { t, language } = useLanguage();
   const { settings: branding } = useBranding();
-  const { install, isInstallable, isInstalled } = usePWAInstall();
+  const { triggerInstall } = usePWAInstall();
   const isAdmin = isPlatformAdminRole(user?.role);
   const isSuperAdmin = isTenantManagerRole(user?.role);
   const isCoach = user?.role === 'coach';
@@ -369,16 +369,7 @@ export const MobileNav = () => {
           <LanguageToggle variant="outline" size="sm" />
           {/* PWA Install Button for Mobile Header - Always Show */}
           <button
-            onClick={() => {
-              if (isInstallable && !isInstalled) {
-                install();
-              } else {
-                const currentUrl = window.location.href;
-                const message = `تثبيت تطبيق Naiosh Fit:\n\n📱 على Android:\nالرابط: ${currentUrl}\n• افتح الرابط في Chrome\n• اضغط "إضافة إلى الشاشة الرئيسية"\n\n🍎 على iPhone/iPad:\nالرابط: ${currentUrl}\n• افتح الرابط في Safari\n• اضغط زر "مشاركة" ← "إضافة إلى الشاشة الرئيسية"`;
-                navigator.clipboard?.writeText(currentUrl);
-                alert(message + "\n\n✅ تم نسخ الرابط إلى الحافظة");
-              }
-            }}
+            onClick={() => void triggerInstall()}
             className={cn(
               "p-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors touch-manipulation min-h-[40px] min-w-[40px] flex items-center justify-center",
               isRTL ? "ml-3" : "mr-3"
@@ -511,17 +502,7 @@ export const MobileNav = () => {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                if (isInstallable && !isInstalled) {
-                  install();
-                } else {
-                  // Show platform-specific installation instructions with direct links
-                  const currentUrl = window.location.href;
-                  const message = `تثبيت تطبيق Naiosh Fit:\n\n🖥️ على الكمبيوتر:\nالرابط: ${currentUrl}\n• Chrome: اضغط على أيقونة التثبيت في شريط العناوين\n• Edge: قائمة ← "تطبيقات" ← "تثبيت هذا الموقع كتطبيق"\n\n📱 على Android:\nالرابط: ${currentUrl}\n• افتح الرابط في Chrome\n• اضغط "إضافة إلى الشاشة الرئيسية"\n\n🍎 على iPhone/iPad:\nالرابط: ${currentUrl}\n• افتح الرابط في Safari\n• اضغط زر "مشاركة" ← "إضافة إلى الشاشة الرئيسية"`;
-
-                  // Copy link to clipboard and show instructions
-                  navigator.clipboard?.writeText(currentUrl);
-                  alert(message + "\n\n✅ تم نسخ الرابط إلى الحافظة");
-                }
+                void triggerInstall();
               }}
               className="flex items-center gap-4 px-6 py-5 text-green-600 hover:text-green-700 hover:bg-green-50 rounded-xl transition-all duration-200 mx-3 touch-manipulation text-base font-medium min-h-[56px] active:scale-95"
             >
