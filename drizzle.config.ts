@@ -18,4 +18,5 @@ export default defineConfig({
   schema: "./shared/schema.ts",
   dialect: "postgresql",
   dbCredentials: parsed,
+  schemaFilters: ["public"],
 });

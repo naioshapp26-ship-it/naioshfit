@@ -1,6 +1,7 @@
 import type pg from 'pg';
 import { seedDemoAccountsIfNeeded } from './demoSeed';
 import {
+  applyCoreAppSchema,
   runDrizzlePushWithTimeout,
   runPendingAppMigrations,
 } from './appMigrations';
@@ -38,7 +39,7 @@ async function demoUserCount(pool: pg.Pool): Promise<number> {
 }
 
 function runDrizzlePush(): boolean {
-  return runDrizzlePushWithTimeout(120_000);
+  return runDrizzlePushWithTimeout(240_000);
 }
 
 async function ensureAppSchema(pool: pg.Pool): Promise<boolean> {
@@ -46,11 +47,21 @@ async function ensureAppSchema(pool: pg.Pool): Promise<boolean> {
     return true;
   }
 
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    console.log(`[INIT] App schema missing — bootstrap attempt ${attempt}/3`);
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    console.log(`[INIT] App schema missing — bootstrap attempt ${attempt}/2`);
     const pushOk = runDrizzlePush();
     if (!pushOk) {
       dbBootstrapError = 'drizzle-kit push failed or timed out';
+    }
+
+    if (!pushOk || !(await isAppSchemaReady(pool))) {
+      try {
+        await applyCoreAppSchema(pool);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        console.error('[INIT] Core schema SQL fallback failed:', message);
+        dbBootstrapError = message;
+      }
     }
 
     try {

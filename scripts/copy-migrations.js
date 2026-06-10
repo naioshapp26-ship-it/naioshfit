@@ -9,6 +9,8 @@ const migrationsSource = path.join(rootDir, 'migrations');
 const migrationsDest = path.join(rootDir, 'dist', 'migrations');
 const saasMigrationsSource = path.join(rootDir, 'saas', 'migrations');
 const saasMigrationsDest = path.join(rootDir, 'dist', 'saas', 'migrations');
+const sqlSource = path.join(rootDir, 'server', 'sql');
+const sqlDest = path.join(rootDir, 'dist', 'sql');
 
 function copyDir(src, dest) {
   // Create destination directory if it doesn't exist
@@ -37,6 +39,10 @@ try {
   if (fs.existsSync(saasMigrationsSource)) {
     console.log('[BUILD] Copying SaaS migrations folder to dist...');
     copyDir(saasMigrationsSource, saasMigrationsDest);
+  }
+  if (fs.existsSync(sqlSource)) {
+    console.log('[BUILD] Copying SQL bootstrap folder to dist...');
+    copyDir(sqlSource, sqlDest);
   }
   console.log('[BUILD] Migrations copied successfully');
 } catch (error) {

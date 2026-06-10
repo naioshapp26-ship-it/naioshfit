@@ -19,17 +19,19 @@ export function resolveAppMigrationsDir(): string | null {
 }
 
 /** Run drizzle-kit push with a hard timeout so Railway bootstrap cannot hang forever. */
-export function runDrizzlePushWithTimeout(timeoutMs = 120_000): boolean {
+export function runDrizzlePushWithTimeout(timeoutMs = 240_000): boolean {
   console.log(`[INIT] Running drizzle-kit push (timeout ${timeoutMs}ms)...`);
 
   const result = spawnSync('npx', ['drizzle-kit', 'push', '--force'], {
-    stdio: 'inherit',
+    stdio: ['pipe', 'inherit', 'inherit'],
     env: {
       ...process.env,
       NODE_TLS_REJECT_UNAUTHORIZED: process.env.NODE_TLS_REJECT_UNAUTHORIZED ?? '0',
     },
     cwd: process.cwd(),
     timeout: timeoutMs,
+    // drizzle-kit prompts on constraint changes; pipe Enter to accept the default option.
+    input: Buffer.from('\n'.repeat(8)),
   });
 
   if (result.error) {
@@ -118,4 +120,30 @@ export async function runPendingAppMigrations(pool: pg.Pool): Promise<void> {
       console.warn('[INIT] SQL migration skipped:', file, message);
     }
   }
+}
+
+function resolveCoreSchemaSqlPath(): string | null {
+  const candidates = [
+    path.resolve(process.cwd(), 'dist', 'sql', 'core_app_schema.sql'),
+    path.resolve(process.cwd(), 'server', 'sql', 'core_app_schema.sql'),
+  ];
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+  return null;
+}
+
+/** Non-interactive fallback when drizzle-kit push cannot complete on production Postgres. */
+export async function applyCoreAppSchema(pool: pg.Pool): Promise<void> {
+  const sqlPath = resolveCoreSchemaSqlPath();
+  if (!sqlPath) {
+    console.warn('[INIT] core_app_schema.sql not found');
+    return;
+  }
+
+  const sql = fs.readFileSync(sqlPath, 'utf-8');
+  console.log('[INIT] Applying core app schema SQL fallback from', sqlPath);
+  await pool.query(sql);
 }
