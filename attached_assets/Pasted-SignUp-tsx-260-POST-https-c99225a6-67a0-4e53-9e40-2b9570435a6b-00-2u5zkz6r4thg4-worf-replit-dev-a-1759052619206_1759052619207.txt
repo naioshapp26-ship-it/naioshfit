@@ -1,0 +1,41 @@
+SignUp.tsx:260  POST https://c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/api/auth/signup 500 (Internal Server Error)
+onSubmit @ SignUp.tsx:260
+nextStep @ SignUp.tsx:221
+await in nextStep
+callCallback2 @ chunk-RPCDYKBN.js?v=712c889b:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=712c889b:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=712c889b:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=712c889b:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=712c889b:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=712c889b:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=712c889b:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=712c889b:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=712c889b:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=712c889b:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=712c889b:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=712c889b:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=712c889b:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=712c889b:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=712c889b:5449Understand this error
+SignUp.tsx:311 Sign up error: Error: Error creating user
+    at onSubmit (SignUp.tsx:273:15)
+onSubmit @ SignUp.tsx:311
+await in onSubmit
+nextStep @ SignUp.tsx:221
+await in nextStep
+callCallback2 @ chunk-RPCDYKBN.js?v=712c889b:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=712c889b:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=712c889b:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=712c889b:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=712c889b:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=712c889b:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=712c889b:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=712c889b:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=712c889b:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=712c889b:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=712c889b:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=712c889b:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=712c889b:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=712c889b:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=712c889b:5449Understand this error
+LanguageContext.tsx:69 useLanguage is being used outside of LanguageProvider, providing fallback

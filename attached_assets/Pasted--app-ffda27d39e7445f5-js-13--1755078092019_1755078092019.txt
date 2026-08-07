@@ -1,0 +1,87 @@
+_app-ffda27d39e7445f5.js:13 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+_app-ffda27d39e7445f5.js:13 [LaunchDarkly] LaunchDarkly client initialized
+/~:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'battery'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'layout-animations'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'navigation-override'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'oversized-images'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'publickey-credentials'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'speaker-selection'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'unoptimized-images'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'unsized-media'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Unrecognized feature: 'pointer-lock'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-9821d2411ada2ce8.js:1
+framework-9821d2411ada2ce8.js:1 Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-9821d2411ada2ce8.js:1
+_app-ffda27d39e7445f5.js:13 Invalid href 'https://c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev//admin/products' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-ffda27d39e7445f5.js:13
+_app-ffda27d39e7445f5.js:13 Invalid href 'https://c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev//admin/products' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+(anonymous) @ _app-ffda27d39e7445f5.js:13
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'battery'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'layout-animations'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'legacy-image-formats'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'navigation-override'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'oversized-images'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'publickey-credentials'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'speaker-selection'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'unoptimized-images'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Unrecognized feature: 'unsized-media'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/__replco/workspace_iframe.html?initialPath=%2Fadmin%2Fproducts&id=%3Ar59u%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+Console.js:61 Retrieved user from localStorage, staying on current page
+Console.js:61 Server session expired, using stored user data

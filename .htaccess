@@ -1,0 +1,24 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/vendowor/naioshfit.com"
+PassengerBaseURI "/"
+PassengerNodejs "/home/vendowor/nodevenv/naioshfit.com/20/bin/node"
+PassengerAppType node
+PassengerStartupFile dist/index.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+SetEnv DATABASE_URL postgresql://vendowor_naioshfituser:a3mCS2008@localhost:5432/vendowor_naioshfit
+SetEnv NODE_ENV production
+SetEnv SESSION_SECRET 8fe74b1d122e038910fae90df6a531c6a675e453754aaac7583389bcbe317ea83fbf0eeeebe5de3311fb2ba966c23e0a
+SetEnv TZ Asia/Riyadh
+SetEnv CENTRAL_DATABASE_URL postgresql://vendowor_naioshfituser:a3mCS2008@localhost:5432/vendowor_naioshfit
+SetEnv PROVISIONING_ADMIN_DATABASE_URL postgresql://vendowor_naioshfituser:a3mCS2008@localhost:5432/vendowor_naioshfit
+SetEnv MAIN_DOMAIN naioshfit.com
+SetEnv FRONTEND_URL https://www.naioshfit.com
+SetEnv TENANT_DATABASE_URL_TEMPLATE postgresql://vendowor_naioshfituser:a3mCS2008@localhost:5432/{db}
+SetEnv TENANT_DB_ENCRYPTION_KEY a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456
+SetEnv SAAS_ALLOW_DIRECT_SIGNUP 1
+SetEnv SAAS_TENANT_ISOLATION schema
+SetEnv SAAS_DEBUG_INIT 1
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END

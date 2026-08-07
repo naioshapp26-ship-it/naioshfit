@@ -1,0 +1,1013 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+      --background: 0 0% 100%;
+--foreground: 20 14.3% 4.1%;
+--muted: 60 4.8% 95.9%;
+--muted-foreground: 25 5.3% 44.7%;
+--popover: 0 0% 100%;
+--popover-foreground: 20 14.3% 4.1%;
+--card: 0 0% 100%;
+--card-foreground: 20 14.3% 4.1%;
+--border: 20 5.9% 90%;
+--input: 20 5.9% 90%;
+--primary: 0 72% 51%;
+--primary-foreground: 0 85.7% 97.3%;
+--secondary: 60 4.8% 95.9%;
+--secondary-foreground: 24 9.8% 10%;
+--accent: 60 4.8% 95.9%;
+--accent-foreground: 24 9.8% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 60 9.1% 97.8%;
+--ring: 20 14.3% 4.1%;
+--radius: 0.5rem;
+--brand-header-bg: 0 0% 100%;
+--brand-header-fg: 20 14.3% 4.1%;
+--brand-sidebar-bg: 0 53% 32%;
+--brand-sidebar-bg-2: 0 54% 27%;
+--brand-sidebar-bg-3: 0 54% 23%;
+--brand-sidebar-hover: 0 53% 19%;
+--brand-sidebar-border: 0 33% 75%;
+--brand-sidebar-fg: 0 0% 100%;
+--brand-badge-bg: 0 72% 51%;
+--brand-badge-fg: 0 85.7% 97.3%;
+--announcement-bar-bg: 222.2 47.4% 11.2%;
+--announcement-bar-fg: 210 40% 98%;
+  }
+  
+  .dark {
+      --background: 240 10% 8%;
+--foreground: 0 0% 100%;
+--muted: 240 3.7% 18%;
+--muted-foreground: 240 5% 85%;
+--popover: 240 10% 12%;
+--popover-foreground: 0 0% 100%;
+--card: 240 10% 12%;
+--card-foreground: 0 0% 100%;
+--border: 240 3.7% 20%;
+--input: 240 3.7% 18%;
+--primary: 0 72% 51%;
+--primary-foreground: 0 85.7% 97.3%;
+--secondary: 240 3.7% 18%;
+--secondary-foreground: 0 0% 100%;
+--accent: 240 3.7% 18%;
+--accent-foreground: 0 0% 100%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 0% 100%;
+--ring: 240 4.9% 83.9%;
+--radius: 0.5rem;
+--brand-header-bg: 240 10% 12%;
+--brand-header-fg: 0 0% 100%;
+--brand-sidebar-bg: 0 53% 32%;
+--brand-sidebar-bg-2: 0 54% 27%;
+--brand-sidebar-bg-3: 0 54% 23%;
+--brand-sidebar-hover: 0 53% 19%;
+--brand-sidebar-border: 0 33% 75%;
+--brand-sidebar-fg: 0 0% 100%;
+--brand-badge-bg: 0 72% 51%;
+--brand-badge-fg: 0 85.7% 97.3%;
+--announcement-bar-bg: 222.2 47.4% 11.2%;
+--announcement-bar-fg: 210 40% 98%;
+  }
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html[dir="rtl"] body {
+    direction: rtl;
+    text-align: right;
+  }
+
+  @media (min-width: 1024px) {
+    html[dir="rtl"] .layout-shell {
+      flex-direction: row !important;
+    }
+
+    html[dir="ltr"] .layout-shell {
+      flex-direction: row !important;
+    }
+
+    html[dir="rtl"] .layout-sidebar {
+      order: 1 !important;
+    }
+
+    html[dir="rtl"] .layout-content {
+      order: 2 !important;
+    }
+
+    html[dir="ltr"] .layout-sidebar {
+      order: 1 !important;
+    }
+
+    html[dir="ltr"] .layout-content {
+      order: 2 !important;
+    }
+  }
+
+  html[dir="rtl"] [data-sidebar-link="true"] {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: right;
+  }
+
+  html[dir="ltr"] [data-sidebar-link="true"] {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  /* Enhanced dark mode font styling */
+  .dark {
+    font-weight: 450;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    font-weight: 600;
+    color: hsl(0, 0%, 100%);
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .font-medium {
+    font-weight: 550;
+  }
+
+  .dark .font-semibold {
+    font-weight: 650;
+  }
+
+  .dark .font-bold {
+    font-weight: 700;
+  }
+
+  /* Improve button text in dark mode */
+  .dark button {
+    font-weight: 500;
+  }
+
+  /* Better contrast for muted text */
+  .dark .text-muted-foreground {
+    color: hsl(240, 5%, 78%) !important;
+  }
+
+  /* Enhanced input text visibility */
+  .dark input,
+  .dark textarea {
+    color: hsl(0, 0%, 100%);
+    font-weight: 450;
+  }
+
+  /* Better navigation text */
+  .dark nav a,
+  .dark nav button {
+    font-weight: 500;
+  }
+
+  /* Card text improvements */
+  .dark .card-title {
+    font-weight: 600;
+    color: hsl(0, 0%, 100%);
+  }
+
+  .dark .card-description {
+    color: hsl(240, 5%, 82%);
+  }
+
+  /* Override all white backgrounds in dark mode */
+  .dark .bg-white {
+    background-color: hsl(240, 10%, 12%) !important;
+  }
+
+  .dark .bg-gray-50 {
+    background-color: hsl(240, 8%, 15%) !important;
+  }
+
+  .dark .bg-gray-100 {
+    background-color: hsl(240, 8%, 18%) !important;
+  }
+
+  /* Dashboard readability: force high-contrast text on dark authenticated pages */
+  .dark .layout-content,
+  .dark .layout-content h1,
+  .dark .layout-content h2,
+  .dark .layout-content h3,
+  .dark .layout-content h4,
+  .dark .layout-content h5,
+  .dark .layout-content h6,
+  .dark .layout-content p,
+  .dark .layout-content span,
+  .dark .layout-content div,
+  .dark .layout-content li,
+  .dark .layout-content td,
+  .dark .layout-content th,
+  .dark .layout-content label,
+  .dark .layout-content a,
+  .dark .layout-content strong,
+  .dark .layout-content small {
+    color: hsl(0, 0%, 100%);
+  }
+
+  /* Colored utility backgrounds should become neutral dark gray in dark mode */
+  .dark .bg-blue-50,
+  .dark .bg-blue-100,
+  .dark .bg-green-50,
+  .dark .bg-green-100,
+  .dark .bg-purple-50,
+  .dark .bg-purple-100,
+  .dark .bg-yellow-50,
+  .dark .bg-yellow-100,
+  .dark .bg-red-50,
+  .dark .bg-red-100,
+  .dark .bg-orange-50,
+  .dark .bg-orange-100,
+  .dark .bg-teal-50,
+  .dark .bg-teal-100,
+  .dark .bg-cyan-50,
+  .dark .bg-cyan-100,
+  .dark .bg-emerald-50,
+  .dark .bg-emerald-100,
+  .dark .bg-indigo-50,
+  .dark .bg-indigo-100 {
+    background-color: hsl(240, 8%, 24%) !important;
+  }
+
+  .dark .from-blue-50,
+  .dark .from-blue-100,
+  .dark .from-green-50,
+  .dark .from-green-100,
+  .dark .from-purple-50,
+  .dark .from-purple-100,
+  .dark .from-yellow-50,
+  .dark .from-yellow-100,
+  .dark .from-red-50,
+  .dark .from-red-100,
+  .dark .from-orange-50,
+  .dark .from-orange-100,
+  .dark .from-teal-50,
+  .dark .from-teal-100,
+  .dark .from-cyan-50,
+  .dark .from-cyan-100,
+  .dark .from-emerald-50,
+  .dark .from-emerald-100,
+  .dark .from-indigo-50,
+  .dark .from-indigo-100 {
+    --tw-gradient-from: hsl(240, 8%, 24%) var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: hsl(240, 8%, 24%, 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+
+  .dark .to-blue-50,
+  .dark .to-blue-100,
+  .dark .to-green-50,
+  .dark .to-green-100,
+  .dark .to-purple-50,
+  .dark .to-purple-100,
+  .dark .to-yellow-50,
+  .dark .to-yellow-100,
+  .dark .to-red-50,
+  .dark .to-red-100,
+  .dark .to-orange-50,
+  .dark .to-orange-100,
+  .dark .to-teal-50,
+  .dark .to-teal-100,
+  .dark .to-cyan-50,
+  .dark .to-cyan-100,
+  .dark .to-emerald-50,
+  .dark .to-emerald-100,
+  .dark .to-indigo-50,
+  .dark .to-indigo-100 {
+    --tw-gradient-to: hsl(240, 8%, 24%) var(--tw-gradient-to-position) !important;
+  }
+
+  /* Mobile scrollbar hiding */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Touch improvements for mobile */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  .touch-pan-x {
+    touch-action: pan-x;
+  }
+
+  .touch-pan-y {
+    touch-action: pan-y;
+  }
+
+  /* Safe area adjustments for mobile */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Enhanced swipe feedback */
+  .swipe-content {
+    transition: transform 0.2s ease-out;
+  }
+
+  /* Enhanced mobile touch and interaction improvements */
+  .mobile-nav-item {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-card {
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+  }
+
+  .mobile-card:active {
+    transform: scale(0.98);
+  }
+
+  .soft-card {
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+  }
+
+  .soft-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 46px rgba(15, 23, 42, 0.14);
+  }
+
+  .dark .soft-card {
+    box-shadow: 0 12px 36px rgba(2, 6, 23, 0.35);
+  }
+
+  .dark .soft-card:hover {
+    box-shadow: 0 18px 46px rgba(2, 6, 23, 0.52);
+  }
+
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Better mobile tap targets */
+  @media (max-width: 768px) {
+    button, 
+    a, 
+    [role="button"],
+    .touch-manipulation {
+      min-height: 48px;
+      min-width: 48px;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    
+    /* Improve form inputs on mobile */
+    input, select, textarea {
+      min-height: 48px;
+      font-size: 16px; /* Prevent zoom on iOS */
+      touch-action: manipulation;
+    }
+    
+    /* Swipe gesture support */
+    .swipeable {
+      touch-action: pan-x pan-y;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    
+    /* Modal improvements for mobile */
+    [data-radix-dialog-content] {
+      max-width: 95vw !important;
+      max-height: 90vh !important;
+      margin: 5vh auto !important;
+    }
+    
+    /* Better scroll behavior */
+    .scroll-container {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+    }
+    
+    /* Safe area padding for newer mobile devices */
+    .safe-area-padding {
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+
+    /* Mobile-friendly dropdowns and select menus */
+    [data-radix-select-content],
+    [data-radix-dropdown-menu-content],
+    [data-radix-popover-content],
+    [data-radix-context-menu-content] {
+      max-width: 95vw !important;
+      max-height: 60vh !important;
+      overflow-y: auto !important;
+      font-size: 16px !important;
+      border-radius: 12px !important;
+    }
+
+    /* Mobile select items with better touch targets */
+    [data-radix-select-item],
+    [data-radix-dropdown-menu-item],
+    [data-radix-context-menu-item] {
+      min-height: 48px !important;
+      padding: 12px 16px !important;
+      font-size: 16px !important;
+      line-height: 1.4 !important;
+      touch-action: manipulation !important;
+    }
+
+    /* Mobile navigation menu improvements */
+    [data-radix-navigation-menu-content] {
+      width: 100vw !important;
+      max-width: 100vw !important;
+      left: 0 !important;
+      right: 0 !important;
+    }
+
+    /* Mobile tabs improvements */
+    [data-radix-tabs-list] {
+      flex-wrap: wrap !important;
+      gap: 4px !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+    }
+
+    [data-radix-tabs-list]::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    [data-radix-tabs-trigger] {
+      min-height: 44px !important;
+      padding: 12px 16px !important;
+      font-size: 14px !important;
+      white-space: nowrap !important;
+      touch-action: manipulation !important;
+    }
+
+    .admin-tabs-list [data-radix-tabs-trigger] {
+      white-space: normal !important;
+      line-height: 1.2 !important;
+      height: auto !important;
+      text-align: center !important;
+    }
+    
+    /* Safe area padding for newer mobile devices */
+    .safe-area-padding {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+
+  .admin-tabs-list [data-radix-tabs-trigger] {
+    white-space: normal;
+    line-height: 1.2;
+    height: auto;
+    text-align: center;
+  }
+
+  .admin-dashboard[dir="rtl"] {
+    text-align: right;
+  }
+
+  .admin-dashboard[dir="rtl"] .admin-tabs-list {
+    direction: rtl !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+  }
+
+  .admin-dashboard[dir="rtl"] .admin-store-section {
+    text-align: right;
+  }
+
+  .admin-dashboard[dir="rtl"] .admin-store-section .flex.items-center.justify-between,
+  .admin-dashboard[dir="rtl"] .admin-store-section .flex.items-start.justify-between {
+    flex-direction: row-reverse;
+  }
+
+  .admin-dashboard[dir="rtl"] .card-header,
+  .admin-dashboard[dir="rtl"] .card-title,
+  .admin-dashboard[dir="rtl"] .card-description,
+  .admin-dashboard[dir="rtl"] .card-content,
+  .admin-dashboard[dir="rtl"] .admin-filters {
+    text-align: right;
+  }
+
+  .admin-dashboard[dir="rtl"] .card-header > div.flex.items-center.justify-between {
+    flex-direction: row-reverse;
+  }
+
+  .admin-dashboard[dir="rtl"] .admin-actions-row {
+    justify-content: flex-start;
+  }
+
+  .admin-dashboard[dir="rtl"] .admin-filters .flex.flex-wrap {
+    justify-content: flex-start;
+  }
+
+  .dark .bg-blue-50 {
+    background-color: hsl(220, 20%, 15%) !important;
+  }
+
+  .dark .bg-green-50 {
+    background-color: hsl(120, 20%, 15%) !important;
+  }
+
+  .dark .bg-red-50 {
+    background-color: hsl(0, 20%, 15%) !important;
+  }
+
+  /* Footer menu dark styling */
+  .dark footer {
+    background-color: hsl(240, 10%, 12%) !important;
+    border-top: 1px solid hsl(240, 3.7%, 20%) !important;
+  }
+
+  .dark footer * {
+    color: hsl(0, 0%, 100%) !important;
+  }
+
+  .dark footer a {
+    color: hsl(0, 0%, 95%) !important;
+  }
+
+  .dark footer a:hover {
+    color: hsl(207, 90%, 54%) !important;
+  }
+
+  /* Navigation menu dark styling */
+  .dark nav {
+    background-color: hsl(240, 10%, 12%) !important;
+  }
+
+  .dark .mobile-nav {
+    background-color: hsl(240, 10%, 8%) !important;
+  }
+
+  .dark .mobile-nav * {
+    color: hsl(0, 0%, 100%) !important;
+  }
+
+  /* Dialog and modal styling */
+  .dark [data-radix-dialog-content] {
+    background-color: hsl(240, 10%, 12%) !important;
+    border: 1px solid hsl(240, 3.7%, 20%) !important;
+  }
+
+  .dark [data-radix-popover-content] {
+    background-color: hsl(240, 10%, 12%) !important;
+    border: 1px solid hsl(240, 3.7%, 20%) !important;
+  }
+
+  /* Dropdown menu styling */
+  .dark [data-radix-dropdown-menu-content] {
+    background-color: hsl(240, 10%, 12%) !important;
+    border: 1px solid hsl(240, 3.7%, 20%) !important;
+  }
+
+  .dark [data-radix-dropdown-menu-item] {
+    color: hsl(0, 0%, 100%) !important;
+  }
+
+  .dark [data-radix-dropdown-menu-item]:hover {
+    background-color: hsl(240, 8%, 18%) !important;
+  }
+
+  /* Select component styling */
+  .dark [data-radix-select-content] {
+    background-color: hsl(240, 10%, 12%) !important;
+    border: 1px solid hsl(240, 3.7%, 20%) !important;
+  }
+
+  .dark [data-radix-select-item] {
+    color: hsl(0, 0%, 100%) !important;
+  }
+
+  .dark [data-radix-select-item]:hover {
+    background-color: hsl(240, 8%, 18%) !important;
+  }
+
+  /* Tabs styling */
+  .dark [data-radix-tabs-content] {
+    background-color: hsl(240, 10%, 12%) !important;
+  }
+
+  /* Ensure all text is white in dark mode */
+  .dark * {
+    color: hsl(0, 0%, 100%);
+  }
+
+  /* Preserve specific color overrides */
+  .dark .text-primary {
+    color: hsl(207, 90%, 54%) !important;
+  }
+
+  .dark .text-destructive {
+    color: hsl(0, 84.2%, 60.2%) !important;
+  }
+
+  .dark .text-green-600 {
+    color: hsl(120, 60%, 70%) !important;
+  }
+
+  .dark .text-blue-600 {
+    color: hsl(207, 90%, 70%) !important;
+  }
+
+  .dark .text-red-600 {
+    color: hsl(0, 84%, 70%) !important;
+  }
+
+  /* Badge styling in dark mode */
+  .dark .badge {
+    background-color: hsl(240, 8%, 18%) !important;
+    color: hsl(0, 0%, 100%) !important;
+  }
+
+  .dark .badge-destructive {
+    background-color: hsl(0, 62.8%, 30.6%) !important;
+    color: hsl(0, 0%, 100%) !important;
+  }
+
+  /* Nutrition section specific dark mode fixes */
+  .dark .bg-orange-50 {
+    background-color: hsl(30, 20%, 15%) !important;
+  }
+
+  .dark .bg-purple-50 {
+    background-color: hsl(270, 20%, 15%) !important;
+  }
+
+  .dark .bg-yellow-50 {
+    background-color: hsl(60, 20%, 15%) !important;
+  }
+
+  /* Progress bars in dark mode */
+  .dark .bg-gray-200 {
+    background-color: hsl(240, 8%, 25%) !important;
+  }
+
+  /* Date input styling in dark mode */
+  .dark input[type="date"] {
+    background-color: hsl(240, 10%, 12%) !important;
+    border: 1px solid hsl(240, 3.7%, 20%) !important;
+    color: hsl(0, 0%, 100%) !important;
+  }
+
+  .dark input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
+  /* Animate pulse loading in dark mode */
+  .dark .animate-pulse {
+    background-color: hsl(240, 8%, 18%) !important;
+  }
+
+  /* Text color overrides for specific elements */
+  .dark .text-gray-500 {
+    color: hsl(240, 5%, 75%) !important;
+  }
+
+  .dark .text-gray-600 {
+    color: hsl(240, 5%, 80%) !important;
+  }
+
+  .dark .text-gray-800 {
+    color: hsl(0, 0%, 100%) !important;
+  }
+
+  /* Card headers and content in dark mode */
+  .dark .card-header {
+    border-bottom: 1px solid hsl(240, 3.7%, 20%);
+  }
+
+  /* Nutrition summary cards specific styling */
+  .dark [class*="bg-blue-50"],
+  .dark [class*="bg-green-50"],
+  .dark [class*="bg-orange-50"],
+  .dark [class*="bg-purple-50"],
+  .dark [class*="bg-yellow-50"] {
+    background-color: hsl(240, 8%, 18%) !important;
+    border: 1px solid hsl(240, 3.7%, 25%) !important;
+  }
+
+  /* Ensure meal type tabs are dark */
+  .dark [data-radix-tabs-trigger] {
+    background-color: hsl(240, 8%, 15%) !important;
+    border: 1px solid hsl(240, 3.7%, 20%) !important;
+    color: hsl(0, 0%, 100%) !important;
+  }
+
+  .dark [data-radix-tabs-trigger][data-state="active"] {
+    background-color: hsl(240, 10%, 12%) !important;
+    border-bottom: 2px solid hsl(207, 90%, 54%) !important;
+  }
+
+/* Enhanced touch target sizes and responsive menu improvements */
+@layer utilities {
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  /* Mobile-first responsive touch targets */
+  @media (max-width: 768px) {
+    /* Ensure all clickable elements have adequate touch targets */
+    button:not(.text-xs), 
+    [role="button"]:not(.text-xs),
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    a[role]:not(.text-xs),
+    select,
+    [role="menuitem"],
+    [role="option"],
+    [data-radix-collection-item] {
+      min-height: 48px;
+      touch-action: manipulation;
+    }
+    
+    /* Improve form inputs on mobile */
+    input, textarea, select {
+      font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    /* Better dropdown and menu positioning */
+    [data-radix-popper-content-wrapper] {
+      max-width: calc(100vw - 2rem) !important;
+    }
+    
+    /* Ensure dialogs are mobile-friendly */
+    [data-radix-dialog-content] {
+      max-width: calc(100vw - 2rem) !important;
+      margin: 1rem !important;
+    }
+    
+    /* Better spacing for mobile navigation */
+    [data-radix-navigation-menu-content] {
+      max-width: calc(100vw - 2rem) !important;
+    }
+  }
+  
+  /* Safe area support for devices with notches */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Print styles for analytics */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    /* Hide navigation and other UI elements when printing */
+    nav,
+    header,
+    footer,
+    .sidebar,
+    button:not(.print-button) {
+      display: none !important;
+    }
+
+    /* Optimize page breaks */
+    .page-break-avoid {
+      page-break-inside: avoid;
+    }
+
+    /* Ensure charts and cards are visible */
+    .recharts-wrapper {
+      page-break-inside: avoid;
+    }
+
+    /* Remove backgrounds for better printing */
+    body {
+      background: white !important;
+    }
+
+    /* Ensure cards have borders for print */
+    [class*="card"] {
+      border: 1px solid #e5e7eb !important;
+      page-break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+@keyframes announcement-scroll-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes announcement-scroll-ltr {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.announcement-marquee-track {
+  width: max-content;
+  animation-duration: 12s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  will-change: transform;
+}
+
+.announcement-marquee-rtl {
+  animation-name: announcement-scroll-rtl;
+}
+
+.announcement-marquee-ltr {
+  animation-name: announcement-scroll-ltr;
+}
+
+.announcement-marquee-item {
+  flex-shrink: 0;
+}
+
+.group:hover .announcement-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Enterprise SaaS Styling */
+@layer components {
+  /* Enhanced card styling for professional look */
+  .card,
+  [class*="Card"] {
+    @apply bg-white rounded-2xl shadow-sm;
+    padding: 1.5rem;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover,
+  [class*="Card"]:hover {
+    @apply shadow-md;
+    transform: translateY(-2px);
+  }
+
+  /* Professional content area spacing */
+  main {
+    @apply bg-transparent;
+  }
+
+  /* Enhanced section backgrounds */
+  section {
+    @apply bg-transparent;
+  }
+
+  /* Better spacing for dashboard elements */
+  .dashboard-section {
+    @apply mb-8;
+  }
+
+  /* Cleaner borders and dividers */
+  .border-subtle {
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  /* Professional text hierarchy */
+  .text-heading {
+    @apply text-gray-900 font-semibold;
+  }
+
+  .text-subheading {
+    @apply text-gray-700 font-medium;
+  }
+
+  .text-body {
+    @apply text-gray-600;
+  }
+
+  /* Enhanced button styling - Pill style */
+  .btn-primary,
+  button[class*="primary"],
+  .button-primary {
+    @apply bg-slate-800 text-white rounded-full px-6 py-2.5 font-medium;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover,
+  button[class*="primary"]:hover,
+  .button-primary:hover {
+    @apply bg-slate-900 shadow-md;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary,
+  button[class*="secondary"],
+  .button-secondary {
+    @apply bg-gray-100 text-gray-800 rounded-full px-6 py-2.5 font-medium;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover,
+  button[class*="secondary"]:hover,
+  .button-secondary:hover {
+    @apply bg-gray-200 shadow-sm;
+    transform: translateY(-1px);
+  }
+
+  .btn-enterprise {
+    @apply transition-all duration-200 font-medium rounded-full;
+  }
+
+  /* Icon with circular background styling */
+  .icon-circle {
+    @apply w-10 h-10 rounded-full flex items-center justify-center;
+    transition: all 0.2s ease;
+  }
+
+  .icon-circle-sm {
+    @apply w-8 h-8 rounded-full flex items-center justify-center;
+  }
+
+  .icon-circle-lg {
+    @apply w-12 h-12 rounded-full flex items-center justify-center;
+  }
+
+  /* Pastel color backgrounds for icons */
+  .icon-bg-blue {
+    @apply bg-blue-100 text-blue-600;
+  }
+
+  .icon-bg-green {
+    @apply bg-green-100 text-green-600;
+  }
+
+  .icon-bg-purple {
+    @apply bg-purple-100 text-purple-600;
+  }
+
+  .icon-bg-pink {
+    @apply bg-pink-100 text-pink-600;
+  }
+
+  .icon-bg-yellow {
+    @apply bg-yellow-100 text-yellow-600;
+  }
+
+  .icon-bg-orange {
+    @apply bg-orange-100 text-orange-600;
+  }
+
+  .icon-bg-red {
+    @apply bg-red-100 text-red-600;
+  }
+
+  .icon-bg-indigo {
+    @apply bg-indigo-100 text-indigo-600;
+  }
+
+  .icon-bg-teal {
+    @apply bg-teal-100 text-teal-600;
+  }
+
+  /* Icon with text alignment */
+  .icon-text-group {
+    @apply flex items-center gap-3;
+  }
+
+  .icon-text-group-sm {
+    @apply flex items-center gap-2;
+  }
+
+  /* Card enhancements */
+  .card-interactive {
+    @apply cursor-pointer;
+  }
+
+  .card-interactive:hover {
+    @apply shadow-lg;
+    transform: translateY(-4px);
+  }
+}
+}

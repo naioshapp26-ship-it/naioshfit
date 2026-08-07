@@ -1,0 +1,575 @@
+import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { CoachProduct, ScrapedAffiliateProduct } from '@shared/schema';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { ExternalLink, Search, Star, Package } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { TechnicalIssueWidget } from '@/components/ui/technical-issue-widget';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+
+const Store = () => {
+  const { t } = useLanguage();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+
+  // Fetch coach products for the current user's assigned coach
+  const { data: coachProducts, isLoading: coachProductsLoading } = useQuery<CoachProduct[]>({
+    queryKey: ['/api/my-coach-products'],
+  });
+
+  // Fetch scraped affiliate products
+  const { data: scrapedProducts, isLoading: scrapedProductsLoading } = useQuery<ScrapedAffiliateProduct[]>({
+    queryKey: ['/api/scraped-affiliate-products'],
+  });
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleImageError = (productId: string) => {
+    setImageErrors(prev => ({ ...prev, [productId]: true }));
+  };
+
+  // Generate thumbnail URL from product URL if no thumbnail is provided
+  const getThumbnailUrl = (product: CoachProduct): string | null => {
+    if (product.thumbnailUrl) {
+      return product.thumbnailUrl;
+    }
+    
+    try {
+      const url = new URL(product.url);
+      return `https://image.thum.io/get/width/400/crop/600/${encodeURIComponent(product.url)}`;
+    } catch (e) {
+      return null;
+    }
+  };
+
+  // Filter products by search term
+  const filteredCoachProducts = coachProducts?.filter(product => 
+    product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (product.description && product.description.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
+  const filteredScrapedProducts = scrapedProducts?.filter(product => 
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const isLoading = coachProductsLoading || scrapedProductsLoading;
+
+  const renderCoachProductCard = (product: CoachProduct) => {
+    const isValidUrl = product.url.startsWith('http://') || product.url.startsWith('https://');
+    const hasImageError = imageErrors[`coach-${product.id}`];
+    const thumbnailUrl = getThumbnailUrl(product);
+    
+    return (
+      <Card key={`coach-${product.id}`} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+        {thumbnailUrl && !hasImageError && (
+          <div className="w-full h-48 overflow-hidden bg-gray-100">
+            <img 
+              src={thumbnailUrl} 
+              alt={product.title}
+              className="w-full h-full object-cover"
+              onError={() => handleImageError(`coach-${product.id}`)}
+            />
+          </div>
+        )}
+        <CardHeader className="pb-3">
+          <CardTitle className="text-lg">{product.title}</CardTitle>
+          <Badge variant="outline" className="w-fit">Coach Recommended</Badge>
+        </CardHeader>
+        <CardContent className="flex-1 flex flex-col">
+          {product.description && (
+            <p className="text-gray-600 text-sm mb-4 flex-1">{product.description}</p>
+          )}
+          <Button 
+            className="w-full mt-auto"
+            onClick={() => {
+              if (isValidUrl) {
+                window.open(product.url, '_blank', 'noopener,noreferrer');
+              }
+            }}
+            disabled={!isValidUrl}
+          >
+            <ExternalLink className="h-4 w-4 mr-2" />
+            View Product
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  };
+
+  const renderScrapedProductCard = (product: ScrapedAffiliateProduct) => {
+    const isValidUrl = product.productUrl.startsWith('http://') || product.productUrl.startsWith('https://');
+    const hasImageError = imageErrors[`scraped-${product.id}`];
+    
+    return (
+      <Card key={`scraped-${product.id}`} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+        {product.imageUrl && !hasImageError && (
+          <div className="w-full h-48 overflow-hidden bg-gray-100">
+            <img 
+              src={product.imageUrl} 
+              alt={product.title}
+              className="w-full h-full object-contain p-2"
+              onError={() => handleImageError(`scraped-${product.id}`)}
+            />
+          </div>
+        )}
+        {!product.imageUrl && (
+          <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
+            <Package className="h-16 w-16 text-gray-300" />
+          </div>
+        )}
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base line-clamp-2">{product.title}</CardTitle>
+          <div className="flex items-center gap-2 mt-1">
+            {product.price && (
+              <span className="text-lg font-bold text-primary">{product.price}</span>
+            )}
+            {product.originalPrice && product.originalPrice !== product.price && (
+              <span className="text-sm text-gray-500 line-through">{product.originalPrice}</span>
+            )}
+            {product.discount && (
+              <Badge variant="destructive" className="text-xs">{product.discount}</Badge>
+            )}
+          </div>
+        </CardHeader>
+        <CardContent className="flex-1 flex flex-col">
+          {product.rating && (
+            <div className="flex items-center gap-1 mb-2">
+              <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+              <span className="text-sm font-medium">{product.rating.toFixed(1)}</span>
+              {product.reviewCount && (
+                <span className="text-xs text-gray-500">({product.reviewCount})</span>
+              )}
+            </div>
+          )}
+          {product.availability && (
+            <p className="text-xs text-gray-600 mb-3">{product.availability}</p>
+          )}
+          <Button 
+            className="w-full mt-auto"
+            onClick={() => {
+              if (isValidUrl) {
+                window.open(product.productUrl, '_blank', 'noopener,noreferrer');
+              }
+            }}
+            disabled={!isValidUrl}
+          >
+            <ExternalLink className="h-4 w-4 mr-2" />
+            View Product
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  };
+
+  return (
+    <section className="p-4 md:p-6 lg:p-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
+        <div>
+          <h2 className="text-2xl font-semibold text-gray-800">Store</h2>
+          <p className="text-gray-600">Products recommended by your coach and featured affiliate products</p>
+        </div>
+        <div className="mt-4 md:mt-0 flex items-center">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Input
+              placeholder="Search products..."
+              className="pl-10 w-full md:w-64"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Products Display with Tabs */}
+      <Tabs defaultValue="all" className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="all">All Products</TabsTrigger>
+          <TabsTrigger value="coach">Coach Products</TabsTrigger>
+          <TabsTrigger value="affiliate">Featured Products</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="all" className="mt-6">
+          {isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 animate-pulse">
+              {[...Array(8)].map((_, i) => (
+                <Card key={i}>
+                  <div className="h-40 bg-gray-200"></div>
+                  <CardContent className="p-4">
+                    <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded mb-4 w-2/3"></div>
+                    <div className="h-8 bg-gray-200 rounded w-full"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {filteredCoachProducts && filteredCoachProducts.length > 0 && 
+                filteredCoachProducts.map(product => renderCoachProductCard(product))}
+              {filteredScrapedProducts && filteredScrapedProducts.length > 0 && 
+                filteredScrapedProducts.map(product => renderScrapedProductCard(product))}
+              {(!filteredCoachProducts || filteredCoachProducts.length === 0) && 
+               (!filteredScrapedProducts || filteredScrapedProducts.length === 0) && (
+                <Card className="col-span-full">
+                  <CardContent className="p-8">
+                    <div className="text-center py-10 bg-gray-50 rounded-lg">
+                      <p className="text-gray-500 text-lg mb-2">No products found</p>
+                      <p className="text-gray-400 text-sm">
+                        {searchTerm ? `No products matching "${searchTerm}"` : 'No products available'}
+                      </p>
+                      {searchTerm && (
+                        <Button variant="outline" className="mt-4" onClick={() => setSearchTerm('')}>
+                          Clear Search
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+          )}
+        </TabsContent>
+
+        <TabsContent value="coach" className="mt-6">
+          {coachProductsLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 animate-pulse">
+              {[...Array(4)].map((_, i) => (
+                <Card key={i}>
+                  <div className="h-40 bg-gray-200"></div>
+                  <CardContent className="p-4">
+                    <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded mb-4 w-2/3"></div>
+                    <div className="h-8 bg-gray-200 rounded w-full"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : !coachProducts || coachProducts.length === 0 ? (
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-center py-10 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500 text-lg mb-2">No coach products available</p>
+                  <p className="text-gray-400 text-sm">
+                    {!coachProducts ? 'You do not have an assigned coach yet.' : 'Your coach has not added any products yet.'}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          ) : filteredCoachProducts && filteredCoachProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {filteredCoachProducts.map(product => renderCoachProductCard(product))}
+            </div>
+          ) : (
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-center py-10 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500">No products found matching "{searchTerm}"</p>
+                  <Button variant="outline" className="mt-4" onClick={() => setSearchTerm('')}>
+                    Clear Search
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+
+        <TabsContent value="affiliate" className="mt-6">
+          {scrapedProductsLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 animate-pulse">
+              {[...Array(8)].map((_, i) => (
+                <Card key={i}>
+                  <div className="h-40 bg-gray-200"></div>
+                  <CardContent className="p-4">
+                    <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded mb-4 w-2/3"></div>
+                    <div className="h-8 bg-gray-200 rounded w-full"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : !scrapedProducts || scrapedProducts.length === 0 ? (
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-center py-10 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500 text-lg mb-2">No affiliate products available</p>
+                  <p className="text-gray-400 text-sm">Check back later for featured products.</p>
+                </div>
+              </CardContent>
+            </Card>
+          ) : filteredScrapedProducts && filteredScrapedProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {filteredScrapedProducts.map(product => renderScrapedProductCard(product))}
+            </div>
+          ) : (
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-center py-10 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500">No products found matching "{searchTerm}"</p>
+                  <Button variant="outline" className="mt-4" onClick={() => setSearchTerm('')}>
+                    Clear Search
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+      </Tabs>
+      
+      {/* Technical Issue Widget */}
+      <TechnicalIssueWidget />
+    </section>
+  );
+};
+
+export default Store;
+
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleImageError = (productId: string) => {
+    setImageErrors(prev => ({ ...prev, [productId]: true }));
+  };
+
+  // Generate thumbnail URL from product URL if no thumbnail is provided
+  const getThumbnailUrl = (product: CoachProduct | AffiliateProduct): string | null => {
+    // If thumbnail is already provided, use it
+    if (product.thumbnailUrl) {
+      return product.thumbnailUrl;
+    }
+    
+    // Try to extract domain from URL and use a screenshot/preview service
+    try {
+      const url = new URL(product.url);
+      // Use a free link preview service that generates thumbnails
+      // Alternative: return `https://api.microlink.io/?url=${encodeURIComponent(product.url)}&screenshot=true&meta=false&embed=screenshot.url`;
+      // Using a simpler approach with website screenshots
+      return `https://image.thum.io/get/width/400/crop/600/${encodeURIComponent(product.url)}`;
+    } catch (e) {
+      return null;
+    }
+  };
+
+  // Filter products by search term
+  const filteredCoachProducts = coachProducts?.filter(product => 
+    product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (product.description && product.description.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
+  const filteredAffiliateProducts = affiliateProducts?.filter(product => 
+    product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (product.description && product.description.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
+  const isLoading = coachProductsLoading || affiliateProductsLoading;
+
+  const renderProductCard = (product: CoachProduct | AffiliateProduct, key: string) => {
+    const isValidUrl = product.url.startsWith('http://') || product.url.startsWith('https://');
+    const hasImageError = imageErrors[key];
+    const thumbnailUrl = getThumbnailUrl(product);
+    
+    return (
+      <Card key={key} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+        {thumbnailUrl && !hasImageError && (
+          <div className="w-full h-48 overflow-hidden bg-gray-100">
+            <img 
+              src={thumbnailUrl} 
+              alt={product.title}
+              className="w-full h-full object-cover"
+              onError={() => handleImageError(key)}
+            />
+          </div>
+        )}
+        <CardHeader className="pb-3">
+          <CardTitle className="text-lg">{product.title}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-1 flex flex-col">
+          {product.description && (
+            <p className="text-gray-600 text-sm mb-4 flex-1">{product.description}</p>
+          )}
+          <Button 
+            className="w-full mt-auto"
+            onClick={() => {
+              if (isValidUrl) {
+                window.open(product.url, '_blank', 'noopener,noreferrer');
+              }
+            }}
+            disabled={!isValidUrl}
+          >
+            <ExternalLink className="h-4 w-4 mr-2" />
+            View Product
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  };
+
+  return (
+    <section className="p-4 md:p-6 lg:p-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
+        <div>
+          <h2 className="text-2xl font-semibold text-gray-800">Store</h2>
+          <p className="text-gray-600">Products recommended by your coach and featured affiliate products</p>
+        </div>
+        <div className="mt-4 md:mt-0 flex items-center">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Input
+              placeholder="Search products..."
+              className="pl-10 w-full md:w-64"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Products Display with Tabs */}
+      <Tabs defaultValue="all" className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="all">All Products</TabsTrigger>
+          <TabsTrigger value="coach">Coach Products</TabsTrigger>
+          <TabsTrigger value="affiliate">Featured Products</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="all" className="mt-6">
+          {isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 animate-pulse">
+              {[...Array(6)].map((_, i) => (
+                <Card key={i}>
+                  <div className="h-40 bg-gray-200"></div>
+                  <CardContent className="p-4">
+                    <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded mb-4 w-2/3"></div>
+                    <div className="h-8 bg-gray-200 rounded w-full"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {filteredCoachProducts && filteredCoachProducts.length > 0 && 
+                filteredCoachProducts.map(product => renderProductCard(product, `coach-${product.id}`))}
+              {filteredAffiliateProducts && filteredAffiliateProducts.length > 0 && 
+                filteredAffiliateProducts.map(product => renderProductCard(product, `affiliate-${product.id}`))}
+              {(!filteredCoachProducts || filteredCoachProducts.length === 0) && 
+               (!filteredAffiliateProducts || filteredAffiliateProducts.length === 0) && (
+                <Card className="col-span-full">
+                  <CardContent className="p-8">
+                    <div className="text-center py-10 bg-gray-50 rounded-lg">
+                      <p className="text-gray-500 text-lg mb-2">No products found</p>
+                      <p className="text-gray-400 text-sm">
+                        {searchTerm ? `No products matching "${searchTerm}"` : 'No products available'}
+                      </p>
+                      {searchTerm && (
+                        <Button variant="outline" className="mt-4" onClick={() => setSearchTerm('')}>
+                          Clear Search
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+          )}
+        </TabsContent>
+
+        <TabsContent value="coach" className="mt-6">
+          {coachProductsLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 animate-pulse">
+              {[...Array(4)].map((_, i) => (
+                <Card key={i}>
+                  <div className="h-40 bg-gray-200"></div>
+                  <CardContent className="p-4">
+                    <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded mb-4 w-2/3"></div>
+                    <div className="h-8 bg-gray-200 rounded w-full"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : !coachProducts || coachProducts.length === 0 ? (
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-center py-10 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500 text-lg mb-2">No coach products available</p>
+                  <p className="text-gray-400 text-sm">
+                    {!coachProducts ? 'You do not have an assigned coach yet.' : 'Your coach has not added any products yet.'}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          ) : filteredCoachProducts && filteredCoachProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {filteredCoachProducts.map(product => renderProductCard(product, `coach-${product.id}`))}
+            </div>
+          ) : (
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-center py-10 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500">No products found matching "{searchTerm}"</p>
+                  <Button variant="outline" className="mt-4" onClick={() => setSearchTerm('')}>
+                    Clear Search
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+
+        <TabsContent value="affiliate" className="mt-6">
+          {affiliateProductsLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 animate-pulse">
+              {[...Array(4)].map((_, i) => (
+                <Card key={i}>
+                  <div className="h-40 bg-gray-200"></div>
+                  <CardContent className="p-4">
+                    <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded mb-4 w-2/3"></div>
+                    <div className="h-8 bg-gray-200 rounded w-full"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : !affiliateProducts || affiliateProducts.length === 0 ? (
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-center py-10 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500 text-lg mb-2">No affiliate products available</p>
+                  <p className="text-gray-400 text-sm">Check back later for featured products.</p>
+                </div>
+              </CardContent>
+            </Card>
+          ) : filteredAffiliateProducts && filteredAffiliateProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {filteredAffiliateProducts.map(product => renderProductCard(product, `affiliate-${product.id}`))}
+            </div>
+          ) : (
+            <Card>
+              <CardContent className="p-8">
+                <div className="text-center py-10 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500">No products found matching "{searchTerm}"</p>
+                  <Button variant="outline" className="mt-4" onClick={() => setSearchTerm('')}>
+                    Clear Search
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+      </Tabs>
+      
+      {/* Technical Issue Widget */}
+      <TechnicalIssueWidget />
+    </section>
+  );
+};
+
+export default Store;

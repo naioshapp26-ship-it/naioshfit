@@ -1,0 +1,323 @@
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+_app-5effca3d7dbce84c.js:13 
+      /////////////////////
+   ///////////////////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////        Curious and driven?
+  ///////////////@@@@@@@///////        Work with us!
+  ///////////////@@@@@@@///////
+  ///////////////@@@@@@@///////        https://join.replit.com/hack.with.us
+  ////////@@@@@@@//////////////
+  ////////@@@@@@@//////////////
+  ////////@@@@@@#//////////////
+   ///////////////////////////
+      /////////////////////
+      
+Mostafa-younis:1 The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored.
+Mostafa-younis:1 The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon?
+Mostafa-younis:1 The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored.
+_app-5effca3d7dbce84c.js:13 [LaunchDarkly] LaunchDarkly client initialized
+Mostafa-younis:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+ Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'battery'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'layout-animations'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'navigation-override'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'oversized-images'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'publickey-credentials'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'speaker-selection'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'unoptimized-images'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'unsized-media'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Unrecognized feature: 'pointer-lock'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+ Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-9604e9a1b5ea3c0c.js:1
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'ambient-light-sensor'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'battery'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'execution-while-not-rendered'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'execution-while-out-of-viewport'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'layout-animations'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'legacy-image-formats'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'navigation-override'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'oversized-images'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'publickey-credentials'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'speaker-selection'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'unoptimized-images'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Unrecognized feature: 'unsized-media'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Allow attribute will take precedence over 'allowfullscreen'.
+workspace_iframe.html?initialPath=%2Fprofile&id=%3Ar2s2%3A:32 Allow attribute will take precedence over 'allowpaymentrequest'.
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/api/user-plans?latest=true:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/api/user-plans?latest=true:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+ Retrieved user from localStorage, staying on current page
+ Server session expired, using stored user data
+c99225a6-67a0-4e53-9e40-2b9570435a6b-00-2u5zkz6r4thg4.worf.replit.dev/api/user-plans?latest=true:1  Failed to load resource: the server responded with a status of 401 (Unauthorized)
+ Profile page - User data received: Object
+ Subscription data: Object
+ Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for exercise "• Squats: 4 sets × 6-8 reps"
+ Cleaned exercise name: "squats"
+ Core exercise words: Array(1)
+   Single word "squats": ✗
+ Checking video "tutorial test" for exercise "• Squats: 4 sets × 6-8 reps"
+ Cleaned exercise name: "squats"
+ Core exercise words: Array(1)
+   Single word "squats": ✗
+ Checking video "Lunges" for exercise "• Squats: 4 sets × 6-8 reps"
+ Cleaned exercise name: "squats"
+ Core exercise words: Array(1)
+   Single word "squats": ✗
+ Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for exercise "• Romanian deadlifts: 4 sets × 8-10 reps"
+ Cleaned exercise name: "romanian deadlifts"
+ Core exercise words: Array(2)
+   Word "romanian": ✗
+   Word "deadlifts": ✗
+ ✗ No match for "• Romanian deadlifts: 4 sets × 8-10 reps"
+ Checking video "tutorial test" for exercise "• Romanian deadlifts: 4 sets × 8-10 reps"
+ Cleaned exercise name: "romanian deadlifts"
+ Core exercise words: Array(2)
+   Word "romanian": ✗
+   Word "deadlifts": ✗
+ ✗ No match for "• Romanian deadlifts: 4 sets × 8-10 reps"
+ Checking video "Lunges" for exercise "• Romanian deadlifts: 4 sets × 8-10 reps"
+ Cleaned exercise name: "romanian deadlifts"
+ Core exercise words: Array(2)
+   Word "romanian": ✗
+   Word "deadlifts": ✗
+ ✗ No match for "• Romanian deadlifts: 4 sets × 8-10 reps"
+ Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for exercise "• Bulgarian split squats: 3 sets × 10 each leg"
+ Cleaned exercise name: "bulgarian split squats"
+ Core exercise words: Array(3)
+   Word "bulgarian": ✗
+   Word "split": ✗
+   Word "squats": ✗
+ ✗ No match for "• Bulgarian split squats: 3 sets × 10 each leg"
+ Checking video "tutorial test" for exercise "• Bulgarian split squats: 3 sets × 10 each leg"
+ Cleaned exercise name: "bulgarian split squats"
+ Core exercise words: Array(3)
+   Word "bulgarian": ✗
+   Word "split": ✗
+   Word "squats": ✗
+ ✗ No match for "• Bulgarian split squats: 3 sets × 10 each leg"
+ Checking video "Lunges" for exercise "• Bulgarian split squats: 3 sets × 10 each leg"
+ Cleaned exercise name: "bulgarian split squats"
+ Core exercise words: Array(3)
+   Word "bulgarian": ✗
+   Word "split": ✗
+   Word "squats": ✗
+ ✗ No match for "• Bulgarian split squats: 3 sets × 10 each leg"
+ Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for exercise "• Leg press: 3 sets × 12-15 reps"
+ Cleaned exercise name: "leg press"
+ Core exercise words: Array(2)
+   Word "leg": ✗
+   Word "press": ✗
+ ✗ No match for "• Leg press: 3 sets × 12-15 reps"
+ Checking video "tutorial test" for exercise "• Leg press: 3 sets × 12-15 reps"
+ Cleaned exercise name: "leg press"
+ Core exercise words: Array(2)
+   Word "leg": ✗
+   Word "press": ✗
+ ✗ No match for "• Leg press: 3 sets × 12-15 reps"
+ Checking video "Lunges" for exercise "• Leg press: 3 sets × 12-15 reps"
+ Cleaned exercise name: "leg press"
+ Core exercise words: Array(2)
+   Word "leg": ✗
+   Word "press": ✗
+ ✗ No match for "• Leg press: 3 sets × 12-15 reps"
+ Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for exercise "• Leg curls: 3 sets × 12-15 reps"
+ Cleaned exercise name: "leg curls"
+ Core exercise words: Array(2)
+   Word "leg": ✗
+   Word "curls": ✗
+ ✗ No match for "• Leg curls: 3 sets × 12-15 reps"
+ Checking video "tutorial test" for exercise "• Leg curls: 3 sets × 12-15 reps"
+ Cleaned exercise name: "leg curls"
+ Core exercise words: Array(2)
+   Word "leg": ✗
+   Word "curls": ✗
+ ✗ No match for "• Leg curls: 3 sets × 12-15 reps"
+ Checking video "Lunges" for exercise "• Leg curls: 3 sets × 12-15 reps"
+ Cleaned exercise name: "leg curls"
+ Core exercise words: Array(2)
+   Word "leg": ✗
+   Word "curls": ✗
+ ✗ No match for "• Leg curls: 3 sets × 12-15 reps"
+ Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for exercise "• Calf raises: 4 sets × 15-20 reps"
+ Cleaned exercise name: "calf raises"
+ Core exercise words: Array(2)
+   Word "calf": ✗
+   Word "raises": ✗
+ ✗ No match for "• Calf raises: 4 sets × 15-20 reps"
+ Checking video "tutorial test" for exercise "• Calf raises: 4 sets × 15-20 reps"
+ Cleaned exercise name: "calf raises"
+ Core exercise words: Array(2)
+   Word "calf": ✗
+   Word "raises": ✗
+ ✗ No match for "• Calf raises: 4 sets × 15-20 reps"
+ Checking video "Lunges" for exercise "• Calf raises: 4 sets × 15-20 reps"
+ Cleaned exercise name: "calf raises"
+ Core exercise words: Array(2)
+   Word "calf": ✗
+   Word "raises": ✗
+ ✗ No match for "• Calf raises: 4 sets × 15-20 reps"
+ Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for workout "Legs (Quads, Hamstrings, Glutes)"
+ Cleaned workout name: "legs quads hamstrings glutes"
+ Video tags: Array(1)
+ ✗ Tag "dumbbell rows" does not sufficiently match workout "legs quads hamstrings glutes"
+ ✗ Video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" does not match workout "Legs (Quads, Hamstrings, Glutes)"
+ Checking video "tutorial test" for workout "Legs (Quads, Hamstrings, Glutes)"
+ Cleaned workout name: "legs quads hamstrings glutes"
+ Video tags: Array(0)
+ ✗ Video "tutorial test" does not match workout "Legs (Quads, Hamstrings, Glutes)"
+ Checking video "Lunges" for workout "Legs (Quads, Hamstrings, Glutes)"
+ Cleaned workout name: "legs quads hamstrings glutes"
+ Video tags: Array(1)
+ ✗ Tag "lunges" does not sufficiently match workout "legs quads hamstrings glutes"
+Console.js:61 ✗ Video "Lunges" does not match workout "Legs (Quads, Hamstrings, Glutes)"
+Console.js:61 Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for workout "Push (Chest, Shoulders, Triceps)"
+Console.js:61 Cleaned workout name: "push chest shoulders triceps"
+Console.js:61 Video tags: Array(1)
+Console.js:61 ✗ Tag "dumbbell rows" does not sufficiently match workout "push chest shoulders triceps"
+Console.js:61 ✗ Video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" does not match workout "Push (Chest, Shoulders, Triceps)"
+Console.js:61 Checking video "tutorial test" for workout "Push (Chest, Shoulders, Triceps)"
+Console.js:61 Cleaned workout name: "push chest shoulders triceps"
+Console.js:61 Video tags: Array(0)
+Console.js:61 ✗ Video "tutorial test" does not match workout "Push (Chest, Shoulders, Triceps)"
+Console.js:61 Checking video "Lunges" for workout "Push (Chest, Shoulders, Triceps)"
+Console.js:61 Cleaned workout name: "push chest shoulders triceps"
+Console.js:61 Video tags: Array(1)
+Console.js:61 ✗ Tag "lunges" does not sufficiently match workout "push chest shoulders triceps"
+Console.js:61 ✗ Video "Lunges" does not match workout "Push (Chest, Shoulders, Triceps)"
+Console.js:61 Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for workout "Pull (Back, Biceps)"
+Console.js:61 Cleaned workout name: "pull back biceps"
+Console.js:61 Video tags: Array(1)
+Console.js:61 ✗ Tag "dumbbell rows" does not sufficiently match workout "pull back biceps"
+Console.js:61 ✗ Video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" does not match workout "Pull (Back, Biceps)"
+Console.js:61 Checking video "tutorial test" for workout "Pull (Back, Biceps)"
+Console.js:61 Cleaned workout name: "pull back biceps"
+Console.js:61 Video tags: Array(0)
+Console.js:61 ✗ Video "tutorial test" does not match workout "Pull (Back, Biceps)"
+Console.js:61 Checking video "Lunges" for workout "Pull (Back, Biceps)"
+Console.js:61 Cleaned workout name: "pull back biceps"
+Console.js:61 Video tags: Array(1)
+Console.js:61 ✗ Tag "lunges" does not sufficiently match workout "pull back biceps"
+Console.js:61 ✗ Video "Lunges" does not match workout "Pull (Back, Biceps)"
+Console.js:61 Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for workout "Push (Focus on Shoulders)"
+Console.js:61 Cleaned workout name: "push focus on shoulders"
+Console.js:61 Video tags: Array(1)
+Console.js:61 ✗ Tag "dumbbell rows" does not sufficiently match workout "push focus on shoulders"
+Console.js:61 ✗ Video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" does not match workout "Push (Focus on Shoulders)"
+Console.js:61 Checking video "tutorial test" for workout "Push (Focus on Shoulders)"
+Console.js:61 Cleaned workout name: "push focus on shoulders"
+Console.js:61 Video tags: Array(0)
+Console.js:61 ✗ Video "tutorial test" does not match workout "Push (Focus on Shoulders)"
+Console.js:61 Checking video "Lunges" for workout "Push (Focus on Shoulders)"
+Console.js:61 Cleaned workout name: "push focus on shoulders"
+Console.js:61 Video tags: Array(1)
+Console.js:61 ✗ Tag "lunges" does not sufficiently match workout "push focus on shoulders"
+Console.js:61 ✗ Video "Lunges" does not match workout "Push (Focus on Shoulders)"
+Console.js:61 Checking video "ازاى تاخد احتياجك اليومى من البروتين فى فترة التنشيف" for exercise "• test extension: 4 sets × 6-8 reps"
+Console.js:61 Cleaned exercise name: "test extension"
+Console.js:61 Core exercise words: Array(2)
+Console.js:61   Word "test": ✗
+Console.js:61   Word "extension": ✗
+Console.js:61 ✗ No match for "• test extension: 4 sets × 6-8 reps"
+Console.js:61 Checking video "tutorial test" for exercise "• test extension: 4 sets × 6-8 reps"
+Console.js:61 Cleaned exercise name: "test extension"
+Console.js:61 Core exercise words: Array(2)
+Console.js:61   Word "test": ✓
+Console.js:61   Word "extension": ✗
+Console.js:61 ✗ No match for "• test extension: 4 sets × 6-8 reps"
+Console.js:61 Checking video "Lunges" for exercise "• test extension: 4 sets × 6-8 reps"
+Console.js:61 Cleaned exercise name: "test extension"
+Console.js:61 Core exercise words: Array(2)
+Console.js:61   Word "test": ✗
+Console.js:61   Word "extension": ✗
+Console.js:61 ✗ No match for "• test extension: 4 sets × 6-8 reps"
+Console.js:61 Profile page - User data received: Object
+Console.js:61 Subscription data: Object

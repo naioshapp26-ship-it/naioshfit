@@ -1,0 +1,183 @@
+(function () {
+  // Helper: convert NodeList to array
+  const toArr = (x) => Array.prototype.slice.call(x || []);
+
+  // Find the form document (many 123FB forms are inside an iframe)
+  const candidateDocs = [document]
+    .concat(toArr(document.querySelectorAll('iframe')).map(f => {
+      try { return f.contentDocument || f.contentWindow?.document; } catch { return null; }
+    }))
+    .filter(Boolean);
+
+  // Heuristic: pick the doc that actually contains inputs/selects/textareas
+  let formDoc = candidateDocs.find(d => d.querySelector('form input, form select, form textarea')) || document;
+
+  // Try to identify the main form element
+  const forms = toArr(formDoc.querySelectorAll('form'));
+  const formEl = forms.find(f => f.querySelector('input,select,textarea')) || forms[0] || formDoc;
+
+  // Helpers
+  const getLabelText = (el) => {
+    const id = el.getAttribute('id');
+    let lbl = id ? formDoc.querySelector(`label[for="${CSS.escape(id)}"]`) : null;
+    if (!lbl) {
+      // some builders wrap input inside label
+      lbl = el.closest('label');
+    }
+    if (!lbl) {
+      // sometimes label resides in a parent with a class like .field-label
+      const alt = el.closest('[class*="field"], .form-group, .control, .oneField');
+      const cand = alt?.querySelector('.field-label, .label, label, [class*="label"]');
+      if (cand) lbl = cand;
+    }
+    return (lbl?.innerText || lbl?.textContent || '').trim().replace(/\s+/g, ' ');
+  };
+
+  const uniq = (arr) => [...new Set(arr)];
+
+  // Collect raw controls
+  const inputs = toArr(formDoc.querySelectorAll('input'));
+  const selects = toArr(formDoc.querySelectorAll('select'));
+  const textareas = toArr(formDoc.querySelectorAll('textarea'));
+
+  // Group radios/checkboxes by name
+  const byName = {};
+  inputs.forEach(inp => {
+    const t = (inp.type || '').toLowerCase();
+    const n = inp.name || '';
+    if (t === 'radio' || t === 'checkbox') {
+      if (!byName[n]) byName[n] = [];
+      byName[n].push(inp);
+    }
+  });
+
+  const isVisible = (el) => {
+    const s = el instanceof Element ? getComputedStyle(el) : null;
+    if (!s) return true;
+    return s.display !== 'none' && s.visibility !== 'hidden';
+  };
+
+  const fields = [];
+
+  // Handle grouped radios/checkboxes
+  Object.entries(byName).forEach(([name, group]) => {
+    // Skip if empty or name missing
+    if (!name || !group.length) return;
+    // Representative element for group metadata
+    const rep = group[0];
+    const type = rep.type.toLowerCase(); // 'radio' or 'checkbox'
+    const parent = rep.closest('[class*="field"], .form-group, .control, .oneField') || rep.closest('fieldset') || rep.parentElement;
+    const labelText = getLabelText(rep) || (parent?.querySelector('legend')?.innerText || '').trim();
+
+    const options = group.map(g => ({
+      value: g.value || '',
+      label: (g.closest('label')?.innerText || formDoc.querySelector(`label[for="${g.id}"]`)?.innerText || g.value || '').trim().replace(/\s+/g, ' '),
+      id: g.id || null,
+      checked: !!g.checked
+    }));
+
+    fields.push({
+      kind: type === 'radio' ? 'radio-group' : 'checkbox-group',
+      name,
+      id: uniq(group.map(g => g.id).filter(Boolean)),
+      label: labelText,
+      required: !!group.find(g => g.required),
+      options
+    });
+  });
+
+  // Handle single inputs (excluding radios/checkboxes already grouped)
+  inputs
+    .filter(inp => !['radio','checkbox'].includes((inp.type||'').toLowerCase()))
+    .forEach(inp => {
+      fields.push({
+        kind: (inp.type || 'text').toLowerCase(),
+        name: inp.name || null,
+        id: inp.id || null,
+        label: getLabelText(inp),
+        placeholder: inp.placeholder || null,
+        required: !!inp.required,
+        pattern: inp.pattern || null,
+        min: inp.min ?? null,
+        max: inp.max ?? null
+      });
+    });
+
+  // Handle selects
+  selects.forEach(sel => {
+    const options = toArr(sel.options).map(o => ({
+      value: o.value,
+      label: (o.text || '').trim(),
+      selected: o.selected
+    }));
+    fields.push({
+      kind: 'select',
+      name: sel.name || null,
+      id: sel.id || null,
+      label: getLabelText(sel),
+      required: !!sel.required,
+      multiple: !!sel.multiple,
+      options
+    });
+  });
+
+  // Handle textareas
+  textareas.forEach(ta => {
+    fields.push({
+      kind: 'textarea',
+      name: ta.name || null,
+      id: ta.id || null,
+      label: getLabelText(ta),
+      placeholder: ta.placeholder || null,
+      required: !!ta.required,
+      maxlength: ta.maxLength > 0 ? ta.maxLength : null
+    });
+  });
+
+  // Filter out hidden/system elements
+  const filtered = fields.filter(f => {
+    // no name & no id usually means non-input decorative
+    const hasIdentifier = (Array.isArray(f.id) ? f.id.length : f.id) || f.name;
+    return hasIdentifier;
+  });
+
+  // Output JSON
+  console.clear();
+  console.log('📋 Extracted form fields:\n', filtered);
+
+  // Also download CSV
+  const rows = [
+    ['label','kind','name','id','required','placeholder_or_pattern','options_count','options_preview']
+  ];
+
+  filtered.forEach(f => {
+    const idStr = Array.isArray(f.id) ? f.id.join('|') : (f.id || '');
+    const req = f.required ? 'yes' : 'no';
+    let hint = f.placeholder || f.pattern || '';
+    let optCount = '';
+    let optPrev = '';
+
+    if (f.options) {
+      optCount = String(f.options.length);
+      optPrev = f.options.slice(0,5).map(o => `${o.label}:${o.value}`).join(' / ');
+    }
+    rows.push([
+      (f.label || '').replace(/\n/g,' ').trim(),
+      f.kind,
+      f.name || '',
+      idStr,
+      req,
+      hint,
+      optCount,
+      optPrev
+    ]);
+  });
+
+  const csv = rows.map(r => r.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'form-fields.csv';
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1500);
+})();

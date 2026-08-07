@@ -1,0 +1,31 @@
+# SaaS Multi-Tenant Environment Variables
+
+These environment variables have been set in Railway for the SaaS multi-tenant functionality.
+
+## Security Keys (Keep Secret!)
+
+```
+TENANT_DB_ENCRYPTION_KEY=dd6f8e78d1456074ee529bb0503599b98fc2e8fc665ac383daa569fb52fb3c58
+SAAS_ADMIN_TOKEN=8633f5ee2dff19c8a272ba2bc45e11e32d3455a80ad97dfef346e19ccf4fdb4a
+```
+
+## Database Configuration
+
+```
+CENTRAL_DATABASE_URL=postgresql://postgres:wWLSoGvNpROTODgkatyFXfRVsNtavVAe@shuttle.proxy.rlwy.net:41026/railway?sslmode=require
+PROVISIONING_ADMIN_DATABASE_URL=postgresql://postgres:wWLSoGvNpROTODgkatyFXfRVsNtavVAe@shuttle.proxy.rlwy.net:41026/railway?sslmode=require
+TENANT_DATABASE_URL_TEMPLATE=postgresql://postgres:wWLSoGvNpROTODgkatyFXfRVsNtavVAe@shuttle.proxy.rlwy.net:41026/{db}?sslmode=require
+```
+
+## Domain Configuration
+
+```
+MAIN_DOMAIN=naioshfit.com
+```
+
+## Notes
+
+- The TENANT_DB_ENCRYPTION_KEY is used to encrypt tenant database URLs in the central database
+- The SAAS_ADMIN_TOKEN is required for admin endpoints at `/api/admin/saas/*`
+- The TENANT_DATABASE_URL_TEMPLATE contains `{db}` which will be replaced with the tenant's database name
+- All tenant databases will be created in the same PostgreSQL instance with prefix `railway_tenant_{subdomain}`

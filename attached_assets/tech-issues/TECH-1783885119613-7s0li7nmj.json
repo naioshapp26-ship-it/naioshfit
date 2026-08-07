@@ -1,0 +1,19 @@
+{
+  "issueType": "bug",
+  "description": "[Account: Raghad admin | @admin@hotmail.com | admin@hotmail.com]\ntest",
+  "userEmail": "admin@hotmail.com",
+  "phoneNumber": "",
+  "reporterUserId": 133,
+  "reporterName": "Raghad admin",
+  "reporterUsername": "admin@hotmail.com",
+  "reporterAccount": "Raghad admin | @admin@hotmail.com | admin@hotmail.com",
+  "screenshot": "",
+  "screenshotFilename": "",
+  "screenshotPath": "",
+  "screenshotSize": 0,
+  "screenshotType": "",
+  "timestamp": "2026-07-12T19:38:39.570Z",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0",
+  "pageUrl": "https://naioshfit.com/admin",
+  "reportId": "TECH-1783885119613-7s0li7nmj"
+}

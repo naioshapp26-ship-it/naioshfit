@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    
+    <!-- PWA Meta Tags -->
+    <title>Naiosh Fit</title>
+    <meta name="description" content="تطبيق شامل لتتبع اللياقة البدنية والتمارين والتغذية ومراقبة التقدم" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Naiosh Fit" />
+    <meta property="og:description" content="تطبيق شامل لتتبع اللياقة البدنية والتمارين والتغذية ومراقبة التقدم" />
+    <meta property="og:image" content="/naioshfit-logo-new.png?v=2" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Naiosh Fit" />
+    <meta property="twitter:description" content="تطبيق شامل لتتبع اللياقة البدنية والتمارين والتغذية ومراقبة التقدم" />
+    <meta property="twitter:image" content="/naioshfit-logo-new.png?v=2" />
+
+    <meta name="theme-color" content="#e02424" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Naiosh Fit" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Naiosh Fit" />
+    
+    <!-- Manifest Link -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/naioshfit-logo-new.png?v=3" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=3" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=3" />
+    
+    <!-- Windows specific -->
+    <meta name="msapplication-TileColor" content="#e02424" />
+    <meta name="msapplication-TileImage" content="/icons/icon-192x192.png?v=2" />
+    
+    <!-- Prevent zoom on input focus (iOS) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- Disable automatic browser / Google translation to avoid React DOM diff issues -->
+    <meta name="google" content="notranslate" />
+    <meta http-equiv="Content-Language" content="ar,en" />
+    <!-- Cairo font: supports Arabic (wght 200-900) and Latin -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300..700&display=swap" rel="stylesheet" />
+    <style>
+      /* Prevent auto-translation wrappers from being injected inside the React root */
+      .notranslate, .notranslate * { unicode-bidi: isolate; }
+    </style>
+  </head>
+  <body>
+    <div id="root" translate="no" class="notranslate"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
+    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+  </body>
+</html>

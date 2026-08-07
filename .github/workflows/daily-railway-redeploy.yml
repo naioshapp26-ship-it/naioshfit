@@ -1,0 +1,35 @@
+name: Daily Railway Redeploy
+
+on:
+  schedule:
+    - cron: '0 4 * * *' # Every day at 04:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Railway CLI
+        run: |
+          curl -fsSL https://railway.app/install.sh | sh
+          echo "$HOME/.railway/bin" >> $GITHUB_PATH
+
+      - name: Trigger Redeploy
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
+          RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
+        run: |
+          railway logout || true
+          if [ -n "$RAILWAY_PROJECT_ID" ]; then
+            export RAILWAY_PROJECT="$RAILWAY_PROJECT_ID"
+          fi
+          if [ -n "$RAILWAY_SERVICE_ID" ]; then
+            export RAILWAY_SERVICE="$RAILWAY_SERVICE_ID"
+          fi
+          # Trigger a no-op redeploy by touching a file and running up
+          echo "Redeploy $(date -u +%FT%TZ)" > .redeploy-trigger
+          railway up --detach --service "$RAILWAY_SERVICE_ID"

@@ -1,0 +1,188 @@
+
+> rest-express@1.0.0 build
+> NODE_OPTIONS='--max-old-space-size=4096' vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist && node scripts/copy-migrations.js && node scripts/write-version.js
+
+vite v5.4.21 building for production...
+transforming...
+✓ 3958 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/public/index.html                                  3.56 kB │ gzip:   1.25 kB
+../dist/public/assets/BlogManager-DZrYvFpI.css            22.04 kB │ gzip:   3.51 kB
+../dist/public/assets/index-BrUdONTE.css                 128.06 kB │ gzip:  20.44 kB
+../dist/public/assets/chunk-YJRvBfHb.js                    0.06 kB │ gzip:   0.07 kB
+../dist/public/assets/chunk-DKZSpXQW.js                    0.15 kB │ gzip:   0.15 kB
+../dist/public/assets/chunk-B0GntckN.js                    0.65 kB │ gzip:   0.38 kB
+../dist/public/assets/chunk-CXTK6azs.js                    0.74 kB │ gzip:   0.39 kB
+../dist/public/assets/not-found.tsx-ZMYfcWRF.js            0.77 kB │ gzip:   0.42 kB
+../dist/public/assets/chunk-BlE_Ziys.js                    0.84 kB │ gzip:   0.45 kB
+../dist/public/assets/chunk-CU9nVcvQ.js                    0.92 kB │ gzip:   0.48 kB
+../dist/public/assets/chunk-B3Du-4CD.js                    1.03 kB │ gzip:   0.39 kB
+../dist/public/assets/chunk-BHEL3VKz.js                    1.08 kB │ gzip:   0.60 kB
+../dist/public/assets/Alerts.tsx-B1kUFtxL.js               1.13 kB │ gzip:   0.51 kB
+../dist/public/assets/Community.tsx-D3_UURm1.js            1.14 kB │ gzip:   0.51 kB
+../dist/public/assets/chunk-7SmFyBZF.js                    1.14 kB │ gzip:   0.48 kB
+../dist/public/assets/AdsCourses.tsx-CR9F-7YI.js           1.14 kB │ gzip:   0.53 kB
+../dist/public/assets/Payments.tsx-DYuaUlkh.js             1.15 kB │ gzip:   0.53 kB
+../dist/public/assets/Taxonomy.tsx-DT8u8r6J.js             1.15 kB │ gzip:   0.53 kB
+../dist/public/assets/SecurityOps.tsx-DVh8XAye.js          1.15 kB │ gzip:   0.53 kB
+../dist/public/assets/ContentHub.tsx-N9CyozKy.js           1.18 kB │ gzip:   0.55 kB
+../dist/public/assets/FilesReports.tsx-Ix7tOoAO.js         1.22 kB │ gzip:   0.58 kB
+../dist/public/assets/Supplements.tsx-BiebvTGb.js          1.28 kB │ gzip:   0.58 kB
+../dist/public/assets/chunk-Dd-2HPw8.js                    1.50 kB │ gzip:   0.53 kB
+../dist/public/assets/TenantOps.tsx-BCsiaXMu.js            1.59 kB │ gzip:   0.62 kB
+../dist/public/assets/chunk-DtCZwJ6h.js                    1.60 kB │ gzip:   0.79 kB
+../dist/public/assets/chunk-BTQQXYqv.js                    1.77 kB │ gzip:   0.78 kB
+../dist/public/assets/chunk-BTUIeigi.js                    2.21 kB │ gzip:   1.08 kB
+../dist/public/assets/chunk-Bawo-MPx.js                    2.26 kB │ gzip:   0.89 kB
+../dist/public/assets/chunk-B6i1S43h.js                    2.57 kB │ gzip:   0.86 kB
+../dist/public/assets/tos.tsx-y_84_OOr.js                  2.63 kB │ gzip:   0.66 kB
+../dist/public/assets/chunk-Dfnd0ZGX.js                    3.54 kB │ gzip:   1.51 kB
+../dist/public/assets/chunk-BRZ-zA6S.js                    4.02 kB │ gzip:   1.81 kB
+../dist/public/assets/privacy-policy.tsx-n_6kXzHf.js       4.45 kB │ gzip:   0.83 kB
+../dist/public/assets/reset.tsx-DrvI8X1a.js                4.75 kB │ gzip:   2.11 kB
+../dist/public/assets/orders.tsx-DoRiLz2T.js               4.82 kB │ gzip:   1.64 kB
+../dist/public/assets/ProductDetail.tsx-BK4C3w98.js        5.85 kB │ gzip:   2.10 kB
+../dist/public/assets/progress.tsx-Ck3vcasR.js             6.29 kB │ gzip:   2.14 kB
+../dist/public/assets/LessonView.tsx-7Q1y_GF3.js           6.59 kB │ gzip:   2.38 kB
+../dist/public/assets/auth.tsx-Bk3SGZm4.js                 7.02 kB │ gzip:   2.98 kB
+../dist/public/assets/CertificateView.tsx-D6OljYYb.js      7.60 kB │ gzip:   2.66 kB
+../dist/public/assets/survey.tsx-X8Rmychc.js              11.32 kB │ gzip:   2.96 kB
+../dist/public/assets/CourseDetail.tsx-SlaJ_TpX.js        11.86 kB │ gzip:   3.45 kB
+../dist/public/assets/dashboard.tsx-ITxTiiNN.js           12.05 kB │ gzip:   3.68 kB
+../dist/public/assets/ManageLessons.tsx-LGbjZmup.js       12.37 kB │ gzip:   3.69 kB
+../dist/public/assets/chunk-DRimvbF2.js                   12.45 kB │ gzip:   3.93 kB
+../dist/public/assets/ManageOrders.tsx-CwKYM18E.js        12.56 kB │ gzip:   3.16 kB
+../dist/public/assets/store.tsx-CwrKQ3lE.js               12.70 kB │ gzip:   2.81 kB
+../dist/public/assets/Courses.tsx-C9vDL0L_.js             12.89 kB │ gzip:   3.77 kB
+../dist/public/assets/cart.tsx-DlV-xwC_.js                13.07 kB │ gzip:   3.67 kB
+../dist/public/assets/SignupWithPayment.tsx-C1_9644y.js   14.15 kB │ gzip:   3.88 kB
+../dist/public/assets/epics.tsx-DYU649nQ.js               14.37 kB │ gzip:   4.66 kB
+../dist/public/assets/ContentLibrary.tsx-CC22It4f.js      15.64 kB │ gzip:   4.67 kB
+../dist/public/assets/settings.tsx-B7xIRpoq.js            16.07 kB │ gzip:   4.44 kB
+../dist/public/assets/ManageCourses.tsx-Bsh_s6N0.js       16.10 kB │ gzip:   4.30 kB
+../dist/public/assets/chunk-zXOgLO-4.js                   20.16 kB │ gzip:   5.71 kB
+../dist/public/assets/gym.tsx-96HKiGLX.js                 20.25 kB │ gzip:   4.73 kB
+../dist/public/assets/AiAssistant.tsx-D9xueMWp.js         21.73 kB │ gzip:   6.51 kB
+../dist/public/assets/blog.tsx-BRzi-_Ym.js                25.98 kB │ gzip:   9.81 kB
+../dist/public/assets/chunk-xALIpQ4Q.js                   26.40 kB │ gzip:   9.55 kB
+../dist/public/assets/chunk-CQoRoSfC.js                   27.26 kB │ gzip:   8.82 kB
+../dist/public/assets/nutrition.tsx-BH2FKvd4.js           32.47 kB │ gzip:   7.84 kB
+../dist/public/assets/workouts.tsx-CfG2dAHb.js            36.06 kB │ gzip:  11.03 kB
+../dist/public/assets/profile.tsx-PtzX3aNQ.js             36.43 kB │ gzip:   7.56 kB
+../dist/public/assets/chunk-DNytYejG.js                   45.89 kB │ gzip:  13.83 kB
+../dist/public/assets/chunk-BtIiWp7b.js                   59.91 kB │ gzip:  14.08 kB
+../dist/public/assets/signup.tsx-F-Sykpmn.js              60.77 kB │ gzip:  13.16 kB
+../dist/public/assets/chunk-CBVFPl62.js                   65.97 kB │ gzip:  15.33 kB
+../dist/public/assets/coach.tsx-Dsdx7IB1.js               77.21 kB │ gzip:  16.04 kB
+../dist/public/assets/chunk-CDCd-y3j.js                   95.06 kB │ gzip:  21.64 kB
+../dist/public/assets/chunk-B9XS-eU_.js                  117.23 kB │ gzip:  35.41 kB
+../dist/public/assets/home.tsx-BBD1RNqj.js               117.42 kB │ gzip:  37.53 kB
+../dist/public/assets/chunk-etieWQxH.js                  141.04 kB │ gzip:  45.12 kB
+../dist/public/assets/admin.tsx-DyON5tD3.js              186.32 kB │ gzip:  33.65 kB
+../dist/public/assets/html2canvas.esm.js-BPY6V10C.js     198.70 kB │ gzip:  46.38 kB
+../dist/public/assets/chunk-nGxtXx_g.js                  231.09 kB │ gzip:  51.52 kB
+../dist/public/assets/index-fkx21IL7.js                  287.39 kB │ gzip:  97.24 kB
+../dist/public/assets/chunk-DWzmtnOP.js                  401.67 kB │ gzip: 102.67 kB
+../dist/public/assets/xlsx.mjs-ByDo_lG2.js               417.25 kB │ gzip: 138.85 kB
+✓ built in 41.63s
+
+✨ [vite-plugin-compression]:algorithm=gzip - compressed file successfully: 
+public/assets/AiAssistant.tsx-D9xueMWp.js.gz         21.65kb / gzip: 6.34kb
+public/assets/BlogManager-DZrYvFpI.css.gz            21.53kb / gzip: 3.40kb
+public/assets/ContentLibrary.tsx-CC22It4f.js.gz      15.27kb / gzip: 4.55kb
+public/assets/Courses.tsx-C9vDL0L_.js.gz             12.58kb / gzip: 3.67kb
+public/assets/ManageCourses.tsx-Bsh_s6N0.js.gz       15.74kb / gzip: 4.18kb
+public/assets/ManageLessons.tsx-LGbjZmup.js.gz       12.14kb / gzip: 3.60kb
+public/assets/ManageOrders.tsx-CwKYM18E.js.gz        12.27kb / gzip: 3.08kb
+public/assets/CourseDetail.tsx-SlaJ_TpX.js.gz        11.59kb / gzip: 3.37kb
+public/assets/SignupWithPayment.tsx-C1_9644y.js.gz   13.81kb / gzip: 3.79kb
+public/assets/blog.tsx-BRzi-_Ym.js.gz                25.37kb / gzip: 9.57kb
+public/assets/cart.tsx-DlV-xwC_.js.gz                12.76kb / gzip: 3.58kb
+public/assets/chunk-CBVFPl62.js.gz                   64.52kb / gzip: 14.92kb
+public/assets/chunk-BtIiWp7b.js.gz                   58.50kb / gzip: 13.72kb
+public/assets/chunk-DRimvbF2.js.gz                   12.16kb / gzip: 3.83kb
+public/assets/chunk-CQoRoSfC.js.gz                   26.62kb / gzip: 8.50kb
+public/assets/chunk-DNytYejG.js.gz                   44.82kb / gzip: 13.48kb
+public/assets/chunk-xALIpQ4Q.js.gz                   25.78kb / gzip: 9.33kb
+public/assets/chunk-zXOgLO-4.js.gz                   19.69kb / gzip: 5.57kb
+public/assets/dashboard.tsx-ITxTiiNN.js.gz           11.79kb / gzip: 3.59kb
+public/assets/gym.tsx-96HKiGLX.js.gz                 19.78kb / gzip: 4.61kb
+public/assets/epics.tsx-DYU649nQ.js.gz               14.03kb / gzip: 4.54kb
+public/assets/coach.tsx-Dsdx7IB1.js.gz               75.45kb / gzip: 15.58kb
+public/assets/profile.tsx-PtzX3aNQ.js.gz             35.57kb / gzip: 7.36kb
+public/assets/nutrition.tsx-BH2FKvd4.js.gz           31.73kb / gzip: 7.63kb
+public/assets/settings.tsx-B7xIRpoq.js.gz            15.69kb / gzip: 4.33kb
+public/assets/store.tsx-CwrKQ3lE.js.gz               12.41kb / gzip: 2.74kb
+public/assets/survey.tsx-X8Rmychc.js.gz              12.09kb / gzip: 2.89kb
+public/assets/signup.tsx-F-Sykpmn.js.gz              62.62kb / gzip: 12.82kb
+public/assets/workouts.tsx-CfG2dAHb.js.gz            37.31kb / gzip: 10.73kb
+public/assets/chunk-CDCd-y3j.js.gz                   92.83kb / gzip: 21.06kb
+public/assets/index-BrUdONTE.css.gz                  125.07kb / gzip: 19.81kb
+public/assets/admin.tsx-DyON5tD3.js.gz               182.16kb / gzip: 32.59kb
+public/assets/chunk-B9XS-eU_.js.gz                   114.48kb / gzip: 34.52kb
+public/assets/chunk-etieWQxH.js.gz                   137.74kb / gzip: 43.96kb
+public/assets/home.tsx-BBD1RNqj.js.gz                114.67kb / gzip: 36.55kb
+public/assets/html2canvas.esm.js-BPY6V10C.js.gz      194.90kb / gzip: 45.07kb
+public/assets/chunk-nGxtXx_g.js.gz                   225.68kb / gzip: 50.04kb
+public/assets/index-fkx21IL7.js.gz                   321.52kb / gzip: 94.75kb
+public/assets/chunk-DWzmtnOP.js.gz                   392.26kb / gzip: 99.94kb
+public/assets/xlsx.mjs-ByDo_lG2.js.gz                407.91kb / gzip: 135.29kb
+
+
+
+✨ [vite-plugin-compression]:algorithm=brotliCompress - compressed file successfully: 
+public/assets/AiAssistant.tsx-D9xueMWp.js.br         21.65kb / brotliCompress: 5.52kb
+public/assets/BlogManager-DZrYvFpI.css.br            21.53kb / brotliCompress: 2.92kb
+public/assets/ContentLibrary.tsx-CC22It4f.js.br      15.27kb / brotliCompress: 4.06kb
+public/assets/CourseDetail.tsx-SlaJ_TpX.js.br        11.59kb / brotliCompress: 3.00kb
+public/assets/Courses.tsx-C9vDL0L_.js.br             12.58kb / brotliCompress: 3.26kb
+public/assets/ManageCourses.tsx-Bsh_s6N0.js.br       15.74kb / brotliCompress: 3.66kb
+public/assets/ManageLessons.tsx-LGbjZmup.js.br       12.14kb / brotliCompress: 3.19kb
+public/assets/ManageOrders.tsx-CwKYM18E.js.br        12.27kb / brotliCompress: 2.70kb
+public/assets/SignupWithPayment.tsx-C1_9644y.js.br   13.81kb / brotliCompress: 3.29kb
+public/assets/cart.tsx-DlV-xwC_.js.br                12.76kb / brotliCompress: 3.13kb
+public/assets/blog.tsx-BRzi-_Ym.js.br                25.37kb / brotliCompress: 8.58kb
+public/assets/chunk-BtIiWp7b.js.br                   58.50kb / brotliCompress: 12.12kb
+public/assets/chunk-CBVFPl62.js.br                   64.52kb / brotliCompress: 12.93kb
+public/assets/chunk-CQoRoSfC.js.br                   26.62kb / brotliCompress: 7.34kb
+public/assets/chunk-DRimvbF2.js.br                   12.16kb / brotliCompress: 3.40kb
+public/assets/chunk-DNytYejG.js.br                   44.82kb / brotliCompress: 12.16kb
+public/assets/chunk-xALIpQ4Q.js.br                   25.78kb / brotliCompress: 8.53kb
+public/assets/chunk-zXOgLO-4.js.br                   19.69kb / brotliCompress: 4.98kb
+public/assets/dashboard.tsx-ITxTiiNN.js.br           11.79kb / brotliCompress: 3.19kb
+public/assets/epics.tsx-DYU649nQ.js.br               14.03kb / brotliCompress: 3.91kb
+public/assets/coach.tsx-Dsdx7IB1.js.br               75.45kb / brotliCompress: 13.40kb
+public/assets/gym.tsx-96HKiGLX.js.br                 19.78kb / brotliCompress: 4.03kb
+public/assets/nutrition.tsx-BH2FKvd4.js.br           31.73kb / brotliCompress: 6.78kb
+public/assets/signup.tsx-F-Sykpmn.js.br              62.62kb / brotliCompress: 10.72kb
+public/assets/store.tsx-CwrKQ3lE.js.br               12.41kb / brotliCompress: 2.38kb
+public/assets/settings.tsx-B7xIRpoq.js.br            15.69kb / brotliCompress: 3.76kb
+public/assets/profile.tsx-PtzX3aNQ.js.br             35.57kb / brotliCompress: 6.41kb
+public/assets/survey.tsx-X8Rmychc.js.br              12.09kb / brotliCompress: 2.32kb
+public/assets/workouts.tsx-CfG2dAHb.js.br            37.31kb / brotliCompress: 9.36kb
+public/assets/chunk-B9XS-eU_.js.br                   114.48kb / brotliCompress: 29.65kb
+public/assets/admin.tsx-DyON5tD3.js.br               182.16kb / brotliCompress: 26.16kb
+public/assets/chunk-CDCd-y3j.js.br                   92.83kb / brotliCompress: 18.13kb
+public/assets/index-BrUdONTE.css.br                  125.07kb / brotliCompress: 16.08kb
+public/assets/chunk-etieWQxH.js.br                   137.74kb / brotliCompress: 38.40kb
+public/assets/home.tsx-BBD1RNqj.js.br                114.67kb / brotliCompress: 32.50kb
+public/assets/chunk-nGxtXx_g.js.br                   225.68kb / brotliCompress: 41.11kb
+public/assets/html2canvas.esm.js-BPY6V10C.js.br      194.90kb / brotliCompress: 36.57kb
+public/assets/index-fkx21IL7.js.br                   321.52kb / brotliCompress: 74.23kb
+public/assets/chunk-DWzmtnOP.js.br                   392.26kb / brotliCompress: 82.26kb
+public/assets/xlsx.mjs-ByDo_lG2.js.br                407.91kb / brotliCompress: 111.90kb
+
+
+
+  dist/index.js  948.5kb
+
+⚡ Done in 91ms
+[BUILD] Copying migrations folder to dist...
+[BUILD] Copying SaaS migrations folder to dist...
+[BUILD] Migrations copied successfully
+[version] wrote /workspaces/naioshfit/dist/public/version.json: {
+  version: 'd938174',
+  commit: 'd938174772b0c1238065ac7556576aee38dc8eb8',
+  builtAt: '2026-02-02T10:51:48.858Z'
+}
