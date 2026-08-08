@@ -1,0 +1,10 @@
+node_modules
+dist
+docs
+.git
+.env
+.env.*
+*.log
+uploads
+.cursor
+.vscode

@@ -39,5 +39,6 @@ run(npx, [
 ]);
 run('node', ['scripts/copy-migrations.js']);
 run('node', ['scripts/write-version.js']);
+run('node', ['scripts/verify-client-build.js']);
 
 console.log('[BUILD] Production build completed successfully.');

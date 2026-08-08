@@ -1,0 +1,17 @@
+# Railway/Nixpacks build config (used when railway.toml buildCommand is not applied)
+[phases.setup]
+nixPkgs = ["nodejs_22"]
+
+[phases.install]
+cmds = ["npm ci"]
+dependsOn = ["setup"]
+
+[phases.build]
+cmds = ["npm run build:railway"]
+dependsOn = ["install"]
+
+[start]
+cmd = "NODE_ENV=production npm run start:prod"
+
+[variables]
+NPM_CONFIG_PRODUCTION = "false"
