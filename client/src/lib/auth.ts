@@ -2,9 +2,13 @@ import { apiRequest } from "./queryClient";
 import { User, InsertUser } from "@shared/schema";
 import { clearGuestUser, getStoredGuestUser } from "@/lib/guest-utils";
 
-export async function login(username: string, password: string): Promise<User> {
+export async function login(email: string, password: string): Promise<User> {
   clearGuestUser();
-  const response = await apiRequest("POST", "/api/auth/login", { username, password });
+  // Passport LocalStrategy is configured with usernameField: 'email'
+  const response = await apiRequest("POST", "/api/auth/login", {
+    email: email.trim().toLowerCase(),
+    password,
+  });
   const userData = await response.json();
   
   // Store user data in localStorage for persistence

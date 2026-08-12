@@ -87,16 +87,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     loadUser();
   }, []);
 
-  const login = async (username: string, password: string) => {
+  const login = async (email: string, password: string) => {
     try {
       setLoading(true);
       setError(null);
       clearGuestUser();
-      const loggedInUser = await authLogin(username, password);
+      const loggedInUser = await authLogin(email, password);
       setUser(loggedInUser);
     } catch (err) {
       console.error("Login error:", err);
-      setError("Invalid username or password");
+      setError("Invalid email or password");
       throw err;
     } finally {
       setLoading(false);
