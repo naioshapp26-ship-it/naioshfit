@@ -38,36 +38,88 @@ console.error = (...args: unknown[]) => {
 // Trust first proxy (Railway/other hosting) so secure cookies & protocol detection work
 app.set('trust proxy', 1);
 
-// Health check endpoint for Railway
+function resolveRuntimeMainDomain(): string {
+  const raw = process.env.MAIN_DOMAIN?.trim();
+  if (!raw) return 'naioshfit.com';
+  try {
+    const url = /^[a-z][a-z0-9+.-]*:\/\//i.test(raw) ? raw : `https://${raw}`;
+    const hostname = new URL(url).hostname.toLowerCase();
+    return hostname.startsWith('www.') ? hostname.slice(4) : hostname;
+  } catch {
+    return raw.replace(/^www\./i, '').toLowerCase() || 'naioshfit.com';
+  }
+}
+
+function resolveRuntimeCommit(): { version: string; commit: string | null } {
+  const fromEnv =
+    process.env.RAILWAY_GIT_COMMIT_SHA ||
+    process.env.COMMIT_SHA ||
+    process.env.SOURCE_VERSION ||
+    process.env.GITHUB_SHA ||
+    '';
+  if (fromEnv.trim()) {
+    const commit = fromEnv.trim();
+    return { version: commit.slice(0, 7), commit };
+  }
+  return { version: String(Math.floor(Date.now() / 1000)), commit: null };
+}
+
+// Health check endpoint for Railway + quick deploy/domain verification
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok' });
+  const mainDomain = resolveRuntimeMainDomain();
+  const { version, commit } = resolveRuntimeCommit();
+  res.status(200).json({
+    status: 'ok',
+    mainDomain,
+    version,
+    commit,
+    host: req.headers.host || null,
+  });
 });
 
 // Version endpoint for cache-busting and client update checks
 app.get('/version.json', async (_req, res) => {
+  const mainDomain = resolveRuntimeMainDomain();
   try {
     // Attempt to read built version file (production)
     const versionPath = path.resolve(import.meta.dirname, 'public', 'version.json');
     if (fs.existsSync(versionPath)) {
       const raw = await fs.promises.readFile(versionPath, 'utf-8');
+      let payload: Record<string, unknown> = {};
+      try {
+        payload = JSON.parse(raw);
+      } catch {
+        payload = {};
+      }
+      if (!payload.commit) {
+        const runtime = resolveRuntimeCommit();
+        payload.version = payload.version || runtime.version;
+        payload.commit = runtime.commit;
+      }
+      payload.mainDomain = payload.mainDomain || mainDomain;
       res.setHeader('Content-Type', 'application/json');
       res.setHeader('Cache-Control', 'no-store');
-      return res.status(200).send(raw);
+      return res.status(200).json(payload);
     }
   } catch {}
 
-  // Fallback for dev: compute from git/time
+  // Fallback for dev / missing build artifact
   let version = String(Math.floor(Date.now() / 1000));
   let commit: string | null = null;
-  try {
-    const { execSync } = await import('node:child_process');
-    commit = execSync('git rev-parse HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
-    const short = execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
-    version = short || version;
-  } catch {}
+  const runtime = resolveRuntimeCommit();
+  version = runtime.version;
+  commit = runtime.commit;
+  if (!commit) {
+    try {
+      const { execSync } = await import('node:child_process');
+      commit = execSync('git rev-parse HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+      const short = execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+      version = short || version;
+    } catch {}
+  }
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Cache-Control', 'no-store');
-  return res.status(200).json({ version, commit, builtAt: new Date().toISOString() });
+  return res.status(200).json({ version, commit, builtAt: new Date().toISOString(), mainDomain });
 });
 
 // Add middleware to ensure proper cookie handling

@@ -104,6 +104,18 @@ export function serveStatic(app: Express) {
   );
 
   app.use("*", async (req, res) => {
+    const requestPath = req.path || req.originalUrl || '';
+    // Never serve the SPA shell for API/SaaS backends — return JSON 404 instead.
+    if (
+      requestPath.startsWith('/api/') ||
+      requestPath === '/api' ||
+      requestPath.startsWith('/saas/') ||
+      requestPath === '/saas'
+    ) {
+      res.set('Cache-Control', 'no-store');
+      return res.status(404).json({ message: 'Not found', path: requestPath });
+    }
+
     try {
       const indexPath = path.resolve(distPath, "index.html");
       let html = await fs.promises.readFile(indexPath, 'utf-8');
