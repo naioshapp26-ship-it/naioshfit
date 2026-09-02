@@ -396,7 +396,10 @@ const SaasSignupWithPaymentPage = () => {
 
     const data = await response.json();
     setPaymentSession(data.session);
-    if (data.session?.paymentProvider) {
+    if (data.directSignup || data.session?.paymentProvider === 'direct') {
+      setIsDirectSignup(true);
+    }
+    if (data.session?.paymentProvider && data.session.paymentProvider !== 'direct') {
       setPaymentProvider(data.session.paymentProvider);
     }
     persistFormToSession(data.session.sessionReference);
@@ -458,7 +461,12 @@ const SaasSignupWithPaymentPage = () => {
       }
 
       try {
-        await createPaymentSession(paymentProvider);
+        const session = await createPaymentSession(paymentProvider);
+        if (session.paymentProvider === 'direct') {
+          setCurrentStep(3);
+          await provisionTenant(session.sessionReference, form, { paymentProvider: 'direct' });
+          return;
+        }
         setCurrentStep(2);
       } catch (paymentError: any) {
         const code = paymentError?.code;

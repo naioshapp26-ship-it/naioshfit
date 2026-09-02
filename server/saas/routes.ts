@@ -59,6 +59,44 @@ function pruneExpiredPendingSignups() {
   }
 }
 
+function createDirectPendingSignup(input: {
+  subdomain: string;
+  companyName: string;
+  subscriptionPlan: string;
+  adminEmail: string;
+  adminName: string;
+  adminPhone?: string;
+  adminPassword: string;
+}) {
+  pruneExpiredPendingSignups();
+  const sessionReference = `saas-${input.subdomain}-${Date.now()}`;
+  pendingSignups.set(sessionReference, {
+    subdomain: input.subdomain,
+    companyName: input.companyName,
+    subscriptionPlan: input.subscriptionPlan,
+    amount: 0,
+    adminEmail: input.adminEmail,
+    adminName: input.adminName,
+    adminPhone: input.adminPhone || '',
+    adminPassword: input.adminPassword,
+    createdAt: Date.now(),
+    paymentProvider: 'direct',
+  });
+
+  return {
+    directSignup: true,
+    session: {
+      sessionId: sessionReference,
+      checkoutUrl: null,
+      clientSecret: null,
+      sessionReference,
+      amount: 0,
+      currency: 'USD',
+      paymentProvider: 'direct' as const,
+    },
+  };
+}
+
 export function registerSaasRoutes(app: Express) {
   app.use('/saas', async (_req: Request, res: Response, next) => {
     try {
@@ -153,10 +191,27 @@ export function registerSaasRoutes(app: Express) {
       );
 
       if (!paymentReady) {
+        if (isDirectSignupAllowed()) {
+          if (!process.env.TENANT_DATABASE_URL_TEMPLATE) {
+            return res.status(503).json({
+              message: 'Tenant database template is not configured. Please contact administrator.',
+              code: 'TENANT_DATABASE_TEMPLATE_MISSING',
+            });
+          }
+          return res.json(createDirectPendingSignup({
+            subdomain: normalizedSubdomain,
+            companyName,
+            subscriptionPlan,
+            adminEmail,
+            adminName,
+            adminPhone,
+            adminPassword,
+          }));
+        }
         return res.status(503).json({
           message: 'Payment gateway not configured. Please contact administrator.',
           code: 'PLATFORM_PAYMENT_NOT_CONFIGURED',
-          directSignupAvailable: isDirectSignupAllowed(),
+          directSignupAvailable: false,
         });
       }
 
@@ -435,32 +490,15 @@ export function registerSaasRoutes(app: Express) {
 
       pruneExpiredPendingSignups();
 
-      const sessionReference = `saas-${normalizedSubdomain}-${Date.now()}`;
-      pendingSignups.set(sessionReference, {
+      return res.json(createDirectPendingSignup({
         subdomain: normalizedSubdomain,
         companyName,
         subscriptionPlan,
-        amount: 0,
         adminEmail,
         adminName,
-        adminPhone: adminPhone || '',
+        adminPhone,
         adminPassword,
-        createdAt: Date.now(),
-        paymentProvider: 'direct',
-      });
-
-      return res.json({
-        directSignup: true,
-        session: {
-          sessionId: sessionReference,
-          checkoutUrl: null,
-          clientSecret: null,
-          sessionReference,
-          amount: 0,
-          currency: 'USD',
-          paymentProvider: 'direct',
-        },
-      });
+      }));
     } catch (error: any) {
       console.error('[SAAS] Direct signup session creation failed:', error);
       return res.status(500).json({ message: 'Failed to create signup session.' });
