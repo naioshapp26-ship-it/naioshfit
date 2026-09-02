@@ -1,11 +1,10 @@
-import pg from 'pg';
-import { parse as parseConnectionString } from 'pg-connection-string';
 import fs from 'node:fs';
 import path from 'node:path';
 import type { ProvisioningStep, ProvisioningStepResult, TenantRecord } from './types';
 import bcrypt from 'bcryptjs';
 import { getCentralPool } from './centralDb';
 import {
+  createAdminPool,
   getTenantIsolationMode,
   renderTenantDatabaseUrl,
   withDbRetry,
@@ -15,50 +14,14 @@ import { encryptTenantDatabaseUrl } from './tenantUrlEncryption';
 import { sanitizeMigrationSql } from './migrationSanitizer';
 import { resolveTenantDatabaseTemplate, resolveTenantEncryptionKey } from './tenantEnv';
 
-const { Pool } = pg;
-
 const PROVISIONING_ADMIN_DATABASE_URL = process.env.PROVISIONING_ADMIN_DATABASE_URL;
-const TENANT_DB_SSL_ALLOW_SELF_SIGNED = process.env.TENANT_DB_SSL_ALLOW_SELF_SIGNED === '1';
-const CENTRAL_DB_SSL_ALLOW_SELF_SIGNED = process.env.CENTRAL_DB_SSL_ALLOW_SELF_SIGNED === '1' || process.env.DB_SSL_ALLOW_SELF_SIGNED === '1';
 
 function resolveProvisioningAdminUrl(): string | undefined {
   return PROVISIONING_ADMIN_DATABASE_URL || process.env.CENTRAL_DATABASE_URL || process.env.DATABASE_URL;
 }
 
-function getSslConfig(connectionString: string): pg.PoolConfig['ssl'] {
-  const needsSsl = /sslmode=require/.test(connectionString) || /railway\.app|\.proxy\.rlwy\.net|\.rlwy\.net/i.test(connectionString);
-  if (!needsSsl) {
-    console.log('[SAAS] SSL not needed for connection:', connectionString);
-    return undefined;
-  }
-
-  const allowSelfSigned = /railway\.app|\.proxy\.rlwy\.net|\.rlwy\.net/i.test(connectionString) || TENANT_DB_SSL_ALLOW_SELF_SIGNED || CENTRAL_DB_SSL_ALLOW_SELF_SIGNED;
-  console.log('[SAAS] SSL Config - needsSsl:', needsSsl, 'allowSelfSigned:', allowSelfSigned, 'connectionString:', connectionString.replace(/:[^:@]+@/, ':****@'));
-  
-  if (allowSelfSigned) {
-    return {
-      rejectUnauthorized: false,
-      checkServerIdentity: () => undefined,
-    };
-  }
-
-  return { rejectUnauthorized: true };
-}
-
-function createPoolWithSSL(connectionString: string): pg.Pool {
-  // Parse the connection string to get individual config options
-  const config = parseConnectionString(connectionString);
-  
-  // Add SSL configuration
-  config.ssl = getSslConfig(connectionString);
-  
-  console.log('[SAAS] Creating pool with config:', {
-    ...config,
-    password: '****',
-    ssl: config.ssl
-  });
-  
-  return new Pool(config as pg.PoolConfig);
+function createPoolWithSSL(connectionString: string) {
+  return createAdminPool(connectionString);
 }
 
 export async function dropTenantDatabase(databaseName: string) {

@@ -70,22 +70,32 @@ function getSslConfig(connectionString: string): pg.PoolConfig['ssl'] {
   return { rejectUnauthorized: true };
 }
 
+function resolveSchemaBaseUrl(): string {
+  const baseUrl =
+    process.env.PROVISIONING_ADMIN_DATABASE_URL ||
+    process.env.CENTRAL_DATABASE_URL ||
+    process.env.DATABASE_URL;
+  if (!baseUrl) {
+    throw new Error('DATABASE_URL is required for schema-based tenant isolation.');
+  }
+  return baseUrl;
+}
+
 export function createTenantPool(databaseUrl: string): pg.Pool {
   const { connectionString, schema } = parseTenantConnection(databaseUrl);
   const config = parseConnectionString(connectionString);
-  config.ssl = getSslConfig(connectionString);
 
   const pool = new Pool({
     ...config,
-    max: 5,
+    ssl: getSslConfig(connectionString) as any,
+    max: 2,
     idleTimeoutMillis: 10000,
-    connectionTimeoutMillis: 15000,
+    connectionTimeoutMillis: 20000,
     keepAlive: true,
   } as pg.PoolConfig);
 
   if (schema) {
     pool.on('connect', (client) => {
-      // Synchronously queue search_path before other queries on this client.
       client.query(`SET search_path TO "${schema}", public`).catch((error) => {
         console.error('[SAAS] Failed to set tenant search_path:', schema, error);
       });
@@ -93,6 +103,19 @@ export function createTenantPool(databaseUrl: string): pg.Pool {
   }
 
   return pool;
+}
+
+/** Fresh short-lived pool — same approach that succeeds for CREATE SCHEMA on Railway. */
+export function createAdminPool(connectionString: string): pg.Pool {
+  const config = parseConnectionString(connectionString);
+  return new Pool({
+    ...config,
+    ssl: getSslConfig(connectionString) as any,
+    max: 1,
+    idleTimeoutMillis: 5000,
+    connectionTimeoutMillis: 20000,
+    keepAlive: true,
+  } as pg.PoolConfig);
 }
 
 export function isTransientDbError(error: unknown): boolean {
@@ -114,33 +137,40 @@ export async function withTenantClient<T>(
   const { schema } = parseTenantConnection(databaseUrl);
   const mode = getTenantIsolationMode();
 
-  // Schema isolation shares the central DB — reuse one connection and set search_path.
+  // Schema isolation: open a fresh single connection (matches working CREATE SCHEMA path).
+  // Avoid the long-lived central pool — Railway public proxy often resets extra checkouts.
   if (schema && mode === 'schema') {
-    const { getCentralPool } = await import('./centralDb');
-    const pool = getCentralPool();
-    const client = await pool.connect();
+    const pool = createAdminPool(resolveSchemaBaseUrl());
     try {
-      await client.query(`SET search_path TO "${schema}", public`);
-      return await fn(client);
-    } finally {
+      const client = await pool.connect();
       try {
-        await client.query('SET search_path TO public');
-      } catch {
-        // ignore reset failures
+        await client.query(`SET search_path TO "${schema}", public`);
+        return await fn(client);
+      } finally {
+        try {
+          await client.query('SET search_path TO public');
+        } catch {
+          // ignore
+        }
+        client.release();
       }
-      client.release();
+    } finally {
+      await pool.end().catch(() => undefined);
     }
   }
 
   const pool = createTenantPool(databaseUrl);
-  const client = await pool.connect();
   try {
-    if (schema) {
-      await client.query(`SET search_path TO "${schema}", public`);
+    const client = await pool.connect();
+    try {
+      if (schema) {
+        await client.query(`SET search_path TO "${schema}", public`);
+      }
+      return await fn(client);
+    } finally {
+      client.release();
     }
-    return await fn(client);
   } finally {
-    client.release();
     await pool.end().catch(() => undefined);
   }
 }
@@ -148,7 +178,7 @@ export async function withTenantClient<T>(
 export async function withDbRetry<T>(
   label: string,
   fn: () => Promise<T>,
-  attempts = 4,
+  attempts = 5,
 ): Promise<T> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= attempts; attempt++) {
@@ -159,7 +189,7 @@ export async function withDbRetry<T>(
       if (!isTransientDbError(error) || attempt === attempts) {
         throw error;
       }
-      const delayMs = Math.min(1000 * 2 ** (attempt - 1), 8000);
+      const delayMs = Math.min(1500 * 2 ** (attempt - 1), 10000);
       console.warn(`[SAAS] ${label} failed (attempt ${attempt}/${attempts}):`, (error as Error)?.message || error);
       await new Promise((resolve) => setTimeout(resolve, delayMs));
     }
