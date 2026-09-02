@@ -23,6 +23,7 @@ import { buildTenantPublicUrl, normalizeSaasMainDomain } from '@shared/saasUrls'
 import type { TenantRecord } from './types';
 import { isDirectSignupAllowed, isSaasPaymentSkipped } from './paymentConfig';
 import { applyTenantEnvDefaults, resolveTenantDatabaseTemplate, resolveTenantEncryptionKey } from './tenantEnv';
+import { getTenantIsolationMode } from './tenantConnection';
 
 export { isSaasPaymentSkipped } from './paymentConfig';
 
@@ -117,6 +118,8 @@ export function registerSaasRoutes(app: Express) {
       signupBaseUrl: `${protocol}://www.${mainDomain}`,
       skipPayment: isSaasPaymentSkipped(),
       directSignupAvailable: isDirectSignupAllowed(),
+      isolationMode: getTenantIsolationMode(),
+      provisionEngine: 'per-file-v4',
     });
   });
 
@@ -129,6 +132,8 @@ export function registerSaasRoutes(app: Express) {
       signupBaseUrl: `${protocol}://www.${mainDomain}`,
       skipPayment: isSaasPaymentSkipped(),
       directSignupAvailable: isDirectSignupAllowed(),
+      isolationMode: getTenantIsolationMode(),
+      provisionEngine: 'per-file-v4',
     });
   });
 

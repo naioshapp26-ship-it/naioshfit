@@ -6,8 +6,9 @@ const { Pool } = pg;
 export type TenantIsolationMode = 'database' | 'schema';
 
 export function getTenantIsolationMode(): TenantIsolationMode {
-  const raw = (process.env.SAAS_TENANT_ISOLATION || '').trim().toLowerCase();
-  return raw === 'schema' ? 'schema' : 'database';
+  // Default to schema isolation — Railway shared Postgres usually cannot CREATE DATABASE.
+  const raw = (process.env.SAAS_TENANT_ISOLATION || 'schema').trim().toLowerCase();
+  return raw === 'database' ? 'database' : 'schema';
 }
 
 export function parseTenantConnection(databaseUrl: string): {
@@ -28,6 +29,11 @@ export function renderTenantDatabaseUrl(databaseName: string): string {
   const mode = getTenantIsolationMode();
   if (mode === 'schema') {
     const baseUrl =
+      [
+        process.env.DATABASE_URL,
+        process.env.CENTRAL_DATABASE_URL,
+        process.env.PROVISIONING_ADMIN_DATABASE_URL,
+      ].find((value) => value && /railway\.internal/i.test(value)) ||
       process.env.DATABASE_URL ||
       process.env.CENTRAL_DATABASE_URL ||
       process.env.PROVISIONING_ADMIN_DATABASE_URL;
@@ -72,6 +78,11 @@ function getSslConfig(connectionString: string): pg.PoolConfig['ssl'] {
 
 function resolveSchemaBaseUrl(): string {
   const baseUrl =
+    [
+      process.env.DATABASE_URL,
+      process.env.PROVISIONING_ADMIN_DATABASE_URL,
+      process.env.CENTRAL_DATABASE_URL,
+    ].find((value) => value && /railway\.internal/i.test(value)) ||
     process.env.PROVISIONING_ADMIN_DATABASE_URL ||
     process.env.CENTRAL_DATABASE_URL ||
     process.env.DATABASE_URL;
@@ -135,11 +146,10 @@ export async function withTenantClient<T>(
   fn: (client: pg.PoolClient) => Promise<T>,
 ): Promise<T> {
   const { schema } = parseTenantConnection(databaseUrl);
-  const mode = getTenantIsolationMode();
 
-  // Schema isolation: open a fresh single connection (matches working CREATE SCHEMA path).
-  // Avoid the long-lived central pool — Railway public proxy often resets extra checkouts.
-  if (schema && mode === 'schema') {
+  // Any URL with tenant_schema uses a fresh short-lived admin connection.
+  // Railway's public proxy often resets long-held or interleaved pool checkouts.
+  if (schema) {
     const pool = createAdminPool(resolveSchemaBaseUrl());
     try {
       const client = await pool.connect();
@@ -163,9 +173,6 @@ export async function withTenantClient<T>(
   try {
     const client = await pool.connect();
     try {
-      if (schema) {
-        await client.query(`SET search_path TO "${schema}", public`);
-      }
       return await fn(client);
     } finally {
       client.release();

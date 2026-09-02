@@ -16,8 +16,31 @@ import { resolveTenantDatabaseTemplate, resolveTenantEncryptionKey } from './ten
 
 const PROVISIONING_ADMIN_DATABASE_URL = process.env.PROVISIONING_ADMIN_DATABASE_URL;
 
+function isPrivateRailwayUrl(url: string): boolean {
+  return /railway\.internal/i.test(url);
+}
+
+function preferStableDatabaseUrl(...candidates: Array<string | undefined>): string | undefined {
+  const urls = candidates.filter((value): value is string => Boolean(value && value.trim()));
+  if (urls.length === 0) return undefined;
+  const privateUrl = urls.find(isPrivateRailwayUrl);
+  if (privateUrl) return privateUrl;
+
+  // When the app runs on Railway, prefer the linked private DATABASE_URL over public proxy URLs.
+  const linked = process.env.DATABASE_URL;
+  if (linked && isPrivateRailwayUrl(linked) && process.env.RAILWAY_ENVIRONMENT) {
+    return linked;
+  }
+
+  return urls[0];
+}
+
 function resolveProvisioningAdminUrl(): string | undefined {
-  return PROVISIONING_ADMIN_DATABASE_URL || process.env.CENTRAL_DATABASE_URL || process.env.DATABASE_URL;
+  return preferStableDatabaseUrl(
+    PROVISIONING_ADMIN_DATABASE_URL,
+    process.env.CENTRAL_DATABASE_URL,
+    process.env.DATABASE_URL,
+  );
 }
 
 function createPoolWithSSL(connectionString: string) {
@@ -66,10 +89,11 @@ function getTenantMigrationsPath(): string {
 }
 
 function resolveSchemaTenantDatabaseUrl(databaseName: string): string {
-  const baseUrl =
-    process.env.DATABASE_URL ||
-    process.env.CENTRAL_DATABASE_URL ||
-    process.env.PROVISIONING_ADMIN_DATABASE_URL;
+  const baseUrl = preferStableDatabaseUrl(
+    process.env.DATABASE_URL,
+    process.env.CENTRAL_DATABASE_URL,
+    process.env.PROVISIONING_ADMIN_DATABASE_URL,
+  );
   if (!baseUrl) {
     throw new Error('DATABASE_URL is required for schema-based tenant isolation.');
   }
@@ -148,50 +172,48 @@ export async function runTenantMigrations(databaseUrl: string) {
   const migrationsDir = getTenantMigrationsPath();
   console.log('[SAAS] Running tenant migrations from:', migrationsDir);
 
-  await withDbRetry('runTenantMigrations', async () => {
-    await withTenantClient(databaseUrl, async (client) => {
-      await runTenantMigrationsOnClient(client);
-    });
-  });
-}
-
-async function runTenantMigrationsOnClient(client: { query: (sql: string, params?: any[]) => Promise<any> }) {
-  const migrationsDir = getTenantMigrationsPath();
-  await client.query(
-    `CREATE TABLE IF NOT EXISTS tenant_migrations (
-      filename text PRIMARY KEY,
-      applied_at timestamptz NOT NULL DEFAULT NOW()
-    )`
-  );
-
-  const appliedResult = await client.query(
-    'SELECT filename FROM tenant_migrations'
-  );
-  const applied = new Set((appliedResult.rows as Array<{ filename: string }>).map((row) => row.filename));
-
   const files = fs.readdirSync(migrationsDir).filter((file) => file.endsWith('.sql')).sort();
   console.log('[SAAS] Found', files.length, 'migration files');
 
+  // Ensure tracking table on a short-lived connection.
+  await withDbRetry('ensureTenantMigrationsTable', async () => {
+    await withTenantClient(databaseUrl, async (client) => {
+      await client.query(
+        `CREATE TABLE IF NOT EXISTS tenant_migrations (
+          filename text PRIMARY KEY,
+          applied_at timestamptz NOT NULL DEFAULT NOW()
+        )`
+      );
+    });
+  });
+
+  // Apply one file per fresh connection. Holding one TCP session across ~33 SQL
+  // files is what triggers Railway public-proxy ECONNRESET during provision.
   for (const file of files) {
-    if (applied.has(file)) {
-      console.log('[SAAS] Skipping already applied migration:', file);
-      continue;
-    }
-    console.log('[SAAS] Running migration:', file);
-    const sql = sanitizeMigrationSql(fs.readFileSync(path.join(migrationsDir, file), 'utf-8'));
-    if (sql.trim()) {
-      try {
-        await client.query(sql);
+    await withDbRetry(`tenantMigration:${file}`, async () => {
+      await withTenantClient(databaseUrl, async (client) => {
+        const appliedResult = await client.query(
+          'SELECT 1 FROM tenant_migrations WHERE filename = $1 LIMIT 1',
+          [file]
+        );
+        if (appliedResult.rows.length > 0) {
+          console.log('[SAAS] Skipping already applied migration:', file);
+          return;
+        }
+
+        console.log('[SAAS] Running migration:', file);
+        const sql = sanitizeMigrationSql(fs.readFileSync(path.join(migrationsDir, file), 'utf-8'));
+        if (sql.trim()) {
+          await client.query(sql);
+        }
         await client.query(
           'INSERT INTO tenant_migrations (filename) VALUES ($1) ON CONFLICT (filename) DO NOTHING',
           [file]
         );
-      } catch (error: any) {
-        console.error('[SAAS] Migration failed:', file, error);
-        throw error;
-      }
-    }
+      });
+    });
   }
+
   console.log('[SAAS] All tenant migrations completed successfully');
 }
 
@@ -309,81 +331,45 @@ export async function provisionTenant(input: ProvisionTenantInput) {
     const isolation = getTenantIsolationMode();
     await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'pending');
 
+    // Always finish storage setup on short-lived connections, then migrate file-by-file.
+    // A single long-held connection across 30+ migration files trips Railway proxy resets.
     if (isolation === 'schema') {
-      // One fresh connection for schema + migrations + admin.
-      // Do NOT touch the central pool while this connection is checked out —
-      // Railway's proxy resets held connections when another checkout opens.
-      await withDbRetry('provisionSchemaTenant', async () => {
+      await withDbRetry('createTenantSchema', async () => {
         const adminUrl = resolveProvisioningAdminUrl();
         if (!adminUrl) {
           throw new Error('PROVISIONING_ADMIN_DATABASE_URL must be set to create tenant databases.');
         }
         const adminPool = createAdminPool(adminUrl);
         try {
-          const client = await adminPool.connect();
-          try {
-            currentStep = 'CREATE_TENANT_DATABASE';
-            await client.query(`CREATE SCHEMA IF NOT EXISTS "${databaseName}"`);
-            databaseUrl = resolveSchemaTenantDatabaseUrl(databaseName);
-
-            currentStep = 'RUN_MIGRATIONS';
-            await client.query(`SET search_path TO "${databaseName}", public`);
-            await runTenantMigrationsOnClient(client);
-
-            currentStep = 'CREATE_ADMIN';
-            await createTenantAdminOnClient(
-              client,
-              input.adminEmail,
-              input.adminName,
-              input.adminPhone,
-              input.adminPassword,
-            );
-          } finally {
-            try {
-              await client.query('SET search_path TO public');
-            } catch {
-              // ignore
-            }
-            client.release();
-          }
+          await adminPool.query(`CREATE SCHEMA IF NOT EXISTS "${databaseName}"`);
         } finally {
           await adminPool.end().catch(() => undefined);
         }
       });
-
-      await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'success');
-
-      currentStep = 'STORE_DATABASE_SECRET';
-      await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'pending');
-      const encryptedUrl = await encryptDatabaseUrl(databaseUrl);
-      await pool.query('UPDATE tenants SET database_url_encrypted = $1 WHERE id = $2', [encryptedUrl, tenant.id]);
-      await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'success');
-
-      await logStep(tenant.id, 'RUN_MIGRATIONS', 'success');
-      await logStep(tenant.id, 'CREATE_ADMIN', 'success');
+      databaseUrl = resolveSchemaTenantDatabaseUrl(databaseName);
     } else {
       const storageMode = await ensureTenantStorage(databaseName);
       if (storageMode === 'schema') {
         databaseUrl = resolveSchemaTenantDatabaseUrl(databaseName);
       }
-      await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'success');
-
-      currentStep = 'STORE_DATABASE_SECRET';
-      await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'pending');
-      const encryptedUrl = await encryptDatabaseUrl(databaseUrl);
-      await pool.query('UPDATE tenants SET database_url_encrypted = $1 WHERE id = $2', [encryptedUrl, tenant.id]);
-      await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'success');
-
-      currentStep = 'RUN_MIGRATIONS';
-      await logStep(tenant.id, 'RUN_MIGRATIONS', 'pending');
-      await runTenantMigrations(databaseUrl);
-      await logStep(tenant.id, 'RUN_MIGRATIONS', 'success');
-
-      currentStep = 'CREATE_ADMIN';
-      await logStep(tenant.id, 'CREATE_ADMIN', 'pending');
-      await createTenantAdmin(databaseUrl, input.adminEmail, input.adminName, input.adminPhone, input.adminPassword);
-      await logStep(tenant.id, 'CREATE_ADMIN', 'success');
     }
+    await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'success');
+
+    currentStep = 'STORE_DATABASE_SECRET';
+    await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'pending');
+    const encryptedUrl = await encryptDatabaseUrl(databaseUrl);
+    await pool.query('UPDATE tenants SET database_url_encrypted = $1 WHERE id = $2', [encryptedUrl, tenant.id]);
+    await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'success');
+
+    currentStep = 'RUN_MIGRATIONS';
+    await logStep(tenant.id, 'RUN_MIGRATIONS', 'pending');
+    await runTenantMigrations(databaseUrl);
+    await logStep(tenant.id, 'RUN_MIGRATIONS', 'success');
+
+    currentStep = 'CREATE_ADMIN';
+    await logStep(tenant.id, 'CREATE_ADMIN', 'pending');
+    await createTenantAdmin(databaseUrl, input.adminEmail, input.adminName, input.adminPhone, input.adminPassword);
+    await logStep(tenant.id, 'CREATE_ADMIN', 'success');
 
     currentStep = 'CREATE_SUBSCRIPTION';
     await logStep(tenant.id, 'CREATE_SUBSCRIPTION', 'pending');
