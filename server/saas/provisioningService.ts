@@ -6,9 +6,10 @@ import type { ProvisioningStep, ProvisioningStepResult, TenantRecord } from './t
 import bcrypt from 'bcryptjs';
 import { getCentralPool } from './centralDb';
 import {
-  createTenantPool,
   getTenantIsolationMode,
   renderTenantDatabaseUrl,
+  withDbRetry,
+  withTenantClient,
 } from './tenantConnection';
 import { encryptTenantDatabaseUrl } from './tenantUrlEncryption';
 import { sanitizeMigrationSql } from './migrationSanitizer';
@@ -128,7 +129,9 @@ async function ensureTenantStorage(databaseName: string): Promise<'database' | '
 
   try {
     if (isolation === 'schema') {
-      await adminPool.query(`CREATE SCHEMA IF NOT EXISTS "${databaseName}"`);
+      await withDbRetry('createTenantSchema', async () => {
+        await adminPool.query(`CREATE SCHEMA IF NOT EXISTS "${databaseName}"`);
+      });
       console.log('[SAAS] Successfully ensured tenant schema:', databaseName);
       return 'schema';
     }
@@ -179,89 +182,84 @@ async function ensureTenantDatabase(databaseName: string) {
 }
 
 export async function runTenantMigrations(databaseUrl: string) {
-  const pool = createTenantPool(databaseUrl);
+  const migrationsDir = getTenantMigrationsPath();
+  console.log('[SAAS] Running tenant migrations from:', migrationsDir);
 
-  try {
-    const migrationsDir = getTenantMigrationsPath();
-    console.log('[SAAS] Running tenant migrations from:', migrationsDir);
+  await withDbRetry('runTenantMigrations', async () => {
+    await withTenantClient(databaseUrl, async (client) => {
+      await client.query(
+        `CREATE TABLE IF NOT EXISTS tenant_migrations (
+          filename text PRIMARY KEY,
+          applied_at timestamptz NOT NULL DEFAULT NOW()
+        )`
+      );
 
-    await pool.query(
-      `CREATE TABLE IF NOT EXISTS tenant_migrations (
-        filename text PRIMARY KEY,
-        applied_at timestamptz NOT NULL DEFAULT NOW()
-      )`
-    );
+      const appliedResult = await client.query<{ filename: string }>(
+        'SELECT filename FROM tenant_migrations'
+      );
+      const applied = new Set(appliedResult.rows.map((row) => row.filename));
 
-    const appliedResult = await pool.query<{ filename: string }>(
-      'SELECT filename FROM tenant_migrations'
-    );
-    const applied = new Set(appliedResult.rows.map((row) => row.filename));
-    
-    const files = fs.readdirSync(migrationsDir).filter((file) => file.endsWith('.sql')).sort();
-    console.log('[SAAS] Found', files.length, 'migration files');
+      const files = fs.readdirSync(migrationsDir).filter((file) => file.endsWith('.sql')).sort();
+      console.log('[SAAS] Found', files.length, 'migration files');
 
-    for (const file of files) {
-      if (applied.has(file)) {
-        console.log('[SAAS] Skipping already applied migration:', file);
-        continue;
-      }
-      console.log('[SAAS] Running migration:', file);
-      const sql = sanitizeMigrationSql(fs.readFileSync(path.join(migrationsDir, file), 'utf-8'));
-      if (sql.trim()) {
-        try {
-          await pool.query(sql);
-          // Use INSERT ... ON CONFLICT DO NOTHING for idempotency
-          await pool.query(
-            'INSERT INTO tenant_migrations (filename) VALUES ($1) ON CONFLICT (filename) DO NOTHING',
-            [file]
-          );
-        } catch (error: any) {
-          console.error('[SAAS] Migration failed:', file, error);
-          throw error;
+      for (const file of files) {
+        if (applied.has(file)) {
+          console.log('[SAAS] Skipping already applied migration:', file);
+          continue;
+        }
+        console.log('[SAAS] Running migration:', file);
+        const sql = sanitizeMigrationSql(fs.readFileSync(path.join(migrationsDir, file), 'utf-8'));
+        if (sql.trim()) {
+          try {
+            await client.query(sql);
+            await client.query(
+              'INSERT INTO tenant_migrations (filename) VALUES ($1) ON CONFLICT (filename) DO NOTHING',
+              [file]
+            );
+          } catch (error: any) {
+            console.error('[SAAS] Migration failed:', file, error);
+            throw error;
+          }
         }
       }
-    }
-    console.log('[SAAS] All tenant migrations completed successfully');
-  } finally {
-    await pool.end();
-  }
+      console.log('[SAAS] All tenant migrations completed successfully');
+    });
+  });
 }
 
 async function createTenantAdmin(databaseUrl: string, adminEmail: string, adminName: string, adminPhone: string, adminPassword: string) {
-  const pool = createTenantPool(databaseUrl);
+  await withDbRetry('createTenantAdmin', async () => {
+    await withTenantClient(databaseUrl, async (client) => {
+      const passwordHash = await bcrypt.hash(adminPassword, 10);
+      const [firstName, ...rest] = adminName.split(' ');
+      const lastName = rest.join(' ') || 'Admin';
 
-  try {
-    const passwordHash = await bcrypt.hash(adminPassword, 10);
-    const [firstName, ...rest] = adminName.split(' ');
-    const lastName = rest.join(' ') || 'Admin';
+      const normalizedPhone = adminPhone.replace(/\D/g, '');
+      const emailLocalPart = adminEmail.split('@')[0]?.replace(/[^a-zA-Z0-9._-]/g, '') || '';
+      const username = normalizedPhone || emailLocalPart || `admin_${Date.now()}`;
 
-    const normalizedPhone = adminPhone.replace(/\D/g, '');
-    const emailLocalPart = adminEmail.split('@')[0]?.replace(/[^a-zA-Z0-9._-]/g, '') || '';
-    const username = normalizedPhone || emailLocalPart || `admin_${Date.now()}`;
-    
-    const existingAdmin = await pool.query(
-      'SELECT id FROM users WHERE username = $1 OR email = $2',
-      [username, adminEmail]
-    );
-
-    if (existingAdmin.rows.length > 0) {
-      console.log('[SAAS] Admin user already exists, updating password and details');
-      await pool.query(
-        `UPDATE users 
-         SET password = $1, email = $2, first_name = $3, last_name = $4, phone = $5, role = 'admin'
-         WHERE username = $6 OR email = $2`,
-        [passwordHash, adminEmail, firstName || adminName, lastName, adminPhone || null, username]
+      const existingAdmin = await client.query(
+        'SELECT id FROM users WHERE username = $1 OR email = $2',
+        [username, adminEmail]
       );
-    } else {
-      await pool.query(
-        `INSERT INTO users (username, password, phone, email, first_name, last_name, role, created_at)
-         VALUES ($1, $2, $3, $4, $5, $6, 'admin', NOW())`,
-        [username, passwordHash, adminPhone || null, adminEmail, firstName || adminName, lastName]
-      );
-    }
-  } finally {
-    await pool.end();
-  }
+
+      if (existingAdmin.rows.length > 0) {
+        console.log('[SAAS] Admin user already exists, updating password and details');
+        await client.query(
+          `UPDATE users 
+           SET password = $1, email = $2, first_name = $3, last_name = $4, phone = $5, role = 'admin'
+           WHERE username = $6 OR email = $2`,
+          [passwordHash, adminEmail, firstName || adminName, lastName, adminPhone || null, username]
+        );
+      } else {
+        await client.query(
+          `INSERT INTO users (username, password, phone, email, first_name, last_name, role, created_at)
+           VALUES ($1, $2, $3, $4, $5, $6, 'admin', NOW())`,
+          [username, passwordHash, adminPhone || null, adminEmail, firstName || adminName, lastName]
+        );
+      }
+    });
+  });
 }
 
 export interface ProvisionTenantInput {

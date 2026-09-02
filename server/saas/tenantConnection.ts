@@ -77,13 +77,15 @@ export function createTenantPool(databaseUrl: string): pg.Pool {
 
   const pool = new Pool({
     ...config,
-    max: 10,
-    idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 5000,
+    max: 5,
+    idleTimeoutMillis: 10000,
+    connectionTimeoutMillis: 15000,
+    keepAlive: true,
   } as pg.PoolConfig);
 
   if (schema) {
     pool.on('connect', (client) => {
+      // Synchronously queue search_path before other queries on this client.
       client.query(`SET search_path TO "${schema}", public`).catch((error) => {
         console.error('[SAAS] Failed to set tenant search_path:', schema, error);
       });
@@ -91,4 +93,76 @@ export function createTenantPool(databaseUrl: string): pg.Pool {
   }
 
   return pool;
+}
+
+export function isTransientDbError(error: unknown): boolean {
+  const err = error as { code?: string; message?: string };
+  const message = String(err?.message || error || '');
+  return (
+    err?.code === 'ECONNRESET' ||
+    err?.code === 'ECONNREFUSED' ||
+    err?.code === 'ETIMEDOUT' ||
+    err?.code === '57P01' ||
+    /ECONNRESET|Connection terminated|timeout|server closed the connection/i.test(message)
+  );
+}
+
+export async function withTenantClient<T>(
+  databaseUrl: string,
+  fn: (client: pg.PoolClient) => Promise<T>,
+): Promise<T> {
+  const { schema } = parseTenantConnection(databaseUrl);
+  const mode = getTenantIsolationMode();
+
+  // Schema isolation shares the central DB — reuse one connection and set search_path.
+  if (schema && mode === 'schema') {
+    const { getCentralPool } = await import('./centralDb');
+    const pool = getCentralPool();
+    const client = await pool.connect();
+    try {
+      await client.query(`SET search_path TO "${schema}", public`);
+      return await fn(client);
+    } finally {
+      try {
+        await client.query('SET search_path TO public');
+      } catch {
+        // ignore reset failures
+      }
+      client.release();
+    }
+  }
+
+  const pool = createTenantPool(databaseUrl);
+  const client = await pool.connect();
+  try {
+    if (schema) {
+      await client.query(`SET search_path TO "${schema}", public`);
+    }
+    return await fn(client);
+  } finally {
+    client.release();
+    await pool.end().catch(() => undefined);
+  }
+}
+
+export async function withDbRetry<T>(
+  label: string,
+  fn: () => Promise<T>,
+  attempts = 4,
+): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      lastError = error;
+      if (!isTransientDbError(error) || attempt === attempts) {
+        throw error;
+      }
+      const delayMs = Math.min(1000 * 2 ** (attempt - 1), 8000);
+      console.warn(`[SAAS] ${label} failed (attempt ${attempt}/${attempts}):`, (error as Error)?.message || error);
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
+    }
+  }
+  throw lastError;
 }
