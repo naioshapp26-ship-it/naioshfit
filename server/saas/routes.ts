@@ -21,9 +21,18 @@ import { buildRequestMetadata, mergeStripeMetadata } from '../payment/metadata';
 import { getPaymentNotCompletedMessage, getRequestLanguage } from '../utils/i18n';
 import { buildTenantPublicUrl, normalizeSaasMainDomain } from '@shared/saasUrls';
 import type { TenantRecord } from './types';
+import { isDirectSignupAllowed, isSaasPaymentSkipped } from './paymentConfig';
+
+export { isSaasPaymentSkipped } from './paymentConfig';
 
 // Store pending signups temporarily (in production, use Redis or database)
 const pendingSignups = new Map<string, any>();
+
+const FALLBACK_SAAS_PLANS = [
+  { key: 'starter', name: 'Starter Plan', price_id: '', paypal_plan_id: '', amount: 9900, currency: 'usd', interval: 'month' },
+  { key: 'growth', name: 'Growth Plan', price_id: '', paypal_plan_id: '', amount: 29900, currency: 'usd', interval: 'month' },
+  { key: 'enterprise', name: 'Enterprise Plan', price_id: '', paypal_plan_id: '', amount: 99900, currency: 'usd', interval: 'month' },
+];
 
 function getSaasMainDomain(): string {
   return normalizeSaasMainDomain(process.env.MAIN_DOMAIN);
@@ -40,10 +49,6 @@ function serializeTenant(tenant: TenantRecord) {
     mainDomain,
     tenantUrl: buildTenantPublicUrl(tenant.subdomain, mainDomain, { path: '/auth' }),
   };
-}
-
-function isDirectSignupAllowed(): boolean {
-  return process.env.SAAS_ALLOW_DIRECT_SIGNUP === '1';
 }
 
 function pruneExpiredPendingSignups() {
@@ -71,6 +76,20 @@ export function registerSaasRoutes(app: Express) {
     return res.json({
       mainDomain,
       signupBaseUrl: `${protocol}://www.${mainDomain}`,
+      skipPayment: isSaasPaymentSkipped(),
+      directSignupAvailable: isDirectSignupAllowed(),
+    });
+  });
+
+  // Public config alias used by the signup wizard
+  app.get('/saas/public-config', (_req: Request, res: Response) => {
+    const mainDomain = getSaasMainDomain();
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    return res.json({
+      mainDomain,
+      signupBaseUrl: `${protocol}://www.${mainDomain}`,
+      skipPayment: isSaasPaymentSkipped(),
+      directSignupAvailable: isDirectSignupAllowed(),
     });
   });
 
@@ -486,7 +505,9 @@ export function registerSaasRoutes(app: Express) {
         return res.status(400).json({ message: 'Invalid or expired payment session.' });
       }
 
-      const provider = paymentProvider || pending.paymentProvider || 'stripe';
+      const provider = pending.paymentProvider === 'direct'
+        ? 'direct'
+        : (paymentProvider || pending.paymentProvider || 'stripe');
       let stripeCheckoutSessionId: string | null = pending.stripeSessionId || null;
       let stripePaymentIntentId: string | null = null;
       let resolvedPayPalSubscriptionId: string | null = paypalSubscriptionId || pending.paypalSubscriptionId || null;
@@ -650,12 +671,28 @@ export function registerSaasRoutes(app: Express) {
   app.get('/saas/plan-config', async (_req: Request, res: Response) => {
     try {
       const planConfig = await getPlatformSaasPlanConfig();
-      return res.json(planConfig);
+      return res.json({
+        ...planConfig,
+        paymentConfigured: true,
+        directSignupAvailable: isDirectSignupAllowed(),
+        skipPayment: isSaasPaymentSkipped(),
+      });
     } catch (error: any) {
       console.error('[SAAS] Failed to load plan config:', error);
+      if (isDirectSignupAllowed()) {
+        return res.json({
+          trial_days: 14,
+          plans: FALLBACK_SAAS_PLANS,
+          paymentConfigured: false,
+          directSignupAvailable: true,
+          skipPayment: isSaasPaymentSkipped(),
+        });
+      }
       return res.status(503).json({
         message: 'Plan configuration not available.',
-        code: 'PLATFORM_PAYMENT_NOT_CONFIGURED'
+        code: 'PLATFORM_PAYMENT_NOT_CONFIGURED',
+        directSignupAvailable: false,
+        skipPayment: false,
       });
     }
   });
