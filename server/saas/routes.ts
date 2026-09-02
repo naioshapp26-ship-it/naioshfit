@@ -22,6 +22,7 @@ import { getPaymentNotCompletedMessage, getRequestLanguage } from '../utils/i18n
 import { buildTenantPublicUrl, normalizeSaasMainDomain } from '@shared/saasUrls';
 import type { TenantRecord } from './types';
 import { isDirectSignupAllowed, isSaasPaymentSkipped } from './paymentConfig';
+import { applyTenantEnvDefaults, resolveTenantDatabaseTemplate, resolveTenantEncryptionKey } from './tenantEnv';
 
 export { isSaasPaymentSkipped } from './paymentConfig';
 
@@ -183,7 +184,14 @@ export function registerSaasRoutes(app: Express) {
         paymentSettings = null;
       }
 
-      const encryptionKeyConfigured = Boolean(process.env.TENANT_DB_ENCRYPTION_KEY);
+      const encryptionKeyConfigured = (() => {
+        try {
+          resolveTenantEncryptionKey();
+          return true;
+        } catch {
+          return false;
+        }
+      })();
       const paymentReady = Boolean(
         paymentSettings &&
         encryptionKeyConfigured &&
@@ -192,11 +200,24 @@ export function registerSaasRoutes(app: Express) {
 
       if (!paymentReady) {
         if (isDirectSignupAllowed()) {
-          if (!process.env.TENANT_DATABASE_URL_TEMPLATE) {
-            return res.status(503).json({
-              message: 'Tenant database template is not configured. Please contact administrator.',
-              code: 'TENANT_DATABASE_TEMPLATE_MISSING',
-            });
+          try {
+            resolveTenantEncryptionKey();
+            resolveTenantDatabaseTemplate();
+          } catch (envError: any) {
+            const message = envError?.message || '';
+            if (message.includes('TENANT_DB_ENCRYPTION_KEY')) {
+              return res.status(503).json({
+                message: 'Tenant database encryption key is missing or invalid. Please contact administrator.',
+                code: 'TENANT_DB_ENCRYPTION_KEY_INVALID',
+              });
+            }
+            if (message.includes('TENANT_DATABASE_URL_TEMPLATE')) {
+              return res.status(503).json({
+                message: 'Tenant database template is not configured. Please contact administrator.',
+                code: 'TENANT_DATABASE_TEMPLATE_MISSING',
+              });
+            }
+            throw envError;
           }
           return res.json(createDirectPendingSignup({
             subdomain: normalizedSubdomain,
@@ -463,14 +484,18 @@ export function registerSaasRoutes(app: Express) {
       return res.status(400).json({ message: 'Invalid tenant subdomain.' });
     }
 
-    if (!process.env.TENANT_DB_ENCRYPTION_KEY) {
+    try {
+      resolveTenantEncryptionKey();
+    } catch {
       return res.status(503).json({
         message: 'Tenant database encryption key is missing or invalid. Please contact administrator.',
         code: 'TENANT_DB_ENCRYPTION_KEY_INVALID',
       });
     }
 
-    if (!process.env.TENANT_DATABASE_URL_TEMPLATE) {
+    try {
+      resolveTenantDatabaseTemplate();
+    } catch {
       return res.status(503).json({
         message: 'Tenant database template is not configured. Please contact administrator.',
         code: 'TENANT_DATABASE_TEMPLATE_MISSING',

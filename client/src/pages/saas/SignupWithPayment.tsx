@@ -734,18 +734,22 @@ const SaasSignupWithPaymentPage = () => {
 
           <div className="space-y-2">
             <Label htmlFor="subdomain">{t("saasSubdomainLabel")}<RequiredMark /></Label>
-            <div className="flex items-center">
+            <div className={`flex items-center ${isRTL ? "flex-row-reverse" : ""}`}>
               <Input
                 id="subdomain"
                 value={form.subdomain}
                 onChange={handleChange("subdomain")}
                 placeholder={t("saasSubdomainPlaceholder")}
-                className={isRTL ? "rounded-l-none" : "rounded-r-none"}
+                className={isRTL ? "rounded-r-none text-left" : "rounded-r-none"}
+                dir="ltr"
               />
-              <span className={`px-3 py-2 bg-gray-100 border ${isRTL ? "border-r-0 rounded-l-md" : "border-l-0 rounded-r-md"} text-sm text-gray-600`}>
+              <span className="px-3 py-2 bg-gray-100 border border-l-0 rounded-r-md text-sm text-gray-600 whitespace-nowrap" dir="ltr">
                 .{mainDomain}
               </span>
             </div>
+            <p className="text-xs text-gray-500" dir="ltr">
+              https://{form.subdomain.trim() || "subdomain"}.{mainDomain}
+            </p>
             {fieldErrors.subdomain && (
               <p className="text-xs text-red-500">{fieldErrors.subdomain}</p>
             )}
