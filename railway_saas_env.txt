@@ -21,11 +21,15 @@ TENANT_DATABASE_URL_TEMPLATE=postgresql://postgres:wWLSoGvNpROTODgkatyFXfRVsNtav
 
 ```
 MAIN_DOMAIN=naioshfit.com
+SAAS_TENANT_ISOLATION=schema
+SAAS_ALLOW_DIRECT_SIGNUP=1
 ```
 
 ## Notes
 
 - The TENANT_DB_ENCRYPTION_KEY is used to encrypt tenant database URLs in the central database
 - The SAAS_ADMIN_TOKEN is required for admin endpoints at `/api/admin/saas/*`
+- Prefer Railway *private* Postgres URLs (`*.railway.internal`) for DATABASE_URL / CENTRAL_DATABASE_URL / PROVISIONING_ADMIN_DATABASE_URL — the public `*.proxy.rlwy.net` host often resets during long tenant migrations
+- Set `SAAS_TENANT_ISOLATION=schema` so tenants share one database via schemas (CREATE DATABASE is usually denied on Railway)
 - The TENANT_DATABASE_URL_TEMPLATE contains `{db}` which will be replaced with the tenant's database name
 - All tenant databases will be created in the same PostgreSQL instance with prefix `railway_tenant_{subdomain}`

@@ -112,23 +112,37 @@ const SaasSignupWithPaymentPage = () => {
   const [paymobConfigured, setPaymobConfigured] = useState(false);
   const [isDirectSignup, setIsDirectSignup] = useState(false);
   const [paymentConfigured, setPaymentConfigured] = useState<boolean | null>(null);
+  const [skipPayment, setSkipPayment] = useState<boolean | null>(null);
   const [mainDomain, setMainDomain] = useState(() => normalizeSaasMainDomain());
 
   const plans = planConfig?.plans?.length ? planConfig.plans : DEFAULT_PLANS;
   const selectedPlan = plans.find((plan) => plan.key === form.subscriptionPlan) || plans[0];
   const selectedPrice = selectedPlan?.amount ? selectedPlan.amount / 100 : 0;
+  const shouldSkipPayment = skipPayment === true || paymentConfigured === false;
 
   useEffect(() => {
     const loadPlatformConfig = async () => {
       try {
-        const response = await fetch("/saas/platform-config");
-        if (!response.ok) return;
-        const data = await response.json().catch(() => ({}));
+        const response = await fetch("/saas/public-config");
+        const fallback = response.ok ? null : await fetch("/saas/platform-config");
+        const res = response.ok ? response : fallback;
+        if (!res || !res.ok) {
+          setSkipPayment(true);
+          return;
+        }
+        const data = await res.json().catch(() => ({}));
         if (data?.mainDomain) {
           setMainDomain(normalizeSaasMainDomain(data.mainDomain));
         }
+        if (typeof data?.skipPayment === 'boolean') {
+          setSkipPayment(data.skipPayment);
+        } else if (typeof data?.directSignupAvailable === 'boolean') {
+          setSkipPayment(data.directSignupAvailable);
+        } else {
+          setSkipPayment(true);
+        }
       } catch {
-        // Keep default main domain fallback.
+        setSkipPayment(true);
       }
     };
 
@@ -266,25 +280,32 @@ const SaasSignupWithPaymentPage = () => {
     const loadPlanConfig = async () => {
       try {
         const response = await fetch('/saas/plan-config');
+        const data = await response.json().catch(() => ({}));
         if (!response.ok) {
-          const data = await response.json().catch(() => ({}));
           if (
             response.status === 503 ||
             data.code === 'PLATFORM_PAYMENT_NOT_CONFIGURED'
           ) {
             setPaymentConfigured(false);
+            setSkipPayment(true);
           }
           return;
         }
-        const data = (await response.json()) as PlanConfigResponse;
-        setPaymentConfigured(true);
-        setPlanConfig(data);
-        if (data?.plans?.length && !data.plans.find((plan) => plan.key === form.subscriptionPlan)) {
+        const configured = data.paymentConfigured !== false;
+        setPaymentConfigured(configured);
+        if (typeof data.skipPayment === 'boolean') {
+          setSkipPayment(data.skipPayment);
+        } else if (!configured) {
+          setSkipPayment(true);
+        }
+        setPlanConfig(data as PlanConfigResponse);
+        if (data?.plans?.length && !data.plans.find((plan: { key: string }) => plan.key === form.subscriptionPlan)) {
           setForm((prev) => ({ ...prev, subscriptionPlan: data.plans[0].key }));
         }
       } catch (error) {
         console.error('Failed to load plan configuration', error);
         setPaymentConfigured(false);
+        setSkipPayment(true);
       }
     };
 
@@ -375,7 +396,10 @@ const SaasSignupWithPaymentPage = () => {
 
     const data = await response.json();
     setPaymentSession(data.session);
-    if (data.session?.paymentProvider) {
+    if (data.directSignup || data.session?.paymentProvider === 'direct') {
+      setIsDirectSignup(true);
+    }
+    if (data.session?.paymentProvider && data.session.paymentProvider !== 'direct') {
       setPaymentProvider(data.session.paymentProvider);
     }
     persistFormToSession(data.session.sessionReference);
@@ -429,28 +453,38 @@ const SaasSignupWithPaymentPage = () => {
     setPaymentError(null);
     setIsDirectSignup(false);
     try {
-      if (paymentConfigured === false) {
-        await createDirectSignupSession();
-      } else {
-        try {
-          await createPaymentSession(paymentProvider);
-        } catch (paymentError: any) {
-          const code = paymentError?.code;
-          const message = paymentError?.message || '';
-          const shouldUseDirectSignup =
-            code === 'PLATFORM_PAYMENT_NOT_CONFIGURED' ||
-            message.includes(t("saasPaymentNotConfigured")) ||
-            message.toLowerCase().includes('payment gateway not configured') ||
-            message.toLowerCase().includes('failed to create payment session');
-
-          if (shouldUseDirectSignup) {
-            await createDirectSignupSession();
-          } else {
-            throw paymentError;
-          }
-        }
+      if (shouldSkipPayment) {
+        const session = await createDirectSignupSession();
+        setCurrentStep(3);
+        await provisionTenant(session.sessionReference, form, { paymentProvider: 'direct' });
+        return;
       }
-      setCurrentStep(2);
+
+      try {
+        const session = await createPaymentSession(paymentProvider);
+        if (session.paymentProvider === 'direct') {
+          setCurrentStep(3);
+          await provisionTenant(session.sessionReference, form, { paymentProvider: 'direct' });
+          return;
+        }
+        setCurrentStep(2);
+      } catch (paymentError: any) {
+        const code = paymentError?.code;
+        const message = paymentError?.message || '';
+        const shouldUseDirectSignup =
+          code === 'PLATFORM_PAYMENT_NOT_CONFIGURED' ||
+          message.includes(t("saasPaymentNotConfigured")) ||
+          message.toLowerCase().includes('payment gateway not configured') ||
+          message.toLowerCase().includes('failed to create payment session');
+
+        if (shouldUseDirectSignup) {
+          const session = await createDirectSignupSession();
+          setCurrentStep(3);
+          await provisionTenant(session.sessionReference, form, { paymentProvider: 'direct' });
+          return;
+        }
+        throw paymentError;
+      }
     } catch (error: any) {
       toast({
         title: t("saasErrorTitle"),
@@ -560,8 +594,13 @@ const SaasSignupWithPaymentPage = () => {
     window.location.assign(url);
   };
 
-  const provisionTenant = async (reference: string, formData?: SignupFormData) => {
+  const provisionTenant = async (
+    reference: string,
+    formData?: SignupFormData,
+    options?: { paymentProvider?: PaymentSession['paymentProvider'] },
+  ) => {
     const data = formData || form;
+    const resolvedProvider = options?.paymentProvider || paymentSession?.paymentProvider || paymentProvider;
     setIsProcessing(true);
     setPaymentError(null);
     try {
@@ -577,7 +616,7 @@ const SaasSignupWithPaymentPage = () => {
           adminPhone: data.adminPhone.trim(),
           adminPassword: data.adminPassword,
           subscriptionPlan: data.subscriptionPlan,
-          paymentProvider: paymentSession?.paymentProvider || paymentProvider,
+          paymentProvider: resolvedProvider,
           paypalSubscriptionId: paymentSession?.paypalSubscriptionId || undefined,
         }),
       });
@@ -695,18 +734,22 @@ const SaasSignupWithPaymentPage = () => {
 
           <div className="space-y-2">
             <Label htmlFor="subdomain">{t("saasSubdomainLabel")}<RequiredMark /></Label>
-            <div className="flex items-center">
+            <div className={`flex items-center ${isRTL ? "flex-row-reverse" : ""}`}>
               <Input
                 id="subdomain"
                 value={form.subdomain}
                 onChange={handleChange("subdomain")}
                 placeholder={t("saasSubdomainPlaceholder")}
-                className={isRTL ? "rounded-l-none" : "rounded-r-none"}
+                className={isRTL ? "rounded-r-none text-left" : "rounded-r-none"}
+                dir="ltr"
               />
-              <span className={`px-3 py-2 bg-gray-100 border ${isRTL ? "border-r-0 rounded-l-md" : "border-l-0 rounded-r-md"} text-sm text-gray-600`}>
+              <span className="px-3 py-2 bg-gray-100 border border-l-0 rounded-r-md text-sm text-gray-600 whitespace-nowrap" dir="ltr">
                 .{mainDomain}
               </span>
             </div>
+            <p className="text-xs text-gray-500" dir="ltr">
+              https://{form.subdomain.trim() || "subdomain"}.{mainDomain}
+            </p>
             {fieldErrors.subdomain && (
               <p className="text-xs text-red-500">{fieldErrors.subdomain}</p>
             )}
@@ -804,6 +847,8 @@ const SaasSignupWithPaymentPage = () => {
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 {t("saasProcessing")}
               </>
+            ) : shouldSkipPayment ? (
+              language === 'ar' ? 'إنشاء الحساب والساب دومين' : 'Create account & subdomain'
             ) : (
               t("saasContinueToPayment")
             )}
