@@ -291,28 +291,82 @@ export async function provisionTenant(input: ProvisionTenantInput) {
   let currentStep: ProvisioningStep = 'CREATE_TENANT_DATABASE';
 
   try {
+    const isolation = getTenantIsolationMode();
     await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'pending');
-    const storageMode = await ensureTenantStorage(databaseName);
-    if (storageMode === 'schema') {
-      databaseUrl = resolveSchemaTenantDatabaseUrl(databaseName);
+
+    if (isolation === 'schema') {
+      // One fresh connection for schema + migrations + admin.
+      // Opening multiple Railway proxy connections in a row causes ECONNRESET.
+      await withDbRetry('provisionSchemaTenant', async () => {
+        const adminUrl = resolveProvisioningAdminUrl();
+        if (!adminUrl) {
+          throw new Error('PROVISIONING_ADMIN_DATABASE_URL must be set to create tenant databases.');
+        }
+        const adminPool = createAdminPool(adminUrl);
+        try {
+          const client = await adminPool.connect();
+          try {
+            await client.query(`CREATE SCHEMA IF NOT EXISTS "${databaseName}"`);
+            databaseUrl = resolveSchemaTenantDatabaseUrl(databaseName);
+            await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'success');
+
+            currentStep = 'STORE_DATABASE_SECRET';
+            await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'pending');
+            const encryptedUrl = await encryptDatabaseUrl(databaseUrl);
+            await pool.query('UPDATE tenants SET database_url_encrypted = $1 WHERE id = $2', [encryptedUrl, tenant.id]);
+            await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'success');
+
+            currentStep = 'RUN_MIGRATIONS';
+            await logStep(tenant.id, 'RUN_MIGRATIONS', 'pending');
+            await client.query(`SET search_path TO "${databaseName}", public`);
+            await runTenantMigrationsOnClient(client);
+            await logStep(tenant.id, 'RUN_MIGRATIONS', 'success');
+
+            currentStep = 'CREATE_ADMIN';
+            await logStep(tenant.id, 'CREATE_ADMIN', 'pending');
+            await createTenantAdminOnClient(
+              client,
+              input.adminEmail,
+              input.adminName,
+              input.adminPhone,
+              input.adminPassword,
+            );
+            await logStep(tenant.id, 'CREATE_ADMIN', 'success');
+          } finally {
+            try {
+              await client.query('SET search_path TO public');
+            } catch {
+              // ignore
+            }
+            client.release();
+          }
+        } finally {
+          await adminPool.end().catch(() => undefined);
+        }
+      });
+    } else {
+      const storageMode = await ensureTenantStorage(databaseName);
+      if (storageMode === 'schema') {
+        databaseUrl = resolveSchemaTenantDatabaseUrl(databaseName);
+      }
+      await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'success');
+
+      currentStep = 'STORE_DATABASE_SECRET';
+      await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'pending');
+      const encryptedUrl = await encryptDatabaseUrl(databaseUrl);
+      await pool.query('UPDATE tenants SET database_url_encrypted = $1 WHERE id = $2', [encryptedUrl, tenant.id]);
+      await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'success');
+
+      currentStep = 'RUN_MIGRATIONS';
+      await logStep(tenant.id, 'RUN_MIGRATIONS', 'pending');
+      await runTenantMigrations(databaseUrl);
+      await logStep(tenant.id, 'RUN_MIGRATIONS', 'success');
+
+      currentStep = 'CREATE_ADMIN';
+      await logStep(tenant.id, 'CREATE_ADMIN', 'pending');
+      await createTenantAdmin(databaseUrl, input.adminEmail, input.adminName, input.adminPhone, input.adminPassword);
+      await logStep(tenant.id, 'CREATE_ADMIN', 'success');
     }
-    await logStep(tenant.id, 'CREATE_TENANT_DATABASE', 'success');
-
-    currentStep = 'STORE_DATABASE_SECRET';
-    await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'pending');
-    const encryptedUrl = await encryptDatabaseUrl(databaseUrl);
-    await pool.query('UPDATE tenants SET database_url_encrypted = $1 WHERE id = $2', [encryptedUrl, tenant.id]);
-    await logStep(tenant.id, 'STORE_DATABASE_SECRET', 'success');
-
-    currentStep = 'RUN_MIGRATIONS';
-    await logStep(tenant.id, 'RUN_MIGRATIONS', 'pending');
-    await runTenantMigrations(databaseUrl);
-    await logStep(tenant.id, 'RUN_MIGRATIONS', 'success');
-
-    currentStep = 'CREATE_ADMIN';
-    await logStep(tenant.id, 'CREATE_ADMIN', 'pending');
-    await createTenantAdmin(databaseUrl, input.adminEmail, input.adminName, input.adminPhone, input.adminPassword);
-    await logStep(tenant.id, 'CREATE_ADMIN', 'success');
 
     currentStep = 'CREATE_SUBSCRIPTION';
     await logStep(tenant.id, 'CREATE_SUBSCRIPTION', 'pending');
