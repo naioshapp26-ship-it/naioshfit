@@ -157,9 +157,8 @@ const SaasSignupPage = () => {
         title: t("saasTenantProvisioned"),
         description: t("saasTenantProvisionedDesc"),
       });
-      setTimeout(() => {
-        redirectToTenant(createdTenant);
-      }, 800);
+      // Keep the success details visible so the user can copy the subdomain
+      // and open the workspace manually.
     } catch (error: any) {
       const message = error instanceof Error ? error.message : t("saasTenantSignupFailed");
       toast({

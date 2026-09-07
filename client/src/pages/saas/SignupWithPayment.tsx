@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { SAAS_SUBDOMAIN_PATTERN } from "./constants";
-import { CheckCircle, Circle, Loader2, CreditCard, Building2, Shield, AlertCircle, Eye, EyeOff } from "lucide-react";
+import { CheckCircle, Circle, Loader2, CreditCard, Building2, Shield, AlertCircle, Eye, EyeOff, Copy } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useLanguage } from "@/context/LanguageContext";
 import EmbeddedCheckout from "@/components/payments/EmbeddedCheckout";
@@ -641,10 +641,9 @@ const SaasSignupWithPaymentPage = () => {
         title: t("saasProvisioningSuccessTitle"),
         description: t("saasProvisioningSuccessDesc"),
       });
+      // Stay on the completion step so the user can copy the subdomain URL
+      // and open the workspace manually (no auto-redirect).
       setCurrentStep(4);
-      setTimeout(() => {
-        redirectToTenant(createdTenant);
-      }, 800);
     } catch (error: any) {
       toast({
         title: t("saasProvisioningErrorTitle"),
@@ -1086,6 +1085,27 @@ const SaasSignupWithPaymentPage = () => {
 
   const renderStep4 = () => {
     const tenantUrl = tenant ? resolveTenantUrl(tenant) : null;
+    const tenantHost = tenant
+      ? `${tenant.subdomain}.${tenant.mainDomain || mainDomain}`
+      : null;
+
+    const copyTenantUrl = async () => {
+      const value = tenantUrl || (tenantHost ? `https://${tenantHost}` : "");
+      if (!value) return;
+      try {
+        await navigator.clipboard.writeText(value);
+        toast({
+          title: t("saasTenantUrlCopiedTitle"),
+          description: t("saasTenantUrlCopiedDesc"),
+        });
+      } catch {
+        toast({
+          title: t("saasErrorTitle"),
+          description: t("saasTenantUrlCopyFailed"),
+          variant: "destructive",
+        });
+      }
+    };
 
     return (
       <Card>
@@ -1104,18 +1124,30 @@ const SaasSignupWithPaymentPage = () => {
             <div className="space-y-3 rounded-lg border border-green-200 bg-green-50 p-4">
               <div className="flex flex-col gap-1">
                 <span className="text-xs font-medium text-green-900">{t("saasTenantIdLabel")}</span>
-                <span className="font-mono text-sm text-green-900">{tenant.id}</span>
+                <span className="font-mono text-sm text-green-900 break-all">{tenant.id}</span>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-2">
                 <span className="text-xs font-medium text-green-900">{t("saasTenantUrlLabel")}</span>
                 <a
                   href={tenantUrl ?? undefined}
-                  className="font-mono text-sm text-green-900 underline"
+                  className="font-mono text-sm text-green-900 underline break-all"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {tenant.subdomain}.{tenant.mainDomain || mainDomain}
+                  {tenantHost}
                 </a>
+                {tenantUrl && (
+                  <p className="font-mono text-xs text-green-800 break-all">{tenantUrl}</p>
+                )}
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full border-green-300 bg-white text-green-900 hover:bg-green-100"
+                  onClick={copyTenantUrl}
+                >
+                  <Copy className="w-4 h-4 me-2" />
+                  {t("saasCopyTenantUrl")}
+                </Button>
               </div>
             </div>
           )}
@@ -1129,7 +1161,7 @@ const SaasSignupWithPaymentPage = () => {
               }
             }}
           >
-            {t("saasCompletionDone")}
+            {t("saasGoToWorkspace")}
           </Button>
         </CardContent>
       </Card>
