@@ -44,7 +44,7 @@ interface PaymentTransaction {
   created_at: string;
 }
 
-const STATUS_OPTIONS = ["active", "pending_payment", "suspended", "deleted"];
+const STATUS_OPTIONS = ["active", "pending_payment", "suspended", "disabled", "deleted"];
 
 export const TenantManagementPanel = () => {
   const { toast } = useToast();

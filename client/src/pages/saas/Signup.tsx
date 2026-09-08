@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { SAAS_SUBDOMAIN_PATTERN } from "./constants";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Copy } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import BackButton from "@/components/navigation/BackButton";
 import { buildTenantPublicUrl, normalizeSaasMainDomain } from "@shared/saasUrls";
@@ -157,9 +157,8 @@ const SaasSignupPage = () => {
         title: t("saasTenantProvisioned"),
         description: t("saasTenantProvisionedDesc"),
       });
-      setTimeout(() => {
-        redirectToTenant(createdTenant);
-      }, 800);
+      // Keep the success details visible so the user can copy the subdomain
+      // and open the workspace manually.
     } catch (error: any) {
       const message = error instanceof Error ? error.message : t("saasTenantSignupFailed");
       toast({
@@ -334,15 +333,48 @@ const SaasSignupPage = () => {
             <CardHeader>
               <CardTitle>{t("saasTenantReady")}</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2 text-sm">
+            <CardContent className="space-y-3 text-sm">
               <p><span className="font-semibold">{t("saasTenantId")}:</span> {tenant.id}</p>
               <p><span className="font-semibold">{t("saasCompany")}:</span> {tenant.companyName}</p>
               <p><span className="font-semibold">{t("saasSubdomain")}:</span> {tenant.subdomain}</p>
               <p><span className="font-semibold">{t("saasStatus")}:</span> {tenant.status}</p>
               {tenantUrl && (
-                <p>
-                  <span className="font-semibold">{t("saasTenantUrl")}:</span> {tenantUrl}
-                </p>
+                <div className="space-y-2">
+                  <p>
+                    <span className="font-semibold">{t("saasTenantUrl")}:</span>{" "}
+                    <span className="font-mono break-all">{tenantUrl}</span>
+                  </p>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full"
+                    onClick={async () => {
+                      try {
+                        await navigator.clipboard.writeText(tenantUrl);
+                        toast({
+                          title: t("saasTenantUrlCopiedTitle"),
+                          description: t("saasTenantUrlCopiedDesc"),
+                        });
+                      } catch {
+                        toast({
+                          title: t("saasErrorTitle"),
+                          description: t("saasTenantUrlCopyFailed"),
+                          variant: "destructive",
+                        });
+                      }
+                    }}
+                  >
+                    <Copy className="w-4 h-4 me-2" />
+                    {t("saasCopyTenantUrl")}
+                  </Button>
+                  <Button
+                    type="button"
+                    className="w-full"
+                    onClick={() => redirectToTenant(tenant)}
+                  >
+                    {t("saasGoToWorkspace")}
+                  </Button>
+                </div>
               )}
             </CardContent>
           </Card>

@@ -25,7 +25,7 @@ import { translations } from "@/lib/translations-data";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { AdminUsersTable } from "@/components/AdminUsersTable";
-import { TenantManagementPanel } from "@/components/admin/TenantManagementPanel";
+import { SuperAdminControlCenter } from "@/components/admin/SuperAdminControlCenter";
 import PaymentSettingsAdmin from "@/components/admin/PaymentSettingsAdmin";
 import EmailSettingsAdmin from "@/components/admin/EmailSettingsAdmin";
 import AnimatedBackground from '@/components/layout/AnimatedBackground';
@@ -2410,7 +2410,7 @@ export function AdminDashboard() {
         
         {showTenantManagement && (
           <SwipeableTabsContent value="tenants" className="space-y-4" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-            <TenantManagementPanel />
+            <SuperAdminControlCenter />
           </SwipeableTabsContent>
         )}
 

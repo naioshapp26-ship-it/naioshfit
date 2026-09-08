@@ -9,9 +9,12 @@ import { runStartupCleanup } from "./lib/tokenCleanup";
 import { bootstrapPlatformEmailFromEnv } from "./lib/emailSettings";
 import { bootstrapPlatformStripeFromEnv } from "./payment/platformStripe";
 import { ensurePasswordResetTokensTable } from "./lib/passwordResetTokens";
+import { applyTenantEnvDefaults } from "./saas/tenantEnv";
 
 // Force Node process timezone to GMT+3 (Asia/Riyadh is fixed-offset with no DST)
 process.env.TZ = process.env.TZ || 'Asia/Riyadh';
+
+applyTenantEnvDefaults();
 
 declare global {
   namespace Express {

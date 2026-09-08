@@ -1,11 +1,8 @@
 import { decryptKey, encryptKey, isEncrypted } from '../payment/encryption';
+import { applyTenantEnvDefaults, resolveTenantEncryptionKey } from './tenantEnv';
 
 function requireTenantEncryptionKey(): string {
-  const key = process.env.TENANT_DB_ENCRYPTION_KEY;
-  if (!key) {
-    throw new Error('TENANT_DB_ENCRYPTION_KEY must be set for multi-tenant mode.');
-  }
-  return key;
+  return resolveTenantEncryptionKey();
 }
 
 export function encryptTenantDatabaseUrl(databaseUrl: string): Buffer {
@@ -26,3 +23,6 @@ export async function decryptTenantDatabaseUrl(encrypted: Buffer): Promise<strin
     'Tenant database URL uses an unsupported legacy encryption format. Re-provision the tenant or update database_url_encrypted.'
   );
 }
+
+// Ensure defaults are applied when this module loads in multi-tenant mode.
+applyTenantEnvDefaults();

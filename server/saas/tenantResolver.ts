@@ -486,7 +486,7 @@ export async function tenantResolver(req: Request, res: Response, next: NextFunc
       : null;
     const contactPath = contactHost ? `https://${contactHost}/contact` : '/contact';
 
-    if (tenant.status === 'suspended') {
+    if (tenant.status === 'suspended' || tenant.status === 'disabled') {
       if (acceptsHtml && !isApiPath) {
         if (isContactPath) {
           return res.redirect(302, contactPath);
@@ -494,7 +494,11 @@ export async function tenantResolver(req: Request, res: Response, next: NextFunc
         const page = renderSuspendedHtml(contactPath);
         return res.status(403).send(page);
       }
-      return res.status(403).json({ message: 'Tenant is suspended.' });
+      return res.status(403).json({
+        message: tenant.status === 'disabled' ? 'Tenant is disabled.' : 'Tenant is suspended.',
+        code: tenant.status === 'disabled' ? 'PLATFORM_DISABLED' : 'PLATFORM_SUSPENDED',
+        status: tenant.status,
+      });
     }
 
     if (tenant.status === 'pending_payment') {
