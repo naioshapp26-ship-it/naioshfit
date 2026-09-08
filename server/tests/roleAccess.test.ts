@@ -13,10 +13,11 @@ describe('roleAccess', () => {
     expect(isPlatformAdminRole(undefined)).toBe(false);
   });
 
-  it('only allows super_admin for tenant management', () => {
+  it('allows central admin and super_admin for tenant/platform management', () => {
     expect(isTenantManagerRole('super_admin')).toBe(true);
-    expect(isTenantManagerRole('admin')).toBe(false);
+    expect(isTenantManagerRole('admin')).toBe(true);
     expect(isTenantManagerRole('tenant_admin')).toBe(false);
+    expect(isTenantManagerRole('coach')).toBe(false);
   });
 
   it('identifies super admin role correctly', () => {

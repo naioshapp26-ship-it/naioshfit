@@ -16,9 +16,9 @@ describe('platform access blocking', () => {
 });
 
 describe('super admin role gates', () => {
-  it('only super_admin is tenant manager', () => {
+  it('allows central admin and super_admin as tenant managers', () => {
     expect(isTenantManagerRole('super_admin')).toBe(true);
-    expect(isTenantManagerRole('admin')).toBe(false);
+    expect(isTenantManagerRole('admin')).toBe(true);
     expect(isTenantManagerRole('user')).toBe(false);
   });
 
