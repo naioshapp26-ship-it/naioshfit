@@ -4,11 +4,23 @@ import { getPlatformStripeClient } from '../payment/platformStripe';
 
 export interface TenantSummary extends Pick<TenantRecord, 'id' | 'subdomain' | 'company_name' | 'subscription_plan' | 'status' | 'created_at'> {
   admin_count: number;
+  product_type?: string | null;
+  suspended_at?: Date | null;
+  suspension_reason?: string | null;
+  updated_at?: Date;
 }
 
 export interface TenantDetails extends TenantSummary {
   database_name: string | null;
   updated_at: Date;
+  suspended_at?: Date | null;
+  suspended_by?: string | null;
+  suspension_reason?: string | null;
+  admin_notes?: string | null;
+  disabled_at?: Date | null;
+  disabled_by?: string | null;
+  previous_status?: string | null;
+  product_type?: string | null;
 }
 
 export interface TenantPaymentTransaction {
@@ -28,6 +40,7 @@ export interface TenantPaymentTransaction {
 export interface TenantListFilters {
   search?: string;
   status?: string;
+  productType?: string;
   limit?: number;
   offset?: number;
 }
@@ -65,6 +78,12 @@ export async function fetchTenantList(filters: TenantListFilters) {
     where.push(`tenants.status = $${idx}`);
   }
 
+  if ((filters as any).productType) {
+    values.push((filters as any).productType);
+    const idx = values.length;
+    where.push(`tenants.product_type = $${idx}`);
+  }
+
   const limit = Math.min(Math.max(filters.limit ?? DEFAULT_PAGE_SIZE, 1), MAX_PAGE_SIZE);
   const offset = Math.max(filters.offset ?? 0, 0);
 
@@ -80,6 +99,10 @@ export async function fetchTenantList(filters: TenantListFilters) {
            tenants.subscription_plan,
            tenants.status,
            tenants.created_at,
+           tenants.updated_at,
+           tenants.product_type,
+           tenants.suspended_at,
+           tenants.suspension_reason,
            COUNT(tenant_admins.id) AS admin_count
     FROM tenants
     LEFT JOIN tenant_admins ON tenant_admins.tenant_id = tenants.id
@@ -120,6 +143,14 @@ export async function fetchTenantDetails(tenantId: string): Promise<TenantDetail
             tenants.created_at,
             tenants.updated_at,
             tenants.database_name,
+            tenants.product_type,
+            tenants.suspended_at,
+            tenants.suspended_by,
+            tenants.suspension_reason,
+            tenants.admin_notes,
+            tenants.disabled_at,
+            tenants.disabled_by,
+            tenants.previous_status,
             COUNT(tenant_admins.id) AS admin_count
      FROM tenants
      LEFT JOIN tenant_admins ON tenant_admins.tenant_id = tenants.id
